@@ -1,0 +1,4 @@
+enum StrokeLineDirection {
+  horizontal,
+  vertical,
+}
