@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_weather_app/src/ui/features/today_weather/pages/today_weather_page.dart';
-import 'package:flutter_weather_app/src/ui/shared/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 import '../ui/features/forecast_weather/pages/forecast_weather_page.dart';
+import '../ui/features/today_weather/pages/today_weather_page.dart';
+import '../ui/shared/theme/app_colors.dart';
 import '../ui/shared/theme/app_theme.dart';
 
 class WeatherApp extends StatefulWidget {

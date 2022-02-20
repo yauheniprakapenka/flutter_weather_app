@@ -2,7 +2,7 @@ class Weather {
   /// Temperature, Kelvin. Example: 278.24
   final double temperature;
 
-  /// Group of weather parameters (Rain, Snow, Clouds)
+  /// Group of weather parameters. Example: Rain, Snow, Clouds
   final String weather;
 
   /// Example: Gomel
@@ -22,20 +22,24 @@ class Weather {
 
   /// Atmospheric pressure, hPa. Example: 1023
   final int pressure;
-  
-  Weather({
-    required this.temperature,
-    required this.weather,
-    required this.city,
-    required this.codeCountry,
-    required this.windSpeed,
-    required this.humidity,
-    required this.windDegrees,
-    required this.pressure,
+
+  /// Rain volume for the last 1 hour, mm. Example: 1.0
+  final double rainVolume;
+
+  const Weather({
+    this.temperature = 0,
+    this.weather = '',
+    this.city = '',
+    this.codeCountry = '',
+    this.windSpeed = 0,
+    this.humidity = 0,
+    this.windDegrees = 0,
+    this.pressure = 0,
+    this.rainVolume = 0,
   });
 
   @override
   String toString() {
-    return 'Weather(temperature: $temperature, weather: $weather, city: $city, codeCountry: $codeCountry, windSpeed: $windSpeed, humidity: $humidity, windDegrees: $windDegrees, pressure: $pressure)';
+    return 'Weather(temperature: $temperature, weather: $weather, city: $city, codeCountry: $codeCountry, windSpeed: $windSpeed, humidity: $humidity, windDegrees: $windDegrees, pressure: $pressure, raiVolume: $rainVolume)';
   }
 }
