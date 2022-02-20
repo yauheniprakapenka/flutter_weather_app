@@ -19,6 +19,7 @@ class TodayWeatherPage extends StatelessWidget {
         children: [
           const WeatherIcon(
             icon: Icons.light_mode_outlined,
+            size: 100,
           ),
           const Text(
             'London, UK',
