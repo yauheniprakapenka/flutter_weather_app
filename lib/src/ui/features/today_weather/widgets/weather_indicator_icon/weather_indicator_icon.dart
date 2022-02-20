@@ -35,7 +35,9 @@ class WeatherIndicatorIcon extends StatelessWidget {
                 child: Row(
                   children: [
                     const StrokeLineBuilder(strokeLineDirection: StrokeLineDirection.vertical),
-                    Expanded(child: icon),
+                    Expanded(
+                      child: icon,
+                    ),
                     const StrokeLineBuilder(strokeLineDirection: StrokeLineDirection.vertical),
                   ],
                 ),

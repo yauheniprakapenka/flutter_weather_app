@@ -9,7 +9,7 @@ class WeatherIcon extends StatelessWidget {
   Widget build(context) {
     return Icon(
       icon,
-      color: const Color(0xFFf6cd55),
+      color: Theme.of(context).primaryColor,
       size: 100,
     );
   }
