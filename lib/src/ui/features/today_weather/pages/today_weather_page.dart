@@ -12,26 +12,30 @@ class TodayWeatherPage extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Today',
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white),
+        title: const Text('Today'),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const WeatherIcon(
             icon: Icons.light_mode_outlined,
           ),
-          const Text('London, UK'),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('22 C'),
-              Text('|'),
-              Text('Sunny'),
-            ],
+          const Text(
+            'London, UK',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
+            ),
           ),
+          const Text(
+            '22 C | Sunny',
+            style: TextStyle(
+              color: Color(0xFF4e91f7),
+              fontSize: 28,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          const DividerDecorator(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

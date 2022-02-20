@@ -54,7 +54,11 @@ class WeatherIndicatorIcon extends StatelessWidget {
             ],
           ),
         ),
-        Text(title),
+        const SizedBox(height: 4),
+        Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }

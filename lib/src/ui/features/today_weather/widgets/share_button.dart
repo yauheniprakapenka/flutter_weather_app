@@ -11,9 +11,6 @@ class ShareButton extends StatelessWidget {
       },
       child: const Text(
         'Share',
-        style: TextStyle(
-          color: Color(0xFFf09763),
-        ),
       ),
     );
   }
