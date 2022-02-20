@@ -1,4 +1,4 @@
-import 'package:flutter_weather_app/src/domain/lib/domain.dart';
+import '../../entities/entities.dart';
 
 class WeatherState {
   final bool isLoading;

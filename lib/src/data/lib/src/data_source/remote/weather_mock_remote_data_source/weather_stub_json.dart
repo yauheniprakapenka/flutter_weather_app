@@ -1,4 +1,5 @@
-const weatherGomelStubJson = '''
+const weatherStubJson = '''
+{
   "coord": {
     "lon": 31.0224,
     "lat": 52.4508

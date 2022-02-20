@@ -1,41 +1,41 @@
 class Weather {
   /// Temperature, Kelvin. Example: 278.24
-  final double temperature;
+  final double? temperature;
 
   /// Group of weather parameters. Example: Rain, Snow, Clouds
-  final String weather;
+  final String? weather;
 
   /// Example: Gomel
-  final String city;
+  final String? city;
 
   // Country code. Example: BY
-  final String codeCountry;
+  final String? codeCountry;
 
   /// Wind speed, meter/sec. Examlple: 6
-  final int windSpeed;
+  final double? windSpeed;
 
   /// Humidity, %. Example: 70
-  final int humidity;
+  final int? humidity;
 
   /// Wind direction, degrees (meteorological). Example: 230
-  final int windDegrees;
+  final int? windDegrees;
 
   /// Atmospheric pressure, hPa. Example: 1023
-  final int pressure;
+  final int? pressure;
 
   /// Rain volume for the last 1 hour, mm. Example: 1.0
-  final double rainVolume;
+  final double? rainVolume;
 
   const Weather({
-    this.temperature = 0,
-    this.weather = '',
-    this.city = '',
-    this.codeCountry = '',
-    this.windSpeed = 0,
-    this.humidity = 0,
-    this.windDegrees = 0,
-    this.pressure = 0,
-    this.rainVolume = 0,
+    this.temperature,
+    this.weather,
+    this.city,
+    this.codeCountry,
+    this.windSpeed,
+    this.humidity,
+    this.windDegrees,
+    this.pressure,
+    this.rainVolume,
   });
 
   @override
