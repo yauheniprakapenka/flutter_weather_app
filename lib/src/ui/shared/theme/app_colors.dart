@@ -8,4 +8,6 @@ class AppColors {
   Color get divider => const Color(0xFFBDBDBD);
 
   Color get foregroundTextButton => const Color(0xFFf09763);
+
+  Color get inActive => const Color(0xFF000000);
 }

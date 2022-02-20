@@ -1,3 +1,3 @@
 class AppSymbols {
-  static const celsium = '°';
+  static const celsium = '°C';
 }
