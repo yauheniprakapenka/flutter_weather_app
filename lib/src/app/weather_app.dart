@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../ui/features/today_weather/pages/today_weather_page.dart';
-import '../ui/shared/theme/weather_data_theme.dart';
+import '../ui/features/forecast_weather/pages/forecast_weather_page.dart';
+import '../ui/shared/theme/app_theme.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -10,8 +10,8 @@ class WeatherApp extends StatelessWidget {
   Widget build(context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: getWeatherAppTheme(),
-      home: const TodayWeatherPage(),
+      theme: AppTheme(context).init(),
+      home: const ForecastWeatherPage(),
     );
   }
 }
