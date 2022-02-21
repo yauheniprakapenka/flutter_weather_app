@@ -80,7 +80,7 @@ class _Celsium extends StatelessWidget {
     return Text(
       '${celsium ?? '-'}${AppSymbols.celsium}',
       style: TextStyle(
-        fontSize: 34,
+        fontSize: 40,
         fontWeight: FontWeight.w500,
         color: context.read<AppColors>().secondary,
       ),

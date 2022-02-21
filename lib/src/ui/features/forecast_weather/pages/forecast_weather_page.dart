@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
 
-import '../../../extensions/kelvin_to_celsius_extension.dart';
-import '../widgets/widgets.dart';
+import '../composites/forecast_list.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
   const ForecastWeatherPage({Key? key}) : super(key: key);
@@ -23,33 +22,13 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
   @override
   Widget build(context) {
     return BlocBuilder<WeatherBloc, WeatherState>(
-      builder: (context, state) {
+      builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
         return Scaffold(
-          appBar: AppBar(
-            title:  Text(state.forecast.city ?? ''),
-          ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          appBar: AppBar(title: Text(state.forecast.city ?? '')),
+          body: ListView(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: WeatherDay(),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: state.forecast.weather?.length,
-                  itemBuilder: (context, index) {
-                    final weather = state.forecast.weather?[index];
-                    return WeatherCard(
-                      isActive: index == 0,
-                      time: weather?.dtText,
-                      celsium: weather?.temp?.convertKelvinToCelsium(),
-                      description: weather?.main,
-                    );
-                  },
-                ),
-              ),
+              ForecastList(forecast: state.forecast),
             ],
           ),
         );

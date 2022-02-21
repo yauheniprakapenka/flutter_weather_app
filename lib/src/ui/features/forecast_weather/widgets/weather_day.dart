@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class WeatherDay extends StatelessWidget {
-  const WeatherDay({Key? key}) : super(key: key);
+  final String dayTitle;
+
+  const WeatherDay({Key? key, this.dayTitle = ''}) : super(key: key);
 
   @override
   Widget build(context) {
-    return Text('Today'.toUpperCase());
+    return Text(dayTitle.toUpperCase(),);
   }
 }
