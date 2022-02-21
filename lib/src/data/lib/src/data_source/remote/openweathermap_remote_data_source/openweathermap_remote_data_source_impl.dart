@@ -1,8 +1,8 @@
 import 'package:flutter_weather_app/src/data/lib/src/dto/forecast_dto.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/entities/coordinates.dart';
 
-import '../../../api/dio_client.dart';
 import '../../../dto/weather_dto.dart';
+import '../../../services/openweathermap_service.dart';
 import '../interface/i_weather_remote_data_source.dart';
 
 class OpenWeatherMapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
@@ -11,15 +11,15 @@ class OpenWeatherMapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   /// https://openweathermap.org/api/one-call-api
   @override
   Future<WeatherDto> getWeather(Coordinates coordinates) async {
-    return DioClient().getCurrentWeather(coordinates);
+    return OpenweathermapService().getCurrentWeather(coordinates);
   }
 
-  /// 5 day forecast is available at any location on the globe. It includes 
+  /// 5 day forecast is available at any location on the globe. It includes
   /// weather forecast data with 3-hour step.
-  /// 
+  ///
   /// https://openweathermap.org/forecast5
   @override
-  Future<ForecastDto> getFiveDaysWeatherForecast(Coordinates coordinates) {
-    throw UnimplementedError();
+  Future<ForecastDto> getFiveDaysWeatherForecast(Coordinates coordinates) async {
+    return OpenweathermapService().getFiveDaysWeatherForecast(coordinates);
   }
 }

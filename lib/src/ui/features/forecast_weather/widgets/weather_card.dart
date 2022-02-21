@@ -22,7 +22,7 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
-      height: 100,
+      height: 80,
       decoration: isActive
           ? BoxDecoration(border: Border.all(width: 2, color: context.read<AppColors>().secondary))
           : null,
