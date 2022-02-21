@@ -1,3 +1,4 @@
+import 'package:flutter_weather_app/src/data/lib/src/adapters/forecast_adapter.dart';
 import 'package:flutter_weather_app/src/data/lib/src/data_source/remote/interface/i_weather_remote_data_source.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 
@@ -10,8 +11,14 @@ class WeatherRepositoryImpl implements IWeatherRepository {
       : _remoteDataSource = remoteDataSource;
 
   @override
-  Future<Weather> getCurrentLocationWeather(Coordinates coordinates) async {
-    final weatherDto = await _remoteDataSource.getCurrentLocationWeather(coordinates);
+  Future<Weather> getWeather(Coordinates coordinates) async {
+    final weatherDto = await _remoteDataSource.getWeather(coordinates);
     return WeatherAdapter.mapDtoToEntity(weatherDto);
+  }
+
+  @override
+  Future<Forecast> getFiveDaysWeatherForecast(Coordinates coordinates) async {
+    final forecastDto = await _remoteDataSource.getFiveDaysWeatherForecast(coordinates);
+    return ForecastAdapter.mapDtoToEntity(forecastDto);
   }
 }

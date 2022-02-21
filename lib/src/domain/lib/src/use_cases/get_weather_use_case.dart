@@ -1,13 +1,13 @@
 import '../entities/entities.dart';
 import '../repositories/i_weather_repository.dart';
 
-class GetCurrentWeatherUseCase {
+class GetWeatherUseCase {
   final IWeatherRepository _weatherRepository;
 
-  const GetCurrentWeatherUseCase({required IWeatherRepository weatherRepository})
+  const GetWeatherUseCase({required IWeatherRepository weatherRepository})
       : _weatherRepository = weatherRepository;
 
   Future<Weather> call(Coordinates coordinates) async {
-    return _weatherRepository.getCurrentLocationWeather(coordinates);
+    return _weatherRepository.getWeather(coordinates);
   }
 }

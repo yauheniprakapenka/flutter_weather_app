@@ -1,9 +1,9 @@
 class WeatherDto {
-  List<_Weather>? weather;
-  _Main? main;
-  _Wind? wind;
-  _Clouds? clouds;
-  _Rain? rain;
+  List<_WeatherDto>? weather;
+  _MainDto? main;
+  _WindDto? wind;
+  _CloudsDto? clouds;
+  _RainDto? rain;
   _Sys? sys;
   String? name;
 
@@ -19,29 +19,29 @@ class WeatherDto {
 
   WeatherDto.fromJson(Map<String, dynamic> json) {
     if (json['weather'] != null) {
-      weather = <_Weather>[];
+      weather = <_WeatherDto>[];
       json['weather'].forEach((v) {
-        weather?.add(_Weather.fromJson(v));
+        weather?.add(_WeatherDto.fromJson(v));
       });
     }
-    main = json['main'] != null ? _Main.fromJson(json['main']) : null;
-    wind = json['wind'] != null ? _Wind.fromJson(json['wind']) : null;
-    clouds = json['clouds'] != null ? _Clouds.fromJson(json['clouds']) : null;
-    rain = json['rain'] != null ? _Rain.fromJson(json['rain']) : null;
+    main = json['main'] != null ? _MainDto.fromJson(json['main']) : null;
+    wind = json['wind'] != null ? _WindDto.fromJson(json['wind']) : null;
+    clouds = json['clouds'] != null ? _CloudsDto.fromJson(json['clouds']) : null;
+    rain = json['rain'] != null ? _RainDto.fromJson(json['rain']) : null;
     sys = json['sys'] != null ? _Sys.fromJson(json['sys']) : null;
     name = json['name'];
   }
 }
 
-class _Weather {
+class _WeatherDto {
   int? id;
   String? main;
   String? description;
   String? icon;
 
-  _Weather({this.id, this.main, this.description, this.icon});
+  _WeatherDto({this.id, this.main, this.description, this.icon});
 
-  _Weather.fromJson(Map<String, dynamic> json) {
+  _WeatherDto.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     main = json['main'];
     description = json['description'];
@@ -49,7 +49,7 @@ class _Weather {
   }
 }
 
-class _Main {
+class _MainDto {
   double? temp;
   double? feelsLike;
   double? tempMin;
@@ -59,7 +59,7 @@ class _Main {
   int? seaLevel;
   int? grndLevel;
 
-  _Main({
+  _MainDto({
     this.temp,
     this.feelsLike,
     this.tempMin,
@@ -70,7 +70,7 @@ class _Main {
     this.grndLevel,
   });
 
-  _Main.fromJson(Map<String, dynamic> json) {
+  _MainDto.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
     feelsLike = json['feels_like'];
     tempMin = json['temp_min'];
@@ -95,34 +95,34 @@ class _Main {
   }
 }
 
-class _Wind {
+class _WindDto {
   double? speed;
   int? deg;
 
-  _Wind({this.speed, this.deg});
+  _WindDto({this.speed, this.deg});
 
-  _Wind.fromJson(Map<String, dynamic> json) {
+  _WindDto.fromJson(Map<String, dynamic> json) {
     speed = json['speed'].toDouble();
     deg = json['deg'];
   }
 }
 
-class _Clouds {
+class _CloudsDto {
   int? all;
 
-  _Clouds({this.all});
+  _CloudsDto({this.all});
 
-  _Clouds.fromJson(Map<String, dynamic> json) {
+  _CloudsDto.fromJson(Map<String, dynamic> json) {
     all = json['all'];
   }
 }
 
-class _Rain {
+class _RainDto {
   double? oneHour;
 
-  _Rain({this.oneHour});
+  _RainDto({this.oneHour});
 
-  _Rain.fromJson(Map<String, dynamic> json) {
+  _RainDto.fromJson(Map<String, dynamic> json) {
     oneHour = json['1h'];
   }
 }

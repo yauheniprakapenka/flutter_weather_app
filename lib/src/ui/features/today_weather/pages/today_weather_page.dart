@@ -21,7 +21,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(GetCurrentWeatherEvent());
+    context.read<WeatherBloc>().add(GetWeatherEvent());
   }
 
   @override
