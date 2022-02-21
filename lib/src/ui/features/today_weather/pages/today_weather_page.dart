@@ -107,7 +107,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 ],
               ),
               const DividerDecorator(),
-              const ShareButton(),
+               ShareButton(weather:state.weather),
             ],
           );
         },
