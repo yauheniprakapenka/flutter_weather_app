@@ -40,22 +40,24 @@ class WeatherCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _Time(time: time),
-                            const SizedBox(height: 4),
-                            _Description(description: description),
-                          ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _Time(time: time),
+                              const SizedBox(height: 4),
+                              _Description(description: description),
+                            ],
+                          ),
                         ),
-                      ),
-                      _Celsium(celsium: celsium),
-                      const SizedBox(width: 16),
-                    ],
+                        _Celsium(celsium: celsium),
+                      ],
+                    ),
                   ),
                 ),
                 if (!isActive) const Divider(height: 3),
@@ -94,7 +96,7 @@ class _Time extends StatelessWidget {
   @override
   Widget build(context) {
     return Text(
-      time ?? '',
+      _getFormatterTime(),
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -102,6 +104,13 @@ class _Time extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
+  }
+
+  String _getFormatterTime() {
+    final parsedDate = DateTime.parse(time ?? '');
+    final hour = '${parsedDate.hour}'.padLeft(2, '0');
+    final minute = '${parsedDate.minute}'.padLeft(2, '0');
+    return '$hour:$minute';
   }
 }
 
