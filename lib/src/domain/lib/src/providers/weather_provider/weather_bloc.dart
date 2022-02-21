@@ -9,10 +9,7 @@ import '../../../domain.dart';
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   final coordinates = Coordinates(latitude: 52.450810664881956, longitude: 31.02244347957928);
 
-  WeatherBloc()
-      : super(
-          const WeatherState(isLoading: true, weather: Weather(), forecast: Forecast()),
-        ) {
+  WeatherBloc() : super(WeatherState(isLoading: true, weather: const Weather(), forecast: Forecast())) {
     DataServiceLocator.init();
     on<GetWeatherEvent>(_onGetCurrenWeather);
     on<GetFiveDaysWeatherForecastEvent>(_onGetFiveDaysWeatherForecastEvent);
@@ -33,7 +30,8 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
     Emitter<WeatherState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
+    final getFiveDaysWeatherForecastUseCase =
+        GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
     final forecast = await getFiveDaysWeatherForecastUseCase(coordinates);
     emit(state.copyWith(isLoading: false, forecast: forecast));
   }

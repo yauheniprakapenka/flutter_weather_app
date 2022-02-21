@@ -37,7 +37,7 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: state.forecast.weather?.length,
                   itemBuilder: (context, index) {
                     return const WeatherCard();
                   },

@@ -4,6 +4,14 @@ import '../dto/dto.dart';
 
 class ForecastAdapter {
   static Forecast mapDtoToEntity(ForecastDto forecastDto) {
-    return Forecast();
+    final forecastWeather = forecastDto.list?.map((e) {
+      return ForecastWeather(
+        dtText: e.dtText,
+        icon: e.weatherDto?.icon,
+        temp: e.main?.temp,
+        main: e.weatherDto?.main,
+      );
+    }).toList();
+    return Forecast(weather: forecastWeather);
   }
 }

@@ -17,13 +17,8 @@ class WeatherMockRemoteDataSource implements IWeatherRemoteDataSource {
 
   @override
   Future<ForecastDto> getFiveDaysWeatherForecast(Coordinates coordinates) async {
-    // await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     final Map<String, dynamic> decodedJson = jsonDecode(forecastStubJson);
-    final forecastDto = ForecastDto.fromJson(decodedJson);
-    forecastDto.list!.forEach((element) {
-      print(element.weatherDto?.main);
-    }) ;
-
-    return ForecastDto();
+    return ForecastDto.fromJson(decodedJson);
   }
 }
