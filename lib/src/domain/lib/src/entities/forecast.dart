@@ -1,7 +1,8 @@
 class Forecast {
   final List<ForecastWeather>? weather;
+  final String? city;
 
-  Forecast({this.weather});
+  Forecast({this.weather, this.city});
 }
 
 class ForecastWeather {

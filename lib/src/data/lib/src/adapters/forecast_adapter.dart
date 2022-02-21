@@ -12,6 +12,9 @@ class ForecastAdapter {
         main: e.weatherDto?.main,
       );
     }).toList();
-    return Forecast(weather: forecastWeather);
+    return Forecast(
+      weather: forecastWeather,
+      city: forecastDto.city?.city,
+    );
   }
 }

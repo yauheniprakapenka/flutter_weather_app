@@ -122,6 +122,6 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
 
   String _getTemperature(double? temperature) {
     if (temperature == null) return '-';
-    return '${temperature.convertKelvinToCelsiu().round()}${AppSymbols.celsium}';
+    return '${temperature.convertKelvinToCelsium()}${AppSymbols.celsium}';
   }
 }

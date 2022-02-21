@@ -1,21 +1,27 @@
 class ForecastDto {
-  List<_ListDto>? list;
+  final List<_ListDto>? list;
+  final _CityDto? city;
 
-  ForecastDto({this.list});
+  ForecastDto({this.list, this.city});
 
   factory ForecastDto.fromJson(Map<String, dynamic> json) {
     final data = List<Map<String, dynamic>>.from(json['list']);
+    final city = _CityDto.fromJson(json['city']);
+
     final list = data.map((e) {
       return _ListDto.fromJson(e);
     }).toList();
-    return ForecastDto(list: list);
+    return ForecastDto(
+      list: list,
+      city: city,
+    );
   }
 }
 
 class _ListDto {
-  _MainDto? main;
-  String? dtText;
-  _WeatherDto? weatherDto;
+  final _MainDto? main;
+  final String? dtText;
+  final _WeatherDto? weatherDto;
 
   _ListDto({
     this.main,
@@ -33,7 +39,7 @@ class _ListDto {
 }
 
 class _MainDto {
-  double? temp;
+  final double? temp;
 
   _MainDto({
     this.temp,
@@ -47,8 +53,8 @@ class _MainDto {
 }
 
 class _WeatherDto {
-  String main;
-  String icon;
+  final String main;
+  final String icon;
 
   _WeatherDto({
     required this.main,
@@ -60,5 +66,17 @@ class _WeatherDto {
       main: json['main'],
       icon: json['icon'],
     );
+  }
+}
+
+class _CityDto {
+  final String? city;
+
+  _CityDto({
+    this.city,
+  });
+
+  factory _CityDto.fromJson(Map<String, dynamic> json) {
+    return _CityDto(city: json['name']);
   }
 }

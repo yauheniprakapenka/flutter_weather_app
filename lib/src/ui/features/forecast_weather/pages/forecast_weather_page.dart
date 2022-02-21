@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
+
+import '../../../extensions/kelvin_to_celsius_extension.dart';
 import '../widgets/widgets.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
@@ -18,17 +19,17 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
     super.initState();
     context.read<WeatherBloc>().add(GetFiveDaysWeatherForecastEvent());
   }
-  
+
   @override
   Widget build(context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('London'),
-      ),
-      body: BlocBuilder<WeatherBloc, WeatherState>(
-        builder: (context, state) {
-          if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
-          return Column(
+    return BlocBuilder<WeatherBloc, WeatherState>(
+      builder: (context, state) {
+        if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
+        return Scaffold(
+          appBar: AppBar(
+            title:  Text(state.forecast.city ?? ''),
+          ),
+          body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
@@ -39,14 +40,20 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
                 child: ListView.builder(
                   itemCount: state.forecast.weather?.length,
                   itemBuilder: (context, index) {
-                    return const WeatherCard();
+                    final weather = state.forecast.weather?[index];
+                    return WeatherCard(
+                      isActive: index == 0,
+                      time: weather?.dtText,
+                      celsium: weather?.temp?.convertKelvinToCelsium(),
+                      description: weather?.main,
+                    );
                   },
                 ),
               ),
             ],
-          );
-        }
-      ),
+          ),
+        );
+      },
     );
   }
 }

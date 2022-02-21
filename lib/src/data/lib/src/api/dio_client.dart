@@ -6,7 +6,7 @@ import 'logging_interceptor.dart';
 
 class DioClient {
   /// Secret key
-  static const _apiKey = 'aae36a3b16c74e4080309f1686872f92'; 
+  static const _apiKey = ''; 
 
   final _dio = Dio(
     BaseOptions(
