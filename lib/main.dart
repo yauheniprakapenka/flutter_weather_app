@@ -10,9 +10,7 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<WeatherBloc>(create: (_) {
-          return WeatherBloc();
-        }),
+        BlocProvider<WeatherBloc>(create: (_) => WeatherBloc()),
       ],
       child: MultiProvider(
         providers: [

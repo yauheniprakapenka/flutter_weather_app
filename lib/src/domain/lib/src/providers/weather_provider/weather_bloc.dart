@@ -1,22 +1,38 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/src/data/lib/src/di/data_service_locator.dart';
+import 'package:flutter_weather_app/src/data/lib/data.dart';
+import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
+import 'package:flutter_weather_app/src/domain/lib/src/use_cases/get_five_days_weather_forecast_use_case.dart';
 import 'package:get/get.dart';
 
 import '../../../domain.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
-  WeatherBloc() : super(const WeatherState(isLoading: true, weather: Weather())) {
+  final coordinates = Coordinates(latitude: 52.450810664881956, longitude: 31.02244347957928);
+
+  WeatherBloc() : super(WeatherState(isLoading: true, weather: const Weather(), forecast: Forecast())) {
     DataServiceLocator.init();
-    on<GetCurrentLocationWeatherEvent>(_onGetCurrenLocationWeatherUseCase);
+    on<GetWeatherEvent>(_onGetCurrenWeather);
+    on<GetFiveDaysWeatherForecastEvent>(_onGetFiveDaysWeatherForecastEvent);
   }
 
-  Future<void> _onGetCurrenLocationWeatherUseCase(GetCurrentLocationWeatherEvent _, Emitter<WeatherState> emit) async {
+  Future<void> _onGetCurrenWeather(
+    GetWeatherEvent _,
+    Emitter<WeatherState> emit,
+  ) async {
     emit(state.copyWith(isLoading: true));
-    final getCurrenLocationWeatherUseCase = GetCurrentLocationWeatherUseCase(
-      weatherRepository: Get.find(),
-    );
-    final coordinates = Coordinates(latitude: 52.450810664881956, longitude: 31.02244347957928);
-    final weather = await getCurrenLocationWeatherUseCase(coordinates);
+    final getCurrentWeatherUseCase = GetWeatherUseCase(weatherRepository: Get.find());
+    final weather = await getCurrentWeatherUseCase(coordinates);
     emit(state.copyWith(isLoading: false, weather: weather));
+  }
+
+  Future<void> _onGetFiveDaysWeatherForecastEvent(
+    GetFiveDaysWeatherForecastEvent _,
+    Emitter<WeatherState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+    final getFiveDaysWeatherForecastUseCase =
+        GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
+    final forecast = await getFiveDaysWeatherForecastUseCase(coordinates);
+    emit(state.copyWith(isLoading: false, forecast: forecast));
   }
 }

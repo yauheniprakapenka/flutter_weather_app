@@ -1,5 +1,7 @@
 import '../entities/entities.dart';
 
 abstract class IWeatherRepository {
-  Future<Weather> getCurrentLocationWeather(Coordinates coordinates);
+  Future<Weather> getWeather(Coordinates coordinates);
+
+  Future<Forecast> getFiveDaysWeatherForecast(Coordinates coordinates);
 }

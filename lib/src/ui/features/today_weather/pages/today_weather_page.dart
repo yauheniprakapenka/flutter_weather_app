@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
+import 'package:flutter_weather_app/src/ui/extensions/kelvin_to_celsius_extension.dart';
 import 'package:flutter_weather_app/src/ui/extensions/wind_direction_extension.dart';
 
 import '../../../../ui/shared/widgets/widgets.dart';
@@ -20,7 +21,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(GetCurrentLocationWeatherEvent());
+    context.read<WeatherBloc>().add(GetWeatherEvent());
   }
 
   @override
@@ -47,7 +48,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 ),
               ),
               Text(
-                '${state.weather.temperature}${AppSymbols.celsium} | ${state.weather.weather}',
+                '${_getTemperature(state.weather.temperature)} | ${state.weather.weather}',
                 style: const TextStyle(
                   color: Color(0xFF4e91f7),
                   fontSize: 28,
@@ -59,7 +60,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   WeatherIndicatorIcon(
-                    title: '${state.weather.humidity}%',
+                    title: '${state.weather.humidity ?? '-'}%',
                     icon: SvgPicture.asset(
                       'assets/icons/rain.svg',
                       color: Theme.of(context).primaryColor,
@@ -67,7 +68,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     ),
                   ),
                   WeatherIndicatorIcon(
-                    title: '${state.weather.rainVolume} mm',
+                    title: '${state.weather.rainVolume ?? '-'} mm',
                     icon: SvgPicture.asset(
                       'assets/icons/water.svg',
                       color: Theme.of(context).primaryColor,
@@ -75,7 +76,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     ),
                   ),
                   WeatherIndicatorIcon(
-                    title: '${state.weather.pressure} hPa',
+                    title: '${state.weather.pressure ?? '-'} hPa',
                     icon: SvgPicture.asset(
                       'assets/icons/celsius.svg',
                       color: Theme.of(context).primaryColor,
@@ -88,7 +89,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   WeatherIndicatorIcon(
-                    title: '${state.weather.windSpeed} km/h',
+                    title: '${state.weather.windSpeed ?? '-'} km/h',
                     icon: Icon(
                       Icons.air,
                       color: Theme.of(context).primaryColor,
@@ -96,7 +97,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     ),
                   ),
                   WeatherIndicatorIcon(
-                    title: state.weather.windDegrees.getWindDirectionTitle(),
+                    title: _getWeatherIndicatorTitle(state.weather.windDegrees),
                     icon: Icon(
                       Icons.explore_outlined,
                       color: Theme.of(context).primaryColor,
@@ -112,5 +113,15 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
         },
       ),
     );
+  }
+
+  String _getWeatherIndicatorTitle(int? windDegrees) {
+    if (windDegrees == null) return '-';
+    return windDegrees.getWindDirectionTitle();
+  }
+
+  String _getTemperature(double? temperature) {
+    if (temperature == null) return '-';
+    return '${temperature.convertKelvinToCelsium()}${AppSymbols.celsium}';
   }
 }

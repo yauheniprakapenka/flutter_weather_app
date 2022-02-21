@@ -7,13 +7,22 @@ import '../../../shared/widgets/widgets.dart';
 
 class WeatherCard extends StatelessWidget {
   final bool isActive;
+  final String? time;
+  final int? celsium;
+  final String? description;
 
-  const WeatherCard({Key? key, this.isActive = false}) : super(key: key);
+  const WeatherCard({
+    Key? key,
+    this.isActive = false,
+    this.time,
+    this.celsium,
+    this.description,
+  }) : super(key: key);
 
   @override
   Widget build(context) {
     return Container(
-      height: 100,
+      height: 80,
       decoration: isActive
           ? BoxDecoration(border: Border.all(width: 2, color: context.read<AppColors>().secondary))
           : null,
@@ -23,7 +32,7 @@ class WeatherCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: WeatherIcon(
               icon: Icons.light_mode_outlined,
-              size: 60,
+              size: 52,
             ),
           ),
           Expanded(
@@ -31,22 +40,24 @@ class WeatherCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            _Time(),
-                            SizedBox(height: 4),
-                            _Description(),
-                          ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _Time(time: time),
+                              const SizedBox(height: 4),
+                              _Description(description: description),
+                            ],
+                          ),
                         ),
-                      ),
-                      const _Celsium(),
-                      const SizedBox(width: 16),
-                    ],
+                        _Celsium(celsium: celsium),
+                      ],
+                    ),
                   ),
                 ),
                 if (!isActive) const Divider(height: 3),
@@ -60,14 +71,16 @@ class WeatherCard extends StatelessWidget {
 }
 
 class _Celsium extends StatelessWidget {
-  const _Celsium({Key? key}) : super(key: key);
+  final int? celsium;
+
+  const _Celsium({Key? key, this.celsium}) : super(key: key);
 
   @override
   Widget build(context) {
     return Text(
-      '22${AppSymbols.celsium}',
+      '${celsium ?? '-'}${AppSymbols.celsium}',
       style: TextStyle(
-        fontSize: 44,
+        fontSize: 34,
         fontWeight: FontWeight.w500,
         color: context.read<AppColors>().secondary,
       ),
@@ -76,13 +89,15 @@ class _Celsium extends StatelessWidget {
 }
 
 class _Time extends StatelessWidget {
-  const _Time({Key? key}) : super(key: key);
+  final String? time;
+
+  const _Time({Key? key, this.time}) : super(key: key);
 
   @override
   Widget build(context) {
-    return const Text(
-      '19:00',
-      style: TextStyle(
+    return Text(
+      _getFormatterTime(),
+      style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
       ),
@@ -90,16 +105,25 @@ class _Time extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
     );
   }
+
+  String _getFormatterTime() {
+    final parsedDate = DateTime.parse(time ?? '');
+    final hour = '${parsedDate.hour}'.padLeft(2, '0');
+    final minute = '${parsedDate.minute}'.padLeft(2, '0');
+    return '$hour:$minute';
+  }
 }
 
 class _Description extends StatelessWidget {
-  const _Description({Key? key}) : super(key: key);
+  final String? description;
+
+  const _Description({Key? key, this.description}) : super(key: key);
 
   @override
   Widget build(context) {
-    return const Text(
-      'Rain shower',
-      style: TextStyle(
+    return Text(
+      description ?? '-',
+      style: const TextStyle(
         fontSize: 16,
       ),
       maxLines: 1,
