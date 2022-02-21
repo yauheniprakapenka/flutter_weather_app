@@ -5,7 +5,7 @@ class AppColors {
 
   Color get secondary => const Color(0xFF4e91f7);
 
-  Color get divider => const Color(0xFFBDBDBD);
+  Color get divider => const Color(0xFFE0E0E0);
 
   Color get foregroundTextButton => const Color(0xFFf09763);
 

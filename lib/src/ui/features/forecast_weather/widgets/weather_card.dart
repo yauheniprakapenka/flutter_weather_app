@@ -6,14 +6,16 @@ import '../../../shared/theme/app_colors.dart';
 import '../../../shared/widgets/widgets.dart';
 
 class WeatherCard extends StatelessWidget {
-  final bool isActive;
+  final bool hasActiveBorder;
+  final bool hasBottomBorder;
   final String? time;
   final int? celsium;
   final String? description;
 
   const WeatherCard({
     Key? key,
-    this.isActive = false,
+    this.hasActiveBorder = false,
+    this.hasBottomBorder = true,
     this.time,
     this.celsium,
     this.description,
@@ -22,10 +24,10 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
-      height: 80,
-      decoration: isActive
-          ? BoxDecoration(border: Border.all(width: 2, color: context.read<AppColors>().secondary))
-          : null,
+      height: 88,
+      decoration: BoxDecoration(
+        border: hasActiveBorder ? Border.all(width: 3, color: context.read<AppColors>().secondary) : null,
+      ),
       child: Row(
         children: [
           const Padding(
@@ -60,7 +62,7 @@ class WeatherCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (!isActive) const Divider(height: 3),
+                if (hasBottomBorder) Container(height: 1, color: context.read<AppColors>().divider),
               ],
             ),
           ),
