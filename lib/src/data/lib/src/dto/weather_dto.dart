@@ -34,15 +34,13 @@ class WeatherDto {
 }
 
 class _WeatherDto {
-  int? id;
   String? main;
   String? description;
   String? icon;
 
-  _WeatherDto({this.id, this.main, this.description, this.icon});
+  _WeatherDto({this.main, this.description, this.icon});
 
   _WeatherDto.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     main = json['main'];
     description = json['description'];
     icon = json['icon'];
@@ -51,47 +49,19 @@ class _WeatherDto {
 
 class _MainDto {
   double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
   int? pressure;
   int? humidity;
-  int? seaLevel;
-  int? grndLevel;
 
   _MainDto({
     this.temp,
-    this.feelsLike,
-    this.tempMin,
-    this.tempMax,
     this.pressure,
     this.humidity,
-    this.seaLevel,
-    this.grndLevel,
   });
 
   _MainDto.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
-    feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
     pressure = json['pressure'];
     humidity = json['humidity'];
-    seaLevel = json['sea_level'];
-    grndLevel = json['grnd_level'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['temp'] = temp;
-    data['feels_like'] = feelsLike;
-    data['temp_min'] = tempMin;
-    data['temp_max'] = tempMax;
-    data['pressure'] = pressure;
-    data['humidity'] = humidity;
-    data['sea_level'] = seaLevel;
-    data['grnd_level'] = grndLevel;
-    return data;
   }
 }
 
@@ -128,19 +98,11 @@ class _RainDto {
 }
 
 class _Sys {
-  int? type;
-  int? id;
   String? country;
-  int? sunrise;
-  int? sunset;
 
-  _Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
+  _Sys({this.country});
 
   _Sys.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    id = json['id'];
     country = json['country'];
-    sunrise = json['sunrise'];
-    sunset = json['sunset'];
   }
 }
