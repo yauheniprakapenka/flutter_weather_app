@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../ui/features/forecast_weather/pages/forecast_weather_page.dart';
 import '../ui/features/today_weather/pages/today_weather_page.dart';
 import '../ui/shared/theme/app_colors.dart';
-import '../ui/shared/theme/app_theme.dart';
+import '../ui/shared/theme/light_theme.dart';
 
 class WeatherApp extends StatefulWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _WeatherAppState extends State<WeatherApp> {
   Widget build(context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(context).init(),
+      theme: LightTheme(context).init(),
       home: Scaffold(
         body: _pages.elementAt(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(

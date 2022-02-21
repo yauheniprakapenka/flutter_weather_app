@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 
 import 'app_colors.dart';
 
-class AppTheme {
+class LightTheme {
   final BuildContext context;
 
-  AppTheme(this.context);
+  LightTheme(this.context);
 
   ThemeData init() {
     return ThemeData(
