@@ -11,8 +11,8 @@ class WeatherRepositoryImpl implements IWeatherRepository {
       : _remoteDataSource = remoteDataSource;
 
   @override
-  Future<Weather> getWeather(Coordinates coordinates) async {
-    final weatherDto = await _remoteDataSource.getWeather(coordinates);
+  Future<Weather> getTodayWeather(Coordinates coordinates) async {
+    final weatherDto = await _remoteDataSource.getTodayWeather(coordinates);
     return WeatherAdapter.mapDtoToEntity(weatherDto);
   }
 

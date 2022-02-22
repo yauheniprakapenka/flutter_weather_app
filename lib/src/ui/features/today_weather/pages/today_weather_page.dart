@@ -21,7 +21,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(GetWeatherEvent());
+    context.read<WeatherBloc>().add(GetTodayWeatherEvent());
   }
 
   @override
@@ -33,8 +33,11 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
       body: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
           if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
+          if (state.error.isNotEmpty) {
+            return Center(child: Text(state.error, textAlign: TextAlign.center));
+          }
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const WeatherIcon(
                 icon: Icons.light_mode_outlined,
@@ -107,7 +110,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 ],
               ),
               const DividerDecorator(),
-               ShareButton(weather:state.weather),
+              ShareButton(weather: state.weather),
             ],
           );
         },

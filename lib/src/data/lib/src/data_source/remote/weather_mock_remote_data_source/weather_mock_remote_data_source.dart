@@ -9,7 +9,7 @@ import 'package:flutter_weather_app/src/domain/lib/src/entities/coordinates.dart
 
 class WeatherMockRemoteDataSource implements IWeatherRemoteDataSource {
   @override
-  Future<WeatherDto> getWeather(Coordinates coordinates) async {
+  Future<WeatherDto> getTodayWeather(Coordinates coordinates) async {
     await Future.delayed(const Duration(seconds: 1));
     final Map<String, dynamic> decodedJson = jsonDecode(weatherStubJson);
     return WeatherDto.fromJson(decodedJson);
