@@ -7,6 +7,7 @@ import 'package:flutter_weather_app/src/domain/lib/src/use_cases/get_five_days_w
 import 'package:get/get.dart';
 
 import '../../../domain.dart';
+import '../../managers/connection_manager.dart';
 import '../geo_locator_provider/geo_locator_error.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
@@ -26,6 +27,12 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       coordinates = await GeoLocatorProvider().getCoordinates();
     } on GeoLocatorError catch (e) {
       emit(state.copyWith(isLoading: false, error: e.message));
+      return;
+    }
+
+    final hasInternet = await ConnectionManager.hasInternet();
+    if (!hasInternet) {
+      emit(state.copyWith(error: 'No internet', isLoading: false));
       return;
     }
 
@@ -49,6 +56,12 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       coordinates = await GeoLocatorProvider().getCoordinates();
     } on GeoLocatorError catch (e) {
       emit(state.copyWith(isLoading: false, error: e.message));
+    }
+
+    final hasInternet = await ConnectionManager.hasInternet();
+    if (!hasInternet) {
+      emit(state.copyWith(error: 'No internet', isLoading: false));
+      return;
     }
 
     try {

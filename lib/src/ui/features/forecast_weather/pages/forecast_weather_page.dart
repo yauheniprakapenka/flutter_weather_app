@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
 
+import '../../today_weather/widgets/patterned_line/config/patternt_widget_config.dart';
+import '../../today_weather/widgets/widgets.dart';
 import '../composites/forecast_list.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
@@ -28,7 +30,13 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
           return Center(child: Text(state.error, textAlign: TextAlign.center));
         }
         return Scaffold(
-          appBar: AppBar(title: Text(state.forecast.city ?? '')),
+          appBar: AppBar(
+            title: Text(state.forecast.city ?? ''),
+            bottom: const PreferredSize(
+              preferredSize: Size.fromHeight(PatternWidgetConfig.heigthSize),
+              child: PatternedLine(),
+            ),
+          ),
           body: ListView(
             children: [
               ForecastList(forecast: state.forecast),

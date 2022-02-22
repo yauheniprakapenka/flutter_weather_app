@@ -9,6 +9,7 @@ import '../../../../ui/shared/widgets/widgets.dart';
 import '../../../shared/const/app_symbols.dart';
 import '../../today_weather/decorators/divider_decorator.dart';
 import '../../today_weather/widgets/widgets.dart';
+import '../widgets/patterned_line/config/patternt_widget_config.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -29,6 +30,10 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Today'),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(PatternWidgetConfig.heigthSize),
+          child: PatternedLine(),
+        ),
       ),
       body: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
