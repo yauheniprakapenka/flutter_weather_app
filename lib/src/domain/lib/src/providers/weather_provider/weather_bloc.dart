@@ -1,14 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/src/data/lib/data.dart';
+import 'package:flutter_weather_app/src/domain/lib/src/providers/geo_locator_provider/geo_locator_provider.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/use_cases/get_five_days_weather_forecast_use_case.dart';
 import 'package:get/get.dart';
 
 import '../../../domain.dart';
+import '../geo_locator_provider/geo_locator_error.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
-  final coordinates = Coordinates(latitude: 52.450810664881956, longitude: 31.02244347957928);
+  var coordinates = Coordinates(latitude: 0, longitude: 0);
 
   WeatherBloc() : super(const WeatherState(weather: Weather(), forecast: Forecast())) {
     DataServiceLocator.init();
@@ -19,6 +21,14 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   Future<void> _onGetTodayWeather(GetTodayWeatherEvent _, Emitter<WeatherState> emit) async {
     emit(state.copyWith(isLoading: true, error: ''));
     final getCurrentWeatherUseCase = GetTodayWeatherUseCase(weatherRepository: Get.find());
+
+    try {
+      coordinates = await GeoLocatorProvider().getCoordinates();
+    } on GeoLocatorError catch (e) {
+      emit(state.copyWith(isLoading: false, error: e.message));
+      return;
+    }
+
     try {
       final weather = await getCurrentWeatherUseCase(coordinates);
       emit(state.copyWith(weather: weather));
@@ -34,6 +44,13 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
     emit(state.copyWith(isLoading: true, error: ''));
     final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
+
+    try {
+      coordinates = await GeoLocatorProvider().getCoordinates();
+    } on GeoLocatorError catch (e) {
+      emit(state.copyWith(isLoading: false, error: e.message));
+    }
+
     try {
       final forecast = await getFiveDaysWeatherForecastUseCase(coordinates);
       emit(state.copyWith(forecast: forecast));

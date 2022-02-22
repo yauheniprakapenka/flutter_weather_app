@@ -7,7 +7,7 @@ import 'package:flutter_weather_app/src/data/lib/src/dto/forecast_dto.dart';
 import 'package:flutter_weather_app/src/data/lib/src/dto/weather_dto.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/entities/coordinates.dart';
 
-class WeatherMockRemoteDataSource implements IWeatherRemoteDataSource {
+class WeatherMockRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   @override
   Future<WeatherDto> getTodayWeather(Coordinates coordinates) async {
     await Future.delayed(const Duration(seconds: 1));
