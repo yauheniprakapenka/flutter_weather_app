@@ -2,7 +2,7 @@ class Forecast {
   final List<ForecastWeather>? weather;
   final String? city;
 
-  Forecast({this.weather, this.city});
+  const Forecast({this.weather, this.city});
 }
 
 class ForecastWeather {

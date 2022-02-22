@@ -24,6 +24,9 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
+        if (state.error.isNotEmpty) {
+          return Center(child: Text(state.error, textAlign: TextAlign.center));
+        }
         return Scaffold(
           appBar: AppBar(title: Text(state.forecast.city ?? '')),
           body: ListView(

@@ -10,7 +10,7 @@ class WeatherDay extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final border = BorderSide(width: 1, color: context.read<AppColors>().divider);
+    final border = BorderSide(color: context.read<AppColors>().divider);
     return Container(
       width: double.maxFinite,
       decoration: BoxDecoration(
