@@ -5,7 +5,6 @@ import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 import 'package:flutter_weather_app/src/ui/extensions/kelvin_to_celsius_extension.dart';
 import 'package:flutter_weather_app/src/ui/extensions/wind_direction_extension.dart';
 
-import '../../../../ui/shared/widgets/widgets.dart';
 import '../../../shared/const/app_symbols.dart';
 import '../../today_weather/decorators/divider_decorator.dart';
 import '../../today_weather/widgets/widgets.dart';
@@ -44,10 +43,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const WeatherIcon(
-                icon: Icons.light_mode_outlined,
-                size: 100,
-              ),
+              Image.network('http://openweathermap.org/img/wn/${state.weather.icon}@2x.png'),
               Text(
                 '${state.weather.city}, ${state.weather.codeCountry}',
                 style: const TextStyle(
