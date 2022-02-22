@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/theme/app_colors.dart';
-import '../../../shared/widgets/widgets.dart';
 
 class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
@@ -11,6 +10,7 @@ class WeatherCard extends StatelessWidget {
   final String? time;
   final int? celsium;
   final String? description;
+  final String? icon;
 
   const WeatherCard({
     Key? key,
@@ -19,6 +19,7 @@ class WeatherCard extends StatelessWidget {
     this.time,
     this.celsium,
     this.description,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -30,12 +31,9 @@ class WeatherCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: WeatherIcon(
-              icon: Icons.light_mode_outlined,
-              size: 52,
-            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Image.network('http://openweathermap.org/img/wn/$icon@2x.png'),
           ),
           Expanded(
             child: Column(

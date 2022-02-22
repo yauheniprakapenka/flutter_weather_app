@@ -26,6 +26,8 @@ class Weather {
   /// Rain volume for the last 1 hour, mm. Example: 1.0
   final double? rainVolume;
 
+  final String? icon;
+
   const Weather({
     this.temperature,
     this.weather,
@@ -36,6 +38,7 @@ class Weather {
     this.windDegrees,
     this.pressure,
     this.rainVolume,
+    this.icon,
   });
 
   @override

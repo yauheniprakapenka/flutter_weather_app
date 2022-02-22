@@ -13,6 +13,7 @@ class WeatherAdapter {
       weather: weatherDto.weather?.first.main,
       windDegrees: weatherDto.wind?.deg,
       windSpeed: weatherDto.wind?.speed,
+      icon: weatherDto.weather?.first.icon,
     );
   }
 }

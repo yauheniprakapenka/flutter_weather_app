@@ -26,6 +26,7 @@ class ForecastList extends StatelessWidget {
                 ...forecastWeatherListWithTitle.forecastWeather.map(
                   (forecastWeather) {
                     return WeatherCard(
+                      icon: forecastWeather.icon,
                       hasActiveBorder: _hasWeatherCardActiveBorder(
                         firstForecast: _forecastWeatherListWithTitle.first.forecastWeather.first.dtText ?? '',
                         currentDtText: forecastWeather.dtText ?? '',
