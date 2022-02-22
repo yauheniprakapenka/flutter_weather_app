@@ -40,6 +40,6 @@ class Weather {
 
   @override
   String toString() {
-    return 'Weather(temperature: $temperature, weather: $weather, city: $city, codeCountry: $codeCountry, windSpeed: $windSpeed, humidity: $humidity, windDegrees: $windDegrees, pressure: $pressure, raiVolume: $rainVolume)';
+    return 'Weather(temperature: $temperature, weather: $weather, city: $city, codeCountry: $codeCountry, windSpeed: $windSpeed, humidity: $humidity, windDegrees: $windDegrees, pressure: $pressure, rainVolume: $rainVolume)';
   }
 }
