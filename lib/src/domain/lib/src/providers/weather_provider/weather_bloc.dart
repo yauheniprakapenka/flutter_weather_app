@@ -11,7 +11,7 @@ import '../../managers/connection_manager.dart';
 import '../geo_locator_provider/geo_locator_error.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
-  var coordinates = Coordinates(latitude: 0, longitude: 0);
+  var _coordinates = Coordinates(latitude: 0, longitude: 0);
 
   WeatherBloc() : super(const WeatherState(weather: Weather(), forecast: Forecast())) {
     DataServiceLocator.init();
@@ -20,24 +20,22 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   }
 
   Future<void> _onGetTodayWeather(GetTodayWeatherEvent _, Emitter<WeatherState> emit) async {
-    emit(state.copyWith(isLoading: true, error: ''));
+    emit(_getLoadingState());
     final getCurrentWeatherUseCase = GetTodayWeatherUseCase(weatherRepository: Get.find());
 
     try {
-      coordinates = await GeoLocatorProvider().getCoordinates();
+      _coordinates = await GeoLocatorProvider().getCoordinates();
     } on GeoLocatorError catch (e) {
-      emit(state.copyWith(isLoading: false, error: e.message));
-      return;
+      return emit(state.copyWith(isLoading: false, error: e.message));
     }
 
     final hasInternet = await ConnectionManager.hasInternet();
     if (!hasInternet) {
-      emit(state.copyWith(error: 'No internet', isLoading: false));
-      return;
+      return emit(_getNoInternetState());
     }
 
     try {
-      final weather = await getCurrentWeatherUseCase(coordinates);
+      final weather = await getCurrentWeatherUseCase(_coordinates);
       emit(state.copyWith(weather: weather));
     } on DioError catch (e) {
       emit(state.copyWith(error: e.response?.data['message']));
@@ -49,23 +47,22 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   }
 
   Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
-    emit(state.copyWith(isLoading: true, error: ''));
+    emit(_getLoadingState());
     final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
 
     try {
-      coordinates = await GeoLocatorProvider().getCoordinates();
+      _coordinates = await GeoLocatorProvider().getCoordinates();
     } on GeoLocatorError catch (e) {
       emit(state.copyWith(isLoading: false, error: e.message));
     }
 
     final hasInternet = await ConnectionManager.hasInternet();
     if (!hasInternet) {
-      emit(state.copyWith(error: 'No internet', isLoading: false));
-      return;
+      return emit(_getNoInternetState());
     }
 
     try {
-      final forecast = await getFiveDaysWeatherForecastUseCase(coordinates);
+      final forecast = await getFiveDaysWeatherForecastUseCase(_coordinates);
       emit(state.copyWith(forecast: forecast));
     } on DioError catch (e) {
       emit(state.copyWith(error: e.response?.data['message']));
@@ -74,5 +71,13 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
     } finally {
       emit(state.copyWith(isLoading: false));
     }
+  }
+
+  WeatherState _getNoInternetState() {
+    return state.copyWith(error: 'No internet', isLoading: false);
+  }
+
+  WeatherState _getLoadingState() {
+    return state.copyWith(isLoading: true, error: '');
   }
 }
