@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 
 import '../../../extensions/kelvin_to_celsius_extension.dart';
-import '../../../models/forecast_weather_list_with_title.dart';
-import '../../../shared/filters/forecast_day_filter.dart';
+import '../models/forecast_weather_list_with_title.dart';
+import '../filters/forecast_day_filter.dart';
 import '../widgets/widgets.dart';
 
 class ForecastList extends StatelessWidget {

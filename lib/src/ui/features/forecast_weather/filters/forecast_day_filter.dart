@@ -1,6 +1,6 @@
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 
-import '../../models/forecast_weather_list_with_title.dart';
+import '../models/forecast_weather_list_with_title.dart';
 
 class ForecastDayFilter {
   List<ForecastWeatherListWithTitle> getForecastWeatherListWithTitle(Forecast forecast) {
