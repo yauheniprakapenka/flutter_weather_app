@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
-import 'package:flutter_weather_app/src/ui/extensions/kelvin_to_celsius_extension.dart';
-import 'package:flutter_weather_app/src/ui/extensions/wind_direction_extension.dart';
+import 'package:flutter_weather_app/src/ui/shared/extensions/kelvin_to_celsius_extension.dart';
+import 'package:flutter_weather_app/src/ui/shared/extensions/wind_direction_extension.dart';
 
 import '../../../shared/const/app_symbols.dart';
+import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
 import '../../today_weather/decorators/divider_decorator.dart';
 import '../../today_weather/widgets/widgets.dart';
-import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
-import 'package:flutter_weather_app/src/ui/extensions/week_day_extension.dart';
+import 'package:flutter_weather_app/src/ui/shared/extensions/week_day_extension.dart';
 
 class ForecastWeatherListWithTitle {
   final List<ForecastWeather> forecastWeather;
