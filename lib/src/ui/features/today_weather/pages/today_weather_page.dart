@@ -8,7 +8,7 @@ import 'package:flutter_weather_app/src/ui/extensions/wind_direction_extension.d
 import '../../../shared/const/app_symbols.dart';
 import '../../today_weather/decorators/divider_decorator.dart';
 import '../../today_weather/widgets/widgets.dart';
-import '../widgets/patterned_line/config/patternt_widget_config.dart';
+import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);

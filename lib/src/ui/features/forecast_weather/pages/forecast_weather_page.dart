@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/src/domain/lib/domain.dart';
 import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
 
-import '../../today_weather/widgets/patterned_line/config/patternt_widget_config.dart';
+import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
 import '../../today_weather/widgets/widgets.dart';
 import '../composites/forecast_list.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'config/patternt_widget_config.dart';
-import 'managers/pattern_widget_manager.dart';
-import 'widgets/pattern.dart';
+import 'pattern_widget_config.dart';
+import 'pattern_widget_manager.dart';
+import 'pattern_widget.dart';
 
 class PatternedLine extends StatelessWidget {
   const PatternedLine({Key? key}) : super(key: key);

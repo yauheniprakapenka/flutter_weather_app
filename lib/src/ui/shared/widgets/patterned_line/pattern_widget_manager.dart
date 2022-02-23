@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/patternt_widget_config.dart';
+import 'pattern_widget_config.dart';
 
 class PatternManager {
   final _colors = [
