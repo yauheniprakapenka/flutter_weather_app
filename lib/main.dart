@@ -8,14 +8,10 @@ import 'src/ui/shared/theme/app_colors.dart';
 
 void main() {
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider<WeatherBloc>(create: (_) => WeatherBloc()),
-      ],
-      child: MultiProvider(
-        providers: [
-          Provider(create: (_) => AppColors()),
-        ],
+    BlocProvider<WeatherBloc>(
+      create: (_) => WeatherBloc(),
+      child: Provider(
+        create: (_) => AppColors(),
         child: const WeatherApp(),
       ),
     ),
