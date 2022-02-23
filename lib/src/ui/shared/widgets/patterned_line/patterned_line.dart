@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'pattern_widget.dart';
 import 'pattern_widget_config.dart';
 import 'pattern_widget_manager.dart';
-import 'pattern_widget.dart';
 
 class PatternedLine extends StatelessWidget {
   const PatternedLine({Key? key}) : super(key: key);
 
   @override
   Widget build(context) {
-    final manager = PatternManager();
+    final manager = PatternWidgetManager();
     final screenWidth = MediaQuery.of(context).size.width;
 
     return SizedBox(

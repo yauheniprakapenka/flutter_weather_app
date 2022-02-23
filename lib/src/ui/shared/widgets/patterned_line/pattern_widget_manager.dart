@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pattern_widget_config.dart';
 
-class PatternManager {
+class PatternWidgetManager {
   final _colors = [
     Colors.pink,
     Colors.orange,
