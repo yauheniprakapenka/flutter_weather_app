@@ -43,7 +43,9 @@ class _WeatherAppState extends State<WeatherApp> {
               label: 'Forecast',
               icon: SvgPicture.asset(
                 'assets/icons/forecast.svg',
-                color: _currentIndex == 1 ? context.read<AppColors>().secondary : context.read<AppColors>().inActive,
+                color: _currentIndex == 1
+                    ? context.read<AppColors>().secondary
+                    : context.read<AppColors>().inActive,
               ),
             ),
           ],

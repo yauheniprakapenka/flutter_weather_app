@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/src/data/lib/data.dart';
-import 'package:flutter_weather_app/src/domain/lib/src/providers/geo_locator_provider/geo_locator_provider.dart';
-import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
-import 'package:flutter_weather_app/src/domain/lib/src/use_cases/get_five_days_weather_forecast_use_case.dart';
+import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/weather_provider.dart';
+import 'package:flutter_weather_app/src/domain/lib/src/use_cases/use_cases.dart';
 import 'package:get/get.dart';
 
-import '../../../domain.dart';
+import '../../entities/entities.dart';
 import '../../managers/connection_manager.dart';
 import '../geo_locator_provider/geo_locator_error.dart';
+import '../geo_locator_provider/geo_locator_provider.dart';
+import 'events/get_five_days_weather_forecast_event.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);
