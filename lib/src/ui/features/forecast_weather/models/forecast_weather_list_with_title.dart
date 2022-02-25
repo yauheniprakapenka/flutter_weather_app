@@ -1,4 +1,4 @@
-import 'package:flutter_weather_app/src/domain/lib/domain.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter_weather_app/src/ui/shared/extensions/week_day_extension.dart';
 
 class ForecastWeatherListWithTitle {

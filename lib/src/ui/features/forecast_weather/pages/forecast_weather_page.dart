@@ -1,7 +1,6 @@
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/src/domain/lib/domain.dart';
-import 'package:flutter_weather_app/src/domain/lib/src/providers/weather_provider/events/get_five_days_weather_forecast_event.dart';
 
 import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
 import '../../today_weather/widgets/widgets.dart';

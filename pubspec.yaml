@@ -19,6 +19,12 @@ dependencies:
   geolocator: ^8.2.0
   connectivity_plus: ^2.2.1
 
+  data:
+    path: packages/data/
+
+  domain:
+    path: packages/domain/  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

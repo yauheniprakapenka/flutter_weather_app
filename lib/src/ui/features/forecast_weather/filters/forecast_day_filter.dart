@@ -1,4 +1,4 @@
-import 'package:flutter_weather_app/src/domain/lib/domain.dart';
+import 'package:domain/domain.dart';
 
 import '../models/forecast_weather_list_with_title.dart';
 

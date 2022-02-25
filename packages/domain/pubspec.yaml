@@ -1,0 +1,14 @@
+name: domain
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  data:
+    path: ../data/
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.4
+  
