@@ -1,6 +1,5 @@
-import 'package:data/data.dart';
-import 'package:dio/dio.dart';
 import 'package:domain/domain.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +9,6 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);
 
   WeatherBloc() : super(const WeatherState(weather: Weather(), forecast: Forecast())) {
-    DataServiceLocator.init();
     on<GetTodayWeatherEvent>(_onGetTodayWeather);
     on<GetFiveDaysWeatherForecastEvent>(_onGetFiveDaysWeatherForecastEvent);
   }

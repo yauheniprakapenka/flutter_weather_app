@@ -5,11 +5,7 @@ environment:
 
 dependencies:
   dio: ^4.0.4
-  get: ^4.6.1
   
-  flutter_weather_app:
-    path: ../../
-
   domain:
     path: ../domain/  
 
