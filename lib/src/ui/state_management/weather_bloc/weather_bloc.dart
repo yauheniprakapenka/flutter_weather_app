@@ -8,7 +8,7 @@ import 'weather_state_management.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);
-  final _locationService = Get.find<ILocationRepository>();
+  final _getCurrentLocationUseCase = GetCurrentLocationUseCase(Get.find<ILocationRepository>());
 
   WeatherBloc() : super(const WeatherState(weather: Weather(), forecast: Forecast())) {
     on<GetTodayWeatherEvent>(_onGetTodayWeather);
@@ -20,12 +20,12 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
     final getCurrentWeatherUseCase = GetTodayWeatherUseCase(weatherRepository: Get.find());
 
     try {
-      _coordinates = await _locationService.getCurrentLocation();
+      _coordinates = await _getCurrentLocationUseCase();
     } on GeoLocatorError catch (e) {
       return emit(state.copyWith(isLoading: false, error: e.message));
     }
 
-    final hasInternet = await ConnectionManager.hasInternet();
+    final hasInternet = await HasInternetUseCase.call();
     if (!hasInternet) {
       return emit(_getNoInternetState());
     }
@@ -42,17 +42,18 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
     }
   }
 
-  Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
+  Future<void> _onGetFiveDaysWeatherForecastEvent(
+      GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
     emit(_getLoadingState());
     final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(Get.find());
 
     try {
-      _coordinates = await _locationService.getCurrentLocation();
+      _coordinates = await _getCurrentLocationUseCase();
     } on GeoLocatorError catch (e) {
       emit(state.copyWith(isLoading: false, error: e.message));
     }
 
-    final hasInternet = await ConnectionManager.hasInternet();
+    final hasInternet = await HasInternetUseCase.call();
     if (!hasInternet) {
       return emit(_getNoInternetState());
     }

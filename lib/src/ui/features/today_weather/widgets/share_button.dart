@@ -13,7 +13,8 @@ class ShareButton extends StatelessWidget {
   Widget build(context) {
     return TextButton(
       onPressed: () async {
-        await ShareTextUseCase().call(_createWeatherReport());
+        final shareTextUseCase = ShareTextUseCase();
+        await shareTextUseCase(_createWeatherReport());
       },
       child: const Text('Share'),
     );
