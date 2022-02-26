@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 
 void init() {
   Get.put<IWeatherRepository>(
-    WeatherRepositoryImpl(
-      remoteDataSource: OpenWeatherMapRemoteDataSourceImpl(),
-    ),
+    WeatherRepositoryImpl(OpenWeatherMapRemoteDataSourceImpl()),
+  );
+  Get.put<ILocationRepository>(
+    LocationRepositoryImpl(GeoLocationRemoteDataSource()),
   );
 }

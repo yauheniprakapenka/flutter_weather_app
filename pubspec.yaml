@@ -12,12 +12,8 @@ dependencies:
     sdk: flutter
   flutter_svg: ^1.0.3
   provider: ^6.0.2
-  dio: ^4.0.4
   flutter_bloc: ^8.0.1
   get: ^4.6.1
-  share_plus: ^3.1.0
-  geolocator: ^8.2.0
-  connectivity_plus: ^2.2.1
 
   data:
     path: packages/data/

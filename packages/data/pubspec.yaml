@@ -5,6 +5,7 @@ environment:
 
 dependencies:
   dio: ^4.0.4
+  geolocator: ^8.2.0
   
   domain:
     path: ../domain/  

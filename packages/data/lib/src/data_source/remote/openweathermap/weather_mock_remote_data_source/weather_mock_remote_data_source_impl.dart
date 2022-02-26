@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:domain/domain.dart';
 
-import '../../../dto/dto.dart';
+import '../../../../dto/dto.dart';
 import '../interface/i_weather_remote_data_source.dart';
 import 'forecast_stub_json.dart';
 import 'weather_stub_json.dart';

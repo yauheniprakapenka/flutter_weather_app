@@ -1,5 +1,5 @@
-import '../entities/entities.dart';
-import '../repositories/i_weather_repository.dart';
+import '../../entities/entities.dart';
+import '../../repositories/i_weather_repository.dart';
 
 class GetTodayWeatherUseCase {
   final IWeatherRepository _weatherRepository;

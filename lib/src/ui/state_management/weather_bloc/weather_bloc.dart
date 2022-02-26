@@ -1,3 +1,4 @@
+import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'weather_state_management.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);
+  final _locationService = Get.find<ILocationRepository>();
 
   WeatherBloc() : super(const WeatherState(weather: Weather(), forecast: Forecast())) {
     on<GetTodayWeatherEvent>(_onGetTodayWeather);
@@ -18,7 +20,7 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
     final getCurrentWeatherUseCase = GetTodayWeatherUseCase(weatherRepository: Get.find());
 
     try {
-      _coordinates = await GeoLocatorProvider().getCoordinates();
+      _coordinates = await _locationService.getCurrentLocation();
     } on GeoLocatorError catch (e) {
       return emit(state.copyWith(isLoading: false, error: e.message));
     }
@@ -42,10 +44,10 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
 
   Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
     emit(_getLoadingState());
-    final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find());
+    final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(Get.find());
 
     try {
-      _coordinates = await GeoLocatorProvider().getCoordinates();
+      _coordinates = await _locationService.getCurrentLocation();
     } on GeoLocatorError catch (e) {
       emit(state.copyWith(isLoading: false, error: e.message));
     }
