@@ -1,14 +1,10 @@
 import 'package:data/data.dart';
 import 'package:dio/dio.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import '../../entities/entities.dart';
-import '../../managers/connection_manager.dart';
-import '../../use_cases/use_cases.dart';
-import '../geo_locator_provider/geo_locator_error.dart';
-import '../geo_locator_provider/geo_locator_provider.dart';
-import 'weather_provider.dart';
+import 'weather_state_management.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);

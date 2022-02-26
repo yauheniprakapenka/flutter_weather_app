@@ -7,7 +7,7 @@ class OpenweathermapService {
   final _client = dioHttpClient('https://api.openweathermap.org/data/2.5/');
 
   /// Secret api key
-  static const _apiKey = 'aae36a3b16c74e4080309f1686872f92';
+  static const _apiKey = '';
 
   Future<WeatherDto> getCurrentWeather(Coordinates coordinates) async {
     final path = 'weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';

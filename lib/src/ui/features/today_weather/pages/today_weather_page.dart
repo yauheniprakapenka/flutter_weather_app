@@ -1,8 +1,8 @@
-import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_weather_app/src/ui/shared/extensions/extensions.dart';
+import 'package:flutter_weather_app/src/ui/state_management/weather_bloc/weather_state_management.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';

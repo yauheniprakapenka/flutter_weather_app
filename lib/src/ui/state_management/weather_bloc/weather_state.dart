@@ -1,4 +1,4 @@
-import '../../entities/entities.dart';
+import 'package:domain/domain.dart';
 
 class WeatherState {
   final bool isLoading;
