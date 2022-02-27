@@ -34,16 +34,15 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       final weather = await getCurrentWeatherUseCase(_coordinates);
       emit(state.copyWith(weather: weather));
     } on DioError catch (e) {
-      emit(state.copyWith(error: e.response?.data['message']));
+      emit(_getResponseError(e));
     } on Exception catch (e) {
-      emit(state.copyWith(error: 'Error get weather: $e'));
+      emit(_getWeatherError(e));
     } finally {
       emit(state.copyWith(isLoading: false));
     }
   }
 
-  Future<void> _onGetFiveDaysWeatherForecastEvent(
-      GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
+  Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<WeatherState> emit) async {
     emit(_getLoadingState());
     final getFiveDaysWeatherForecastUseCase = GetFiveDaysWeatherForecastUseCase(Get.find());
 
@@ -62,9 +61,9 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       final forecast = await getFiveDaysWeatherForecastUseCase(_coordinates);
       emit(state.copyWith(forecast: forecast));
     } on DioError catch (e) {
-      emit(state.copyWith(error: e.response?.data['message']));
+      emit(_getResponseError(e));
     } on Exception catch (e) {
-      emit(state.copyWith(error: 'Error get weather: $e'));
+      emit(_getWeatherError(e));
     } finally {
       emit(state.copyWith(isLoading: false));
     }
@@ -76,5 +75,13 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
 
   WeatherState _getLoadingState() {
     return state.copyWith(isLoading: true, error: '');
+  }
+
+  WeatherState _getResponseError(DioError e) {
+    return state.copyWith(error: e.response?.data['message']);
+  }
+
+  WeatherState _getWeatherError(Exception e) {
+    return state.copyWith(error: 'Error get weather: $e');
   }
 }
