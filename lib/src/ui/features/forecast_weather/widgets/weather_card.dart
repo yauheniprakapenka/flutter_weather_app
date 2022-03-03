@@ -27,7 +27,11 @@ class WeatherCard extends StatelessWidget {
     return Container(
       height: 88,
       decoration: BoxDecoration(
-        border: hasActiveBorder ? Border.all(width: 3, color: context.read<AppColors>().secondary) : null,
+        border: hasActiveBorder
+            ? Border.fromBorderSide(
+                BorderSide(width: 3, color: context.read<AppColors>().secondary),
+              )
+            : null,
       ),
       child: Row(
         children: [

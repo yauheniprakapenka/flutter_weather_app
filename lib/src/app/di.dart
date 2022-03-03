@@ -3,10 +3,7 @@ import 'package:domain/domain.dart';
 import 'package:get/get.dart';
 
 void init() {
-  Get.put<IWeatherRepository>(
-    WeatherRepositoryImpl(OpenWeatherMapRemoteDataSourceImpl()),
-  );
-  Get.put<ILocationRepository>(
-    LocationRepositoryImpl(GeoLocationRemoteDataSource()),
-  );
+  Get
+    ..put<IWeatherRepository>(WeatherRepositoryImpl(OpenWeatherMapRemoteDataSourceImpl()))
+    ..put<ILocationRepository>(LocationRepositoryImpl(GeoLocationRemoteDataSource()));
 }

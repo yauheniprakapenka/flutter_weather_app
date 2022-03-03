@@ -1,4 +1,4 @@
-// Пересчёт в градусы Цельсия: tC = tK − 273 ,15
+// Пересчёт в градусы Цельсия: tC = tK − 273 ,15.
 
 extension KelvinToCelsiusExtension on double {
   int convertKelvinToCelsium() {
