@@ -1,11 +1,10 @@
 name: flutter_weather_app
-description: A new Flutter project.
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
-  flutter: ">=2.10.1"
+  flutter: ">=2.10.3"
 
 dependencies:
   flutter:
@@ -15,11 +14,16 @@ dependencies:
   flutter_bloc: ^8.0.1
   get: ^4.6.1
 
+  # localizations
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+
+  # architecture
   data:
     path: packages/data/
-
   domain:
-    path: packages/domain/  
+    path: packages/domain/
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +33,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
-  - assets/icons/
+    - assets/icons/
+  

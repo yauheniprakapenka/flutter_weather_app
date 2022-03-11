@@ -54,7 +54,7 @@ extension WindDirectionExtension on int {
       case 340:
         return 'N/NW';
       default:
-        return '?';
+        return 'No data';
     }
   }
 }

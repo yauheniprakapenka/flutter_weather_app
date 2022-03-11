@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_weather_app/src/ui/shared/extensions/extensions.dart';
+import 'package:flutter_weather_app/src/ui/shared/widgets/language_flag.dart';
+import 'package:flutter_weather_app/src/ui/shared/widgets/language_picker.dart';
 import 'package:flutter_weather_app/src/ui/state_management/weather_bloc/weather_state_management.dart';
 
 import '../../../shared/const/app_symbols.dart';
@@ -27,7 +30,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Today'),
+        title: Text(AppLocalizations.of(context)?.today ?? ''),
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(PatternWidgetConfig.heigthSize),
           child: PatternedLine(),
@@ -42,6 +45,8 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              const LanguageFlag(),
+              const LanguagePicker(),
               Image.network('http://openweathermap.org/img/wn/${state.weather.icon}@2x.png'),
               Text(
                 '${state.weather.city}, ${state.weather.codeCountry}',
