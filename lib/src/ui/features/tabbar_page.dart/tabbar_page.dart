@@ -37,7 +37,7 @@ class _TabbarPageState extends State<TabbarPage> {
             icon: const Icon(Icons.light_mode_outlined),
           ),
           BottomNavigationBarItem(
-            label: 'Forecast',
+            label: AppLocalizations.of(context)?.forecast ?? '',
             icon: SvgPicture.asset(
               'assets/icons/forecast.svg',
               color: _currentIndex == 1

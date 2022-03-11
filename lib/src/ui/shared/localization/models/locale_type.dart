@@ -1,0 +1,4 @@
+enum LocaleType {
+  en,
+  ru,
+}

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/src/ui/shared/localization/extensions/flag_extension.dart';
 
 class LanguageFlag extends StatelessWidget {
-  const LanguageFlag({Key? key}) : super(key: key);
+  final double size;
+
+  const LanguageFlag({Key? key, required this.size}) : super(key: key);
 
   @override
   Widget build(context) {
@@ -10,7 +12,7 @@ class LanguageFlag extends StatelessWidget {
     final flag = locale.languageCode.getFlag();
     return Text(
       flag,
-      style: const TextStyle(fontSize: 60),
+      style: TextStyle(fontSize: size),
     );
   }
 }

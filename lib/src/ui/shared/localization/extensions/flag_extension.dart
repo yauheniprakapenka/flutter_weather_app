@@ -1,12 +1,13 @@
+import '../models/locale_type.dart';
+
 extension FlagExtension on String {
   String getFlag() {
-    switch (this) {
-      case 'en':
-        return '🇬🇧';
-      case 'ru':
-        return '🇷🇺';
-      default:
-        return '🏳️';
+    if (this == LocaleType.en.name) {
+      return '🇬🇧';
+    } else if (this == LocaleType.ru.name) {
+      return '🇷🇺';
+    } else {
+      return '🏳️';
     }
   }
 }

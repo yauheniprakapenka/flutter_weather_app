@@ -1,22 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 extension WeekDayExtension on int {
-  String getWeekDayTitle() {
+  String getWeekDayTitle(BuildContext context) {
     final dayNow = DateTime.now().weekday;
-    if (dayNow == this) return 'Today';
+    if (dayNow == this) return AppLocalizations.of(context)?.today ?? '-';
     switch (this) {
       case 1:
-        return 'Monday';
+        return AppLocalizations.of(context)?.monday ?? '-';
       case 2:
-        return 'Tuesday';
+        return AppLocalizations.of(context)?.thursday ?? '-';
       case 3:
-        return 'Wednesday';
+        return AppLocalizations.of(context)?.wednesday ?? '-';
       case 4:
-        return 'Thursday';
+        return AppLocalizations.of(context)?.thursday ?? '-';
       case 5:
-        return 'Friday';
+        return AppLocalizations.of(context)?.friday ?? '-';
       case 6:
-        return 'Saturday';
+        return AppLocalizations.of(context)?.saturday ?? '-';
       case 7:
-        return 'Sunday';
+        return AppLocalizations.of(context)?.sunday ?? '-';
       default:
         return '-';
     }

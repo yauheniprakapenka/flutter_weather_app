@@ -13,7 +13,7 @@ class PatternedLine extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return SizedBox(
-      height: PatternWidgetConfig.heigthSize,
+      height: PatternWidgetConfig.heightSize,
       child: ColoredBox(
         color: Colors.grey[400] ?? Colors.white,
         child: Row(

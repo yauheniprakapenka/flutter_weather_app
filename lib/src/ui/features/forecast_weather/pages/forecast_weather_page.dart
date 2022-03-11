@@ -32,7 +32,7 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
           appBar: AppBar(
             title: Text(state.forecast.city ?? ''),
             bottom: const PreferredSize(
-              preferredSize: Size.fromHeight(PatternWidgetConfig.heigthSize),
+              preferredSize: Size.fromHeight(PatternWidgetConfig.heightSize),
               child: PatternedLine(),
             ),
           ),

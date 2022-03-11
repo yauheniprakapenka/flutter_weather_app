@@ -10,7 +10,9 @@ class ForecastDayFilter {
 
     final forecastListWithTitle = <ForecastWeatherListWithTitle>[];
     for (var i = 0; i < countedDays; i++) {
-      forecastListWithTitle.add(ForecastWeatherListWithTitle(forecastWeather: sortedByDay[i]));
+      forecastListWithTitle.add(
+        ForecastWeatherListWithTitle(sortedByDay[i]),
+      );
     }
     return forecastListWithTitle;
   }
@@ -27,7 +29,8 @@ class ForecastDayFilter {
     return List.generate(length, (_) => <ForecastWeather>[]);
   }
 
-  static List<List<ForecastWeather>> _sortByDay(List<List<ForecastWeather>> emptyDaysList, Forecast forecast) {
+  static List<List<ForecastWeather>> _sortByDay(
+      List<List<ForecastWeather>> emptyDaysList, Forecast forecast) {
     var _daysIndex = 0;
     var _currentDay = 0;
     for (var i = 0; i < (forecast.weather?.length ?? 0); i++) {

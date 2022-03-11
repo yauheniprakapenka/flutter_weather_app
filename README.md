@@ -7,24 +7,22 @@
 ### О проекте
 ---
 
-Приложение для отображения погоды для Android и iOS.
+Приложение для отображения погоды.
 
-### Задание
+### Возможности
 ---
 
-- In the forecast tab, show the forecast for the next 5 days (in 3 hour intervals) at your current location
-- Make sure you consider and handle all possible states of the app (offline, data not loading, errors, etc) 
-- Flutter BLoC
-- Make the layout responsive for all screen sizes your app supports
-- Support iOS and Android platforms
-- Min API Level: 21 and iOS 11
 - Open Weather Map API (http://openweathermap.org/api)
-- Geolocation for determining the current position of the device
-- Material Design Guidelines + Material Design Icon
-- Share weather as text
-- Select icons by yourself. App should contain non-default launch icon
-- Use the design for the application provided below (it is mockup, not final design)
-<img height="300" alt="image" src="https://user-images.githubusercontent.com/47568606/155134262-11f768f7-e68d-49bb-9007-310873057558.png">
+- Вкладка для прогноза погоды на 5 дней с интервалом в 3 часа
+- Обработка состояний приложения (отсутствие сети, загрузка)
+- Архитектура состояния Flutter BLoC, Provider
+- Архитектура приложения Clean architecture
+- Адаптивный дизайн
+- Поддержка iOS и Android
+- Min API Level: 21 and iOS 11
+- Определение геолокации текущего положения устройства
+- Поделиться текущий погодой через мессенджеры
+- Смена языка
 
 ### Пример поделиться погодой
 ---
@@ -44,7 +42,7 @@ rain: -, mm
 
 ### Демо
 ---
-<img src="docs/demo-share.gif" height=300>   <img src="docs/demo-pages.gif" height=300>   <img src="docs/demo-no-internet.gif" height=300>
+<img src="docs/demo-share.gif" height=300>   <img src="docs/demo-pages.gif" height=300>   <img src="docs/demo-no-internet.gif" height=300>   <img src="docs/demo-change-locale.gif" height=300>
 
 ### Скриншоты
 ---
@@ -54,4 +52,35 @@ rain: -, mm
 <img src="https://user-images.githubusercontent.com/47568606/155134585-89afbccc-3c8c-473c-92cb-81175568eb39.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155134522-7873af6f-3608-4e67-8827-d3bfbc861873.png" height=300> 
 
 
+### Локализция
+---
 
+- Для локализаии используется библиотека `intl`
+
+- Конфигурация локализации
+```
+l10n.yaml
+```
+
+- Новые строки добавляются в json
+```
+lib/src/ui/shared/localization/arb/app_en.arb
+lib/src/ui/shared/localization/arb/app_ru.arb
+```
+
+- Выполнить flutter pub get. Сгенерируются новые файлы по пути
+```
+.dart_tool/flutter_gen/gen_l10n/app_localizations_ru.dart
+```
+
+- В проблемах может отобразиться, что файлы локализации не найдены. Для исправления нужно перезапустить IDE.
+
+- Для использования значений локализации импортировать файл 
+```
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+```
+
+- Выбрать нужный текст
+```
+AppLocalizations.of(context)?.today ?? ''
+```

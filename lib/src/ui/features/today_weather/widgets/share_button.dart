@@ -1,5 +1,6 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/extensions.dart';
@@ -16,7 +17,7 @@ class ShareButton extends StatelessWidget {
         final shareTextUseCase = ShareTextUseCase();
         await shareTextUseCase(_createWeatherReport());
       },
-      child: const Text('Share'),
+      child: Text(AppLocalizations.of(context)?.share ?? ''),
     );
   }
 

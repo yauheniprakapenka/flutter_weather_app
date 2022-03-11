@@ -32,9 +32,18 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)?.today ?? ''),
         bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(PatternWidgetConfig.heigthSize),
+          preferredSize: Size.fromHeight(PatternWidgetConfig.heightSize),
           child: PatternedLine(),
         ),
+        actions: [
+          Row(
+            children: const [
+              LanguageFlag(size: 22),
+              SizedBox(width: 8),
+              LanguagePicker(),
+            ],
+          ),
+        ],
       ),
       body: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
@@ -45,8 +54,6 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const LanguageFlag(),
-              const LanguagePicker(),
               Image.network('http://openweathermap.org/img/wn/${state.weather.icon}@2x.png'),
               Text(
                 '${state.weather.city}, ${state.weather.codeCountry}',

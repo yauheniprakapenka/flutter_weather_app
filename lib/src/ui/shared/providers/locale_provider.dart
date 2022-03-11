@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/src/ui/shared/localization/l10n.dart';
+import 'package:flutter_weather_app/src/ui/shared/localization/models/locale_type.dart';
 
 class LocaleProvider extends ChangeNotifier {
-  var _locale = const Locale('en'); // TODO: убрать хардкод
+  var _locale = Locale(LocaleType.en.name);
 
   Locale get locale => _locale;
 
