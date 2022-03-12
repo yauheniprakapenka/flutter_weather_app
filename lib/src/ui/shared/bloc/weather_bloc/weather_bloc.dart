@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '../../providers/connectivity_provider.dart';
+import 'events/i_weather_events.dart';
 import 'weather_state_management.dart';
 
-class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
+
+class WeatherBloc extends Bloc<IWeatherEvents, WeatherState> {
   var _coordinates = Coordinates(latitude: 0, longitude: 0);
   final _getCurrentLocationUseCase = GetCurrentLocationUseCase(Get.find<ILocationRepository>());
 
