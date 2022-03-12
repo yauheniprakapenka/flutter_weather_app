@@ -35,6 +35,7 @@ class ForecastDayFilter {
     var _currentDay = 0;
     for (var i = 0; i < (forecast.weather?.length ?? 0); i++) {
       final time = DateTime.parse(forecast.weather?[i].dtText ?? '').day;
+      
       if (i == 0) {
         _currentDay = time;
       } else {
@@ -44,9 +45,8 @@ class ForecastDayFilter {
         }
       }
 
-      if (forecast.weather?[i] != null) {
-        emptyDaysList[_daysIndex].add(forecast.weather![i]);
-      }
+      final weather = forecast.weather?[i];
+      if (weather != null) emptyDaysList[_daysIndex].add(weather);
     }
     return emptyDaysList;
   }

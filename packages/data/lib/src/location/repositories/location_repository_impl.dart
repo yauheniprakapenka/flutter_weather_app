@@ -1,4 +1,4 @@
-import 'package:data/src/data_source/remote/location/interface/i_location_remote_data_source.dart';
+import 'package:data/src/location/datasource/i_location_remote_data_source.dart';
 import 'package:domain/domain.dart';
 
 class LocationRepositoryImpl implements ILocationRepository {

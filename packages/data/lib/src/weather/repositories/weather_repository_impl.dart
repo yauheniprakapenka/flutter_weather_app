@@ -2,7 +2,7 @@ import 'package:domain/domain.dart';
 
 import '../adapters/forecast_adapter.dart';
 import '../adapters/weather_adapter.dart';
-import '../data_source/remote/openweathermap/interface/i_weather_remote_data_source.dart';
+import '../datasource/i_weather_remote_data_source.dart';
 
 class WeatherRepositoryImpl implements IWeatherRepository {
   final IWeatherRemoteDataSource _remoteDataSource;

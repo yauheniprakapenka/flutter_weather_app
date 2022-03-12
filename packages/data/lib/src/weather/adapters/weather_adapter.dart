@@ -1,6 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../dto/dto.dart';
+import '../dto/weather_dto.dart';
 
 class WeatherAdapter {
   static Weather mapDtoToEntity(WeatherDto weatherDto) {

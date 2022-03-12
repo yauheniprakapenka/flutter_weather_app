@@ -1,7 +1,8 @@
 import 'package:domain/domain.dart';
 
-import '../api/dio/dio_http_client.dart';
-import '../dto/dto.dart';
+import '../../api/dio/dio_http_client.dart';
+import '../dto/forecast_dto.dart';
+import '../dto/weather_dto.dart';
 
 class OpenweathermapService {
   final _client = dioHttpClient('https://api.openweathermap.org/data/2.5/');

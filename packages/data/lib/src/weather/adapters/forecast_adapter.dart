@@ -1,6 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../dto/dto.dart';
+import '../dto/forecast_dto.dart';
 
 class ForecastAdapter {
   static Forecast mapDtoToEntity(ForecastDto forecastDto) {

@@ -1,10 +1,11 @@
 import 'package:domain/domain.dart';
 
-import '../../../../dto/dto.dart';
-import '../../../../services/openweathermap_service.dart';
-import '../interface/i_weather_remote_data_source.dart';
+import '../dto/forecast_dto.dart';
+import '../dto/weather_dto.dart';
+import '../services/openweathermap_service.dart';
+import 'i_weather_remote_data_source.dart';
 
-class OpenWeatherMapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
+class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   /// Get all your essential weather data for a specific location.
   ///
   /// https://openweathermap.org/api/one-call-api
