@@ -1,30 +1,29 @@
 # flutter_weather_app
 
-<img height="160" src="https://i.pinimg.com/564x/83/50/b7/8350b7848ea3761e0a41c28a735dfc0c.jpg">
-
-
-
-### О проекте
----
+<p align="center">
+  <img src="https://i.pinimg.com/564x/83/50/b7/8350b7848ea3761e0a41c28a735dfc0c.jpg" width=280>
+</p>
 
 Приложение для отображения погоды.
 
-### Возможности
----
+Погода
+- Получение погоды из Open Weather Map API (http://openweathermap.org/api)
+- Погода сегодня
+- Прогноз погоды на 5 дней с интервалом в 3 часа
+- Определение геолокации устройства для отображения погоды
+- Поделиться текущей погодой через мессенджеры
 
-- Open Weather Map API (http://openweathermap.org/api)
-- Вкладка для прогноза погоды на 5 дней с интервалом в 3 часа
-- Обработка состояний приложения (отсутствие сети, загрузка)
-- Архитектура состояния Flutter BLoC, Provider
-- Архитектура приложения Clean architecture
-- Адаптивный дизайн
-- Поддержка iOS и Android
-- Min API Level: 21 and iOS 11
-- Определение геолокации текущего положения устройства
-- Поделиться текущий погодой через мессенджеры
+Локализация
+- Используется библиотека `intl`
+- Поддержка `ru` и `en` локализации
+- Определение языка устройства
 - Смена языка
 
-### Пример поделиться погодой
+Архитектура
+- Архитектура приложения Clean architecture
+- Архитектура состояния Flutter BLoC, Provider
+
+### Пример поделиться текущей погодой
 ---
 
 ```
@@ -51,11 +50,12 @@ rain: -, mm
 
 <img src="https://user-images.githubusercontent.com/47568606/155134585-89afbccc-3c8c-473c-92cb-81175568eb39.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155134522-7873af6f-3608-4e67-8827-d3bfbc861873.png" height=300> 
 
-
-### Локализция
+### Как добавить новую локализацию
 ---
 
-- Для локализаии используется библиотека `intl`
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMV8QuUAECmcmHZeG3TACzrqs-CVQBUDggxg&usqp=CAU" width=100>
+</p>
 
 - Конфигурация локализации
 ```
