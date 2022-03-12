@@ -41,7 +41,7 @@ rain: -, mm
 
 ### Демо
 ---
-<img src="docs/demo-share.gif" height=300>   <img src="docs/demo-pages.gif" height=300>   <img src="docs/demo-no-internet.gif" height=300>   <img src="docs/demo-change-locale.gif" height=300>
+<img src=".github/demo-share.gif" height=300>   <img src=".github/demo-pages.gif" height=300>   <img src=".github/demo-no-internet.gif" height=300>   <img src=".github/demo-change-locale.gif" height=300>
 
 ### Скриншоты
 ---
