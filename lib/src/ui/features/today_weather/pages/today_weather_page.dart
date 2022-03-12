@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_weather_app/src/ui/shared/extensions/extensions.dart';
-import 'package:flutter_weather_app/src/ui/shared/widgets/language_flag.dart';
-import 'package:flutter_weather_app/src/ui/shared/widgets/language_picker.dart';
-import 'package:flutter_weather_app/src/ui/state_management/weather_bloc/weather_state_management.dart';
 
+import '../../../features/today_weather/decorators/divider_decorator.dart';
+import '../../../features/today_weather/widgets/widgets.dart';
 import '../../../shared/const/app_symbols.dart';
-import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
-import '../../today_weather/decorators/divider_decorator.dart';
-import '../../today_weather/widgets/widgets.dart';
+import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../shared/widgets/language_flag.dart';
+import '../../../shared/widgets/language_picker.dart';
+import '../../../shared/widgets/patterned_line/widget.dart';
+import '../../../state_management/weather_bloc/weather_state_management.dart';
+import '../extensions/wind_direction_extension.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);

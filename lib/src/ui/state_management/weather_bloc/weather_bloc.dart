@@ -78,7 +78,8 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
   }
 
   WeatherState _getResponseError(DioError e) {
-    return state.copyWith(error: e.response?.data['message']);
+    final Map<String, String> data = e.response?.data;
+    return state.copyWith(error: data['message']);
   }
 
   WeatherState _getWeatherError(Exception e) {

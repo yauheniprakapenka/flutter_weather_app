@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../shared/const/app_symbols.dart';
-import '../../../shared/extensions/extensions.dart';
+import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
+import '../extensions/wind_direction_extension.dart';
 
 class ShareButton extends StatelessWidget {
   final Weather weather;

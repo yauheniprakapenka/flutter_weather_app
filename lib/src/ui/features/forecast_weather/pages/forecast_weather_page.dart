@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../shared/widgets/patterned_line/pattern_widget_config.dart';
+import '../../../shared/widgets/patterned_line/widget.dart';
 import '../../../state_management/weather_bloc/weather_state_management.dart';
-import '../../today_weather/widgets/widgets.dart';
 import '../composites/forecast_list.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
