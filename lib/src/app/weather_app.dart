@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_weather_app/src/ui/shared/providers/locale_provider.dart';
+import 'package:flutter_weather_app/src/ui/shared/theme/light_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../app/di/ui_dependencies.dart';
@@ -26,6 +27,7 @@ class _MaterialWeatherApp extends StatelessWidget {
   Widget build(context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: LightTheme(context).init(),
       locale: Provider.of<LocaleProvider>(context).locale,
       localizationsDelegates: const [
         AppLocalizations.delegate,
