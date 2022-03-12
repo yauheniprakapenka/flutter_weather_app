@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import '../../ui/shared/bloc/weather_bloc/weather_state_management.dart';
+import '../../ui/shared/bloc/weather_bloc/weather.dart';
 import '../../ui/shared/providers/locale_provider.dart';
 import '../../ui/shared/theme/app_colors.dart';
 

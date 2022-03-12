@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../features/today_weather/decorators/divider_decorator.dart';
 import '../../../features/today_weather/widgets/widgets.dart';
-import '../../../shared/bloc/weather_bloc/weather_state_management.dart';
+import '../../../shared/bloc/weather_bloc/weather.dart';
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../shared/widgets/language_flag.dart';

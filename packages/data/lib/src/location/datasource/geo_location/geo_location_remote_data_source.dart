@@ -2,15 +2,15 @@ import 'package:data/src/location/datasource/i_location_remote_data_source.dart'
 import 'package:domain/domain.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'geo_locator_error.dart';
-
 class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
   @override
   Future<Coordinates> getCurrentLocation() async {
-    final position = await _determinePosition().catchError((error, _) {
-      throw GeoLocatorError(error);
-    });
-    return Coordinates(latitude: position.latitude, longitude: position.longitude);
+    try {
+      final position = await _determinePosition();
+      return Coordinates(latitude: position.latitude, longitude: position.longitude);
+    } on Exception catch (_) {
+      rethrow;
+    }
   }
 
   Future<Position> _determinePosition() async {
@@ -19,19 +19,19 @@ class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
+      throw Exception('Location services are disabled.');
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
+        throw Exception('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      return Future.error(
+      throw Exception(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
