@@ -8,6 +8,14 @@ import '../weather/repositories/weather_repository_impl.dart';
 
 void initDomainDependencies() {
   Get
-    ..put<IWeatherRepository>(WeatherRepositoryImpl(OpenweathermapRemoteDataSourceImpl()))
-    ..put<ILocationRepository>(LocationRepositoryImpl(GeoLocationRemoteDataSource()));
+    ..put<IWeatherRepository>(
+      WeatherRepositoryImpl(
+        remoteDataSource: OpenweathermapRemoteDataSourceImpl(),
+      ),
+    )
+    ..put<ILocationRepository>(
+      LocationRepositoryImpl(
+        remoteDataSource: GeoLocationRemoteDataSource(),
+      ),
+    );
 }

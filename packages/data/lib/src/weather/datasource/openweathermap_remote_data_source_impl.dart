@@ -1,9 +1,9 @@
 import 'package:domain/domain.dart';
 
 import '../../api/dio/dio_http_client.dart';
-import '../dto/forecast_dto.dart';
-import '../dto/weather_dto.dart';
-import 'i_weather_remote_data_source.dart';
+import '../../weather/datasource/i_weather_remote_data_source.dart';
+import '../../weather/dto/forecast_dto.dart';
+import '../../weather/dto/weather_dto.dart';
 
 class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   final _client = dioHttpClient('https://api.openweathermap.org/data/2.5/');
@@ -16,9 +16,13 @@ class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   /// https://openweathermap.org/api/one-call-api
   @override
   Future<WeatherDto> getTodayWeather(Coordinates coordinates) async {
-    final path = 'weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
-    final response = await _client.get(path);
-    return WeatherDto.fromJson(response.data);
+    try {
+      final path = 'weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
+      final response = await _client.get(path);
+      return WeatherDto.fromJson(response.data);
+    } on Exception catch (_) {
+      rethrow;
+    }
   }
 
   /// 5 day forecast is available at any location on the globe. It includes
@@ -27,8 +31,12 @@ class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   /// https://openweathermap.org/forecast5
   @override
   Future<ForecastDto> getFiveDaysWeatherForecast(Coordinates coordinates) async {
-    final path = 'forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
-    final response = await _client.get(path);
-    return ForecastDto.fromJson(response.data);
+    try {
+      final path = 'forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
+      final response = await _client.get(path);
+      return ForecastDto.fromJson(response.data);
+    } on Exception catch (_) {
+      rethrow;
+    }
   }
 }

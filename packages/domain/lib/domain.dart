@@ -1,5 +1,6 @@
 library domain;
 
+export 'src/entities/failure.dart';
 export 'src/location/entities/coordinates.dart';
 export 'src/location/repositories/i_location_repository.dart';
 export 'src/location/usecases/get_current_location_usecase.dart';

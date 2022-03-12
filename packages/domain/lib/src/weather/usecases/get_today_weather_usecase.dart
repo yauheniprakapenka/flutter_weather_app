@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:domain/src/location/entities/coordinates.dart';
 
+import '../../entities/failure.dart';
 import '../entities/weather.dart';
 import '../repositories/i_weather_repository.dart';
 
@@ -9,7 +11,7 @@ class GetTodayWeatherUseCase {
   const GetTodayWeatherUseCase({required IWeatherRepository weatherRepository})
       : _weatherRepository = weatherRepository;
 
-  Future<Weather> call(Coordinates coordinates) async {
+  Future<Either<Failure, Weather>> call(Coordinates coordinates) async {
     return _weatherRepository.getTodayWeather(coordinates);
   }
 }

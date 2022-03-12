@@ -73,8 +73,8 @@ class _WindDto {
   _WindDto({this.speed, this.deg});
 
   _WindDto.fromJson(Map<String, dynamic> json) {
-    final double _speed = json['speed']; 
-    speed = _speed;
+    final num _speed = json['speed']; 
+    speed = _speed.toDouble();
     deg = json['deg'];
   }
 }

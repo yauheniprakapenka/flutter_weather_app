@@ -4,7 +4,8 @@ import 'package:domain/domain.dart';
 class LocationRepositoryImpl implements ILocationRepository {
   final ILocationRemoteDataSource _remoteDataSource;
 
-  const LocationRepositoryImpl(this._remoteDataSource);
+  const LocationRepositoryImpl({required ILocationRemoteDataSource remoteDataSource})
+      : _remoteDataSource = remoteDataSource;
 
   @override
   Future<Coordinates> getCurrentLocation() async {
