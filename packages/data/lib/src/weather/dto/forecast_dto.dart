@@ -30,10 +30,11 @@ class _ListDto {
   });
 
   factory _ListDto.fromJson(Map<String, dynamic> json) {
+    final List weatherDto = json['weather'];
     return _ListDto(
       main: _MainDto.fromJson(json['main']),
       dtText: json['dt_txt'],
-      weatherDto: _WeatherDto.fromJson(json['weather'][0]),
+      weatherDto: _WeatherDto.fromJson(weatherDto.first),
     );
   }
 }
@@ -46,8 +47,9 @@ class _MainDto {
   });
 
   factory _MainDto.fromJson(Map<String, dynamic> json) {
+    final double temp = json['temp'];
     return _MainDto(
-      temp: json['temp'].toDouble(),
+      temp: temp,
     );
   }
 }

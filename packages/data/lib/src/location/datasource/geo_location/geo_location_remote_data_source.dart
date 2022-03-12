@@ -1,11 +1,11 @@
-import 'dart:async';
-
+import 'package:data/src/location/datasource/i_location_remote_data_source.dart';
 import 'package:domain/domain.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'geo_locator_error.dart';
 
-class GeoLocatorService {
+class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
+  @override
   Future<Coordinates> getCurrentLocation() async {
     final position = await _determinePosition().catchError((error, _) {
       throw GeoLocatorError(error);
