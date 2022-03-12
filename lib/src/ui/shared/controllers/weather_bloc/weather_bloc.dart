@@ -4,6 +4,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../providers/connectivity_provider.dart';
 import 'weather_state_management.dart';
 
 class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
@@ -25,7 +26,7 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       return emit(state.copyWith(isLoading: false, error: e.message));
     }
 
-    final hasInternet = await HasInternetUseCase.call();
+    final hasInternet = await ConnectivityProvider.call();
     if (!hasInternet) {
       return emit(_getNoInternetState());
     }
@@ -52,7 +53,7 @@ class WeatherBloc extends Bloc<IWeatherEvent, WeatherState> {
       emit(state.copyWith(isLoading: false, error: e.message));
     }
 
-    final hasInternet = await HasInternetUseCase.call();
+    final hasInternet = await ConnectivityProvider.call();
     if (!hasInternet) {
       return emit(_getNoInternetState());
     }

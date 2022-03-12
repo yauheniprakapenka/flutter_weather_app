@@ -6,11 +6,11 @@ import 'package:flutter_svg/svg.dart';
 import '../../../features/today_weather/decorators/divider_decorator.dart';
 import '../../../features/today_weather/widgets/widgets.dart';
 import '../../../shared/const/app_symbols.dart';
+import '../../../shared/controllers/weather_bloc/weather_state_management.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../shared/widgets/language_flag.dart';
 import '../../../shared/widgets/language_picker.dart';
 import '../../../shared/widgets/patterned_line/widget.dart';
-import '../../../state_management/weather_bloc/weather_state_management.dart';
 import '../extensions/wind_direction_extension.dart';
 
 class TodayWeatherPage extends StatefulWidget {

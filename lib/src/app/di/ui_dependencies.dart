@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
+import '../../ui/shared/controllers/weather_bloc/weather_state_management.dart';
 import '../../ui/shared/providers/locale_provider.dart';
 import '../../ui/shared/theme/app_colors.dart';
-import '../../ui/state_management/weather_bloc/weather_state_management.dart';
 
 class UiDependencies extends StatelessWidget {
   final Widget child;

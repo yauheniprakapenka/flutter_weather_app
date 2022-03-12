@@ -14,8 +14,7 @@ class ForecastList extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final _forecastWeatherListWithTitle =
-        ForecastDayFilter().getForecastWeatherListWithTitle(forecast);
+    final _forecastWeatherListWithTitle = ForecastDayFilter().getForecastWeatherListWithTitle(forecast);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,16 +57,18 @@ class ForecastList extends StatelessWidget {
     return firstForecast == currentDtText;
   }
 
-  bool _hasBottomBorder(
-      {required List<ForecastWeatherListWithTitle> forecast, required String currentDtText}) {
+  bool _hasBottomBorder({
+    required List<ForecastWeatherListWithTitle> forecast,
+    required String currentDtText,
+  }) {
     final activeText = <String>{};
-    forecast.forEach((element) {
+    for (final element in forecast) {
       for (var i = 0; i < element.forecastWeather.length; i++) {
         if (i == element.forecastWeather.length - 1) {
           activeText.add(element.forecastWeather.last.dtText ?? '');
         }
       }
-    });
+    }
     return !activeText.contains(currentDtText);
   }
 }
