@@ -3,18 +3,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../features/forecast_weather/pages/forecast_weather_page.dart';
+import '../../features/today_weather/pages/today_weather_page.dart';
 import '../../shared/theme/app_colors.dart';
-import '../forecast_weather/pages/forecast_weather_page.dart';
-import '../today_weather/pages/today_weather_page.dart';
 
-class TabbarPage extends StatefulWidget {
-  const TabbarPage({Key? key}) : super(key: key);
+class TabbarNavigationPage extends StatefulWidget {
+  const TabbarNavigationPage({Key? key}) : super(key: key);
 
   @override
-  State<TabbarPage> createState() => _TabbarPageState();
+  State<TabbarNavigationPage> createState() => _TabbarNavigationPageState();
 }
 
-class _TabbarPageState extends State<TabbarPage> {
+class _TabbarNavigationPageState extends State<TabbarNavigationPage> {
   var _currentIndex = 0;
 
   final _pages = const [

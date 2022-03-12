@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../shared/providers/weather_report_provider.dart';
 import '../extensions/wind_direction_extension.dart';
 
 class ShareButton extends StatelessWidget {
@@ -15,7 +16,7 @@ class ShareButton extends StatelessWidget {
   Widget build(context) {
     return TextButton(
       onPressed: () async {
-        final shareTextUseCase = ShareTextUseCase();
+        final shareTextUseCase = WeatherReportProvider();
         await shareTextUseCase(_createWeatherReport());
       },
       child: Text(AppLocalizations.of(context)?.share ?? ''),

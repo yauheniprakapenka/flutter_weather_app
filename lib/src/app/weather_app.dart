@@ -5,7 +5,7 @@ import 'package:flutter_weather_app/src/ui/shared/providers/locale_provider.dart
 import 'package:provider/provider.dart';
 
 import '../app/di/ui_dependencies.dart';
-import '../ui/features/tabbar_page.dart/tabbar_page.dart';
+import '../ui/features/tabbar_navigation/tabbar_navigation_page.dart';
 import '../ui/shared/localization/l10n.dart';
 
 class WeatherApp extends StatelessWidget {
@@ -34,7 +34,7 @@ class _MaterialWeatherApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: L10n.all,
-      home: const TabbarPage(),
+      home: const TabbarNavigationPage(),
     );
   }
 }

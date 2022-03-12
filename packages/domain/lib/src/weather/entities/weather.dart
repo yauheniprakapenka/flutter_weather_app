@@ -1,29 +1,29 @@
 class Weather {
-  /// Temperature, Kelvin. Example: 278.24
+  /// Temperature, Kelvin. Example: 278.24.
   final double? temperature;
 
-  /// Group of weather parameters. Example: Rain, Snow, Clouds
+  /// Group of weather parameters. Example: Rain, Snow, Clouds.
   final String? weather;
 
-  /// Example: Gomel
+  /// Example: Gomel.
   final String? city;
 
-  // Country code. Example: BY
+  // Country code. Example: BY.
   final String? codeCountry;
 
-  /// Wind speed, meter/sec. Examlple: 6
+  /// Wind speed, meter/sec. Examlple: 6.
   final double? windSpeed;
 
-  /// Humidity, %. Example: 70
+  /// Humidity, %. Example: 70.
   final int? humidity;
 
-  /// Wind direction, degrees (meteorological). Example: 230
+  /// Wind direction, degrees (meteorological). Example: 230.
   final int? windDegrees;
 
-  /// Atmospheric pressure, hPa. Example: 1023
+  /// Atmospheric pressure, hPa. Example: 1023.
   final int? pressure;
 
-  /// Rain volume for the last 1 hour, mm. Example: 1.0
+  /// Rain volume for the last 1 hour, mm. Example: 1.0.
   final double? rainVolume;
 
   final String? icon;

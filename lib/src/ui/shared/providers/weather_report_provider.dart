@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:share_plus/share_plus.dart';
 
-class ShareTextUseCase {
+class WeatherReportProvider {
   Future<void> call(String text) async {
     try {
       await Share.share(text);

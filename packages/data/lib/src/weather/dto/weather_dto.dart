@@ -18,11 +18,12 @@ class WeatherDto {
   });
 
   WeatherDto.fromJson(Map<String, dynamic> json) {
+    final Iterable _weather = json['weather'];
     if (json['weather'] != null) {
       weather = <_WeatherDto>[];
-      json['weather'].forEach((v) {
-        weather?.add(_WeatherDto.fromJson(v));
-      });
+      for (final e in _weather) {
+        weather?.add(_WeatherDto.fromJson(e));
+      }
     }
     main = json['main'] != null ? _MainDto.fromJson(json['main']) : null;
     wind = json['wind'] != null ? _WindDto.fromJson(json['wind']) : null;
@@ -72,7 +73,8 @@ class _WindDto {
   _WindDto({this.speed, this.deg});
 
   _WindDto.fromJson(Map<String, dynamic> json) {
-    speed = json['speed'].toDouble();
+    final double _speed = json['speed']; 
+    speed = _speed;
     deg = json['deg'];
   }
 }

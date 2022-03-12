@@ -6,7 +6,4 @@ class Coordinates {
     required this.latitude,
     required this.longitude,
   });
-
-  @override
-  String toString() => 'Coordinates(latitude: $latitude, longitude: $longitude)';
 }
