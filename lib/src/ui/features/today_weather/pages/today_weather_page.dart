@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../ui/features/today_weather/bloc/today_weather_bloc.dart';
 import '../../../../ui/features/today_weather/decorators/divider_decorator.dart';
 import '../../../../ui/features/today_weather/extensions/wind_direction_extension.dart';
-import '../../../../ui/features/today_weather/widgets/widgets.dart';
 import '../../../../ui/shared/const/app_symbols.dart';
 import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../ui/shared/localization/extensions/l10n_extension.dart';
@@ -13,6 +11,9 @@ import '../../../../ui/shared/widgets/language_flag.dart';
 import '../../../../ui/shared/widgets/language_picker.dart';
 import '../../../../ui/shared/widgets/patterned_line/widget.dart';
 import '../../../shared/assets/assets.dart';
+import '../reports/share_report.dart';
+import '../reports/today_weather_report.dart';
+import '../widgets/weather_indicator_icon/weather_indicator_icon.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -112,7 +113,12 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 ],
               ),
               const DividerDecorator(),
-              ShareButton(weather: state.weather),
+              TextButton(
+                onPressed: () async {
+                  await shareReport(createTodayWeatherReport(state.weather));
+                },
+                child: Text(context.l10n?.shareButtonText ?? ''),
+              ),
             ],
           );
         },

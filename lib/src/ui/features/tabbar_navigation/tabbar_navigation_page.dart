@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../features/forecast_weather/pages/forecast_weather_page.dart';
