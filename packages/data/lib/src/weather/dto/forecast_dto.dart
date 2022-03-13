@@ -47,9 +47,9 @@ class _MainDto {
   });
 
   factory _MainDto.fromJson(Map<String, dynamic> json) {
-    final double temp = json['temp'];
+    final num temp = json['temp'];
     return _MainDto(
-      temp: temp,
+      temp: temp.toDouble(),
     );
   }
 }
