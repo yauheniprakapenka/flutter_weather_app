@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
+import 'package:get/instance_manager.dart';
 
 import '../../features/forecast_weather/pages/forecast_weather_page.dart';
 import '../../features/today_weather/pages/today_weather_page.dart';
+import '../../shared/assets/assets.dart';
 import '../../shared/localization/extensions/l10n_extension.dart';
 import '../../shared/theme/app_colors.dart';
 
@@ -24,13 +25,14 @@ class _TabbarNavigationPageState extends State<TabbarNavigationPage> {
 
   @override
   Widget build(context) {
+    final appColors = Get.find<AppColors>();
     return Scaffold(
       body: _pages.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemPressed,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
-        unselectedItemColor: context.read<AppColors>().inActive,
+        unselectedItemColor: appColors.inActive,
         items: [
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationTodayLabel ?? '-',
@@ -38,12 +40,7 @@ class _TabbarNavigationPageState extends State<TabbarNavigationPage> {
           ),
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationForecaseLabel ?? '-',
-            icon: SvgPicture.asset(
-              'assets/icons/forecast.svg',
-              color: _currentIndex == 1
-                  ? context.read<AppColors>().secondary
-                  : context.read<AppColors>().inActive,
-            ),
+            icon: Assets().forecast(isActive: _currentIndex == 1),
           ),
         ],
       ),

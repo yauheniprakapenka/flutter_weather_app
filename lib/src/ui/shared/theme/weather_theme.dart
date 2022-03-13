@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
+import 'package:get/instance_manager.dart';
 
 import 'app_colors.dart';
 
-class LightTheme {
-  final BuildContext context;
+class WeatherTheme {
+  final _appColors = Get.find<AppColors>();
 
-  LightTheme(this.context);
-
-  ThemeData init() {
+  ThemeData light() {
     return ThemeData(
-      primaryColor: context.read<AppColors>().primary,
-      dividerColor: context.read<AppColors>().divider,
+      primaryColor: _appColors.primary,
+      dividerColor: _appColors.divider,
       appBarTheme: _buildAppBarTheme(),
       textButtonTheme: _buildTextButtonThemeData(),
     );
@@ -39,7 +37,7 @@ class LightTheme {
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.resolveWith(
           (states) {
-            return context.read<AppColors>().foregroundTextButton;
+            return _appColors.foregroundTextButton;
           },
         ),
         textStyle: MaterialStateProperty.resolveWith(

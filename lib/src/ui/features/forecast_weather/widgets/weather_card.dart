@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/theme/app_colors.dart';
@@ -24,12 +24,13 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final appColors = Get.find<AppColors>();
     return Container(
       height: 88,
       decoration: BoxDecoration(
         border: hasActiveBorder
             ? Border.fromBorderSide(
-                BorderSide(width: 3, color: context.read<AppColors>().secondary),
+                BorderSide(width: 3, color: appColors.secondary),
               )
             : null,
       ),
@@ -64,7 +65,7 @@ class WeatherCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (hasBottomBorder) Container(height: 1, color: context.read<AppColors>().divider),
+                if (hasBottomBorder) Container(height: 1, color: appColors.divider),
               ],
             ),
           ),
@@ -86,7 +87,7 @@ class _Celsium extends StatelessWidget {
       style: TextStyle(
         fontSize: 40,
         fontWeight: FontWeight.w500,
-        color: context.read<AppColors>().secondary,
+        color: Get.find<AppColors>().secondary,
       ),
     );
   }

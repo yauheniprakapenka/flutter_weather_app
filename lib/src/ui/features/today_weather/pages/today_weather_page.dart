@@ -12,6 +12,7 @@ import '../../../../ui/shared/localization/extensions/l10n_extension.dart';
 import '../../../../ui/shared/widgets/language_flag.dart';
 import '../../../../ui/shared/widgets/language_picker.dart';
 import '../../../../ui/shared/widgets/patterned_line/widget.dart';
+import '../../../shared/assets/assets.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -77,27 +78,15 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                 children: [
                   WeatherIndicatorIcon(
                     title: '${state.weather.humidity ?? '-'}%',
-                    icon: SvgPicture.asset(
-                      'assets/icons/rain.svg',
-                      color: Theme.of(context).primaryColor,
-                      height: 32,
-                    ),
+                    icon: Assets.rain,
                   ),
                   WeatherIndicatorIcon(
                     title: '${state.weather.rainVolume ?? '-'} mm',
-                    icon: SvgPicture.asset(
-                      'assets/icons/water.svg',
-                      color: Theme.of(context).primaryColor,
-                      height: 32,
-                    ),
+                    icon: Assets.water,
                   ),
                   WeatherIndicatorIcon(
                     title: '${state.weather.pressure ?? '-'} hPa',
-                    icon: SvgPicture.asset(
-                      'assets/icons/celsius.svg',
-                      color: Theme.of(context).primaryColor,
-                      height: 44,
-                    ),
+                    icon: Assets.celsius,
                   ),
                 ],
               ),

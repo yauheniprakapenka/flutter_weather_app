@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import '../../../shared/theme/app_colors.dart';
 
@@ -10,7 +10,7 @@ class WeatherDay extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final border = BorderSide(color: context.read<AppColors>().divider);
+    final border = BorderSide(color: Get.find<AppColors>().divider);
     return Container(
       width: double.maxFinite,
       decoration: BoxDecoration(
