@@ -22,11 +22,12 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
 
-  # architecture
   data:
     path: packages/data/
   domain:
     path: packages/domain/
+  weather_ui:
+    path: packages/weather_ui/
 
 dev_dependencies:
   flutter_test:

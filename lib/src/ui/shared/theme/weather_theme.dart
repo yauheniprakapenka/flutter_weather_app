@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/instance_manager.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import 'app_colors.dart';
 
@@ -42,10 +43,7 @@ class WeatherTheme {
         ),
         textStyle: MaterialStateProperty.resolveWith(
           (states) {
-            return const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            );
+            return WeatherTextStyle.button;
           },
         ),
       ),

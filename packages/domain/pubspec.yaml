@@ -1,4 +1,5 @@
 name: domain
+publish_to: "none"
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
