@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/src/ui/shared/widgets/patterned_line/pattern_widget_config.dart';
+
+import 'pattern_widget_config.dart';
 
 class PatternWidget extends StatelessWidget {
   final Color color;

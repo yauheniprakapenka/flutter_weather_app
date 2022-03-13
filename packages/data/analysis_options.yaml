@@ -1,4 +1,4 @@
-# Updated: 12.03.2022
+# Updated: 13.03.2022
 
 include: package:flutter_lints/flutter.yaml
 
@@ -9,7 +9,65 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:
-    invalid_annotation_target: ignore  
+    invalid_annotation_target: ignore
+
+######################################################
+#              Dart Code Metric                      #
+######################################################
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    number-of-methods: 10
+    number-of-parameters: 4
+    source-lines-of-code: 50
+    weight-of-class: 0.33
+  rules:
+    # - avoid-ignoring-return-values
+    # - avoid-late-keyword
+    - avoid-collection-methods-with-unrelated-types
+    - avoid-global-state
+    - avoid-dynamic
+    - avoid-missing-enum-constant-in-map
+    - avoid-nested-conditional-expressions:
+        acceptable-level: 2
+    - avoid-non-null-assertion
+    - avoid-throw-in-catch-block
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unused-parameters
+    - avoid-unrelated-type-assertions
+    - ban-name
+    - binary-expression-operand-order
+    - double-literal-format
+    - format-comment
+    - member-ordering-extended
+    - member-ordering
+    # - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    # - no-equal-arguments
+    - no-equal-then-else
+    # - no-magic-number
+    - no-object-declaration
+    - prefer-conditional-expressions
+    # - prefer-correct-identifier-length
+    - prefer-correct-type-name
+    - prefer-first
+    - prefer-last
+    - prefer-async-await
+    - prefer-match-file-name
+    # - prefer-trailing-comma
+    - tag-name
+    - avoid-border-all
+    - always-remove-listener
+    - avoid-returning-widgets
+    - avoid-unnecessary-setstate
+    - avoid-wrapping-in-padding
+    # - prefer-extracting-callbacks
+    - prefer-single-widget-per-file:
+        ignore-private-widgets: true
 
 ######################################################
 #                flutter_lints                       #
@@ -17,10 +75,6 @@ analyzer:
 
 linter:
   rules:
-    ###############
-    # Error rules #
-    ###############
-
     # - always_use_package_imports
     - avoid_dynamic_calls
     - avoid_print
@@ -44,7 +98,7 @@ linter:
     - no_adjacent_strings_in_list
     - no_duplicate_case_values
     - no_logic_in_create_state
-    # - prefer_relative_imports
+    - prefer_relative_imports
     - prefer_void_to_null
     - test_types_in_equals
     - throw_in_finally
@@ -54,11 +108,6 @@ linter:
     - use_build_context_synchronously
     - use_key_in_widget_constructors
     - valid_regexps
-
-    ###############
-    # Style rules #
-    ###############
-
     - always_declare_return_types
     # - always_put_control_body_on_new_line
     # - always_put_required_named_parameters_first
@@ -146,7 +195,7 @@ linter:
     - prefer_contains
     # - prefer_double_quotes
     - prefer_equal_for_default_values
-    # - prefer_expression_function_bodies 
+    # - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
@@ -213,70 +262,3 @@ linter:
     - use_string_buffers
     - use_test_throws_matchers
     - void_checks
-
-######################################################
-#              Dart Code Metric                      #
-######################################################
-
-dart_code_metrics:
-  metrics:
-    cyclomatic-complexity: 20
-    maximum-nesting-level: 5
-    number-of-methods: 10
-    number-of-parameters: 4
-    source-lines-of-code: 50
-    weight-of-class: 0.33
-  rules:
-    ##########
-    # Common #
-    ##########
-
-    # - avoid-ignoring-return-values
-    # - avoid-late-keyword
-    - avoid-collection-methods-with-unrelated-types
-    - avoid-global-state
-    - avoid-dynamic
-    - avoid-missing-enum-constant-in-map
-    - avoid-nested-conditional-expressions:
-        acceptable-level: 2
-    - avoid-non-null-assertion    
-    - avoid-throw-in-catch-block
-    - avoid-unnecessary-type-assertions
-    - avoid-unnecessary-type-casts
-    - avoid-unused-parameters
-    - avoid-unrelated-type-assertions
-    - ban-name
-    - binary-expression-operand-order
-    - double-literal-format
-    - format-comment
-    - member-ordering-extended
-    - member-ordering
-    # - newline-before-return
-    - no-boolean-literal-compare
-    - no-empty-block
-    # - no-equal-arguments
-    - no-equal-then-else
-    # - no-magic-number
-    - no-object-declaration
-    - prefer-conditional-expressions
-    # - prefer-correct-identifier-length
-    - prefer-correct-type-name
-    - prefer-first
-    - prefer-last
-    - prefer-async-await
-    - prefer-match-file-name
-    # - prefer-trailing-comma
-    - tag-name
-    
-    ###########
-    # Flutter #
-    ###########
-
-    - avoid-border-all
-    - always-remove-listener
-    - avoid-returning-widgets
-    - avoid-unnecessary-setstate
-    - avoid-wrapping-in-padding
-    # - prefer-extracting-callbacks
-    - prefer-single-widget-per-file:
-        ignore-private-widgets: true

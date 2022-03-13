@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/src/ui/shared/localization/extensions/flag_extension.dart';
+
+import '../localization/extensions/flag_extension.dart';
 
 class LanguageFlag extends StatelessWidget {
   final double size;

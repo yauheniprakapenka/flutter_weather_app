@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:domain/src/location/entities/coordinates.dart';
 
 import '../../entities/failure.dart';
+import '../../location/entities/coordinates.dart';
 import '../entities/weather.dart';
 import '../repositories/i_weather_repository.dart';
 
