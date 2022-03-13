@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import 'builders/stroke_line_builder.dart';
 import 'models/stroke_line_direction.dart';
@@ -57,7 +59,9 @@ class WeatherIndicatorIcon extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          style: WeatherTextStyle.bodyText2.copyWith(
+            color: Get.find<AppColors>().onBackground,
+          ),
         ),
       ],
     );

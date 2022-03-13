@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/instance_manager.dart';
 import 'package:weather_ui/weather_ui.dart';
 
 import '../../../../ui/features/today_weather/bloc/today_weather_bloc.dart';
@@ -52,7 +53,13 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
         builder: (context, state) {
           if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
           if (state.error.isNotEmpty) {
-            return Center(child: Text(state.error, textAlign: TextAlign.center));
+            return Center(
+              child: Text(
+                state.error,
+                textAlign: TextAlign.center,
+                style: WeatherTextStyle.bodyText2,
+              ),
+            );
           }
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,17 +67,12 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
               Image.network('http://openweathermap.org/img/wn/${state.weather.icon}@2x.png'),
               Text(
                 '${state.weather.city}, ${state.weather.codeCountry}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
+                style: WeatherTextStyle.headline6,
               ),
               Text(
                 '${_getTemperature(state.weather.temperature)} | ${state.weather.weather}',
-                style: const TextStyle(
-                  color: Color(0xFF4e91f7),
-                  fontSize: 28,
-                  fontWeight: FontWeight.w300,
+                style: WeatherTextStyle.headline5.copyWith(
+                  color: Get.find<AppColors>().secondary,
                 ),
               ),
               const DividerDecorator(),
@@ -98,7 +100,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     title: '${state.weather.windSpeed ?? '-'} km/h',
                     icon: Icon(
                       Icons.air,
-                      color: Theme.of(context).primaryColor,
+                      color: Get.find<AppColors>().primary,
                       size: 40,
                     ),
                   ),
@@ -106,7 +108,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     title: _getWeatherIndicatorTitle(state.weather.windDegrees),
                     icon: Icon(
                       Icons.explore_outlined,
-                      color: Theme.of(context).primaryColor,
+                      color: Get.find<AppColors>().primary,
                       size: 40,
                     ),
                   ),

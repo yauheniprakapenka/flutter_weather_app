@@ -1,7 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
-
-import '../theme/app_colors.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 class Assets {
   static final celsius = SvgPicture.asset(

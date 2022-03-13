@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../localization/models/locale_type.dart';
+import '../models/locale_type.dart';
 
 class LocaleProvider extends ChangeNotifier {
   late Locale _locale;

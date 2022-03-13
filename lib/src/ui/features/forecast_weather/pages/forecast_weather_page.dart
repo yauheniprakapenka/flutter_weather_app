@@ -25,7 +25,13 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
       builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
         if (state.error.isNotEmpty) {
-          return Center(child: Text(state.error, textAlign: TextAlign.center));
+          return Center(
+            child: Text(
+              state.error,
+              textAlign: TextAlign.center,
+              style: WeatherTextStyle.bodyText2,
+            ),
+          );
         }
         return Scaffold(
           appBar: AppBar(

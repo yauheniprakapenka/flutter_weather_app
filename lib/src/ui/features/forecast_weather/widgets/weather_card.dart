@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import '../../../shared/const/app_symbols.dart';
-import '../../../shared/theme/app_colors.dart';
 
 class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
@@ -84,9 +84,7 @@ class _Celsium extends StatelessWidget {
   Widget build(context) {
     return Text(
       '${celsium ?? '-'}${AppSymbols.celsium}',
-      style: TextStyle(
-        fontSize: 40,
-        fontWeight: FontWeight.w500,
+      style: WeatherTextStyle.headline4.copyWith(
         color: Get.find<AppColors>().secondary,
       ),
     );
@@ -102,10 +100,7 @@ class _Time extends StatelessWidget {
   Widget build(context) {
     return Text(
       _getFormatterTime(),
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-      ),
+      style: WeatherTextStyle.bodyText1,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
@@ -128,9 +123,7 @@ class _Description extends StatelessWidget {
   Widget build(context) {
     return Text(
       description ?? '-',
-      style: const TextStyle(
-        fontSize: 16,
-      ),
+      style: WeatherTextStyle.bodyText2,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );

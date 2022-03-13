@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_ui/weather_ui.dart';
 
-import '../../../../../shared/providers/locale_provider.dart';
+import '../../../../../shared/localization/providers/locale_provider.dart';
 
 class LanguagePicker extends StatelessWidget {
   const LanguagePicker({Key? key}) : super(key: key);
@@ -14,7 +16,12 @@ class LanguagePicker extends StatelessWidget {
       items: AppLocalizations.supportedLocales.map((locale) {
         return DropdownMenuItem<String>(
           value: locale.languageCode,
-          child: Text(locale.languageCode),
+          child: Text(
+            locale.languageCode,
+            style: WeatherTextStyle.bodyText1.copyWith(
+              color: Get.find<AppColors>().onBackground,
+            ),
+          ),
         );
       }).toList(),
       onChanged: (languageCode) {

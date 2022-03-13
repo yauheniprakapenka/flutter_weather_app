@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import '../../features/forecast_weather/pages/forecast_weather_page.dart';
 import '../../features/today_weather/pages/today_weather_page.dart';
 import '../../shared/assets/assets.dart';
 import '../../shared/localization/extensions/l10n_extension.dart';
-import '../../shared/theme/app_colors.dart';
 
 class TabbarNavigationPage extends StatefulWidget {
   const TabbarNavigationPage({Key? key}) : super(key: key);
@@ -24,14 +24,13 @@ class _TabbarNavigationPageState extends State<TabbarNavigationPage> {
 
   @override
   Widget build(context) {
-    final appColors = Get.find<AppColors>();
     return Scaffold(
       body: _pages.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemPressed,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
-        unselectedItemColor: appColors.inActive,
+        unselectedItemColor: Get.find<AppColors>().inActive,
         items: [
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationTodayLabel ?? '-',

@@ -4,13 +4,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import '../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../ui/features/tabbar_navigation/tabbar_navigation_page.dart';
 import '../ui/features/today_weather/bloc/today_weather_bloc.dart';
-import '../ui/shared/providers/locale_provider.dart';
-import '../ui/shared/theme/app_colors.dart';
-import '../ui/shared/theme/weather_theme.dart';
+import '../ui/shared/localization/providers/locale_provider.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class _MaterialWeatherApp extends StatelessWidget {
   Widget build(context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: WeatherTheme().light(),
+      theme: WeatherTheme.light(),
       locale: Provider.of<LocaleProvider>(context).locale,
       localizationsDelegates: const [
         AppLocalizations.delegate,

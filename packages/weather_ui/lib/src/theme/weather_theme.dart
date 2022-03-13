@@ -1,44 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/instance_manager.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:get/get.dart';
 
-import 'app_colors.dart';
+import '../../weather_ui.dart';
 
 class WeatherTheme {
-  final _appColors = Get.find<AppColors>();
-
-  ThemeData light() {
+  static ThemeData light() {
     return ThemeData(
-      primaryColor: _appColors.primary,
-      dividerColor: _appColors.divider,
+      primaryColor: Get.find<AppColors>().primary,
+      dividerColor: Get.find<AppColors>().divider,
       appBarTheme: _buildAppBarTheme(),
       textButtonTheme: _buildTextButtonThemeData(),
     );
   }
 
-  AppBarTheme _buildAppBarTheme() {
-    return const AppBarTheme(
+  static AppBarTheme _buildAppBarTheme() {
+    return AppBarTheme(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.red,
       elevation: 0.0,
-      titleTextStyle: TextStyle(
-        fontWeight: FontWeight.w400,
-        fontSize: 20,
-        color: Colors.black,
-      ),
-      systemOverlayStyle: SystemUiOverlayStyle(
+      titleTextStyle: WeatherTextStyle.subtitle1,
+      systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
       ),
     );
   }
 
-  TextButtonThemeData _buildTextButtonThemeData() {
+  static TextButtonThemeData _buildTextButtonThemeData() {
     return TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.resolveWith(
           (states) {
-            return _appColors.foregroundTextButton;
+            return Get.find<AppColors>().foregroundTextButton;
           },
         ),
         textStyle: MaterialStateProperty.resolveWith(

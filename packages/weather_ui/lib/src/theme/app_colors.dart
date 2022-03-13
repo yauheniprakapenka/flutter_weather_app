@@ -10,6 +10,8 @@ abstract class AppColors {
   Color get foregroundTextButton;
 
   Color get inActive;
+
+  Color get onBackground;
 }
 
 class WeatherAppColors implements AppColors {
@@ -26,5 +28,8 @@ class WeatherAppColors implements AppColors {
   Color get foregroundTextButton => const Color(0xFFf09763);
 
   @override
-  Color get inActive => const Color(0xFF000000);
+  Color get inActive => const Color(0xFF616161);
+
+  @override
+  Color get onBackground => const Color(0xFF000000);
 }

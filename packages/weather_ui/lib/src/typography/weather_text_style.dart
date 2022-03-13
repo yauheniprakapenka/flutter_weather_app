@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 
-import 'weather_font_weight.dart';
+import '../../weather_ui.dart';
 
-/// Material Design
-///
-/// https://material.io/design/typography/the-type-system.html#type-scale
 class WeatherTextStyle {
-  static const _baseTextStyle = TextStyle(
+  static final _baseTextStyle = TextStyle(
     package: 'weather_ui',
     fontFamily: 'GoogleSans',
     fontWeight: WeatherFontWeight.regular,
+    color: Get.find<AppColors>().onBackground,
   );
 
   static TextStyle get headline1 {
@@ -62,7 +61,7 @@ class WeatherTextStyle {
   static TextStyle get subtitle1 {
     return _baseTextStyle.copyWith(
       fontSize: 16,
-      fontWeight: WeatherFontWeight.regular,
+      fontWeight: WeatherFontWeight.medium,
       letterSpacing: 0.15,
     );
   }
@@ -70,7 +69,7 @@ class WeatherTextStyle {
   static TextStyle get subtitle2 {
     return _baseTextStyle.copyWith(
       fontSize: 14,
-      fontWeight: WeatherFontWeight.medium,
+      fontWeight: WeatherFontWeight.regular,
       letterSpacing: 0.1,
     );
   }
@@ -93,8 +92,8 @@ class WeatherTextStyle {
 
   static TextStyle get button {
     return _baseTextStyle.copyWith(
-      fontSize: 14,
-      fontWeight: WeatherFontWeight.regular,
+      fontSize: 16,
+      fontWeight: WeatherFontWeight.medium,
       letterSpacing: 0.25,
     );
   }

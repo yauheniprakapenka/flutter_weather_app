@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../shared/theme/app_colors.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 class WeatherDay extends StatelessWidget {
   final String dayTitle;
@@ -20,7 +19,7 @@ class WeatherDay extends StatelessWidget {
         padding: const EdgeInsets.only(top: 16, bottom: 16, left: 16),
         child: Text(
           dayTitle.toUpperCase(),
-          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+          style: WeatherTextStyle.subtitle2,
         ),
       ),
     );
