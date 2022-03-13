@@ -1,27 +1,23 @@
-import 'package:domain/domain.dart';
+part of 'forecast_bloc.dart';
 
-class WeatherState {
+class ForecastState {
   final bool isLoading;
-  final Weather weather;
   final Forecast forecast;
   final String error;
 
-  const WeatherState({
+  const ForecastState({
     this.isLoading = true,
-    required this.weather,
     required this.forecast,
     this.error = '',
   });
 
-  WeatherState copyWith({
+  ForecastState copyWith({
     bool? isLoading,
-    Weather? weather,
     Forecast? forecast,
     String? error,
   }) {
-    return WeatherState(
+    return ForecastState(
       isLoading: isLoading ?? this.isLoading,
-      weather: weather ?? this.weather,
       forecast: forecast ?? this.forecast,
       error: error ?? this.error,
     );

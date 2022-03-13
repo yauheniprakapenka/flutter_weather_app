@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../shared/bloc/weather_bloc/weather.dart';
-import '../../../shared/widgets/patterned_line/widget.dart';
-import '../composites/forecast_list.dart';
+import '../../../../ui/features/forecast_weather/bloc/forecast_bloc.dart';
+import '../../../../ui/features/forecast_weather/composites/forecast_list.dart';
+import '../../../../ui/shared/widgets/patterned_line/widget.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
   const ForecastWeatherPage({Key? key}) : super(key: key);
@@ -16,12 +16,12 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(GetFiveDaysWeatherForecastEvent());
+    context.read<ForecastBloc>().add(GetFiveDaysWeatherForecastEvent());
   }
 
   @override
   Widget build(context) {
-    return BlocBuilder<WeatherBloc, WeatherState>(
+    return BlocBuilder<ForecastBloc, ForecastState>(
       builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
         if (state.error.isNotEmpty) {
