@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_weather_app/src/ui/shared/providers/locale_provider.dart';
-import 'package:flutter_weather_app/src/ui/shared/theme/light_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../ui/features/tabbar_navigation/tabbar_navigation_page.dart';
 import '../ui/shared/bloc/weather_bloc/weather.dart';
-import '../ui/shared/localization/l10n.dart';
+import '../ui/shared/providers/locale_provider.dart';
 import '../ui/shared/theme/app_colors.dart';
+import '../ui/shared/theme/light_theme.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class _MaterialWeatherApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: L10n.all,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const TabbarNavigationPage(),
     );
   }

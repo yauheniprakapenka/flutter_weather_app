@@ -77,10 +77,10 @@ lib/src/ui/shared/localization/arb/app_ru.arb
 
 - Для использования значений локализации импортировать файл 
 ```
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_weather_app/src/ui/shared/localization/extensions/l10n_extension.dart';
 ```
 
-- Выбрать нужный текст
+- Выбрать нужный текст через context
 ```
-AppLocalizations.of(context)?.today ?? ''
+context.l10n?.today ?? ''
 ```

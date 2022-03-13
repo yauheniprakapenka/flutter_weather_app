@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../shared/localization/extensions/l10n_extension.dart';
 
 extension WeekDayExtension on int {
   String getWeekDayTitle(BuildContext context) {
     final dayNow = DateTime.now().weekday;
-    const defaultValue = '-';
-    if (dayNow == this) return AppLocalizations.of(context)?.today ?? defaultValue;
+    const defaultValue = 'Unknown day of week';
+    if (dayNow == this) return context.l10n?.todayPageTodayAppbarLabel ?? defaultValue;
     switch (this) {
       case 1:
-        return AppLocalizations.of(context)?.monday ?? defaultValue;
+        return context.l10n?.dayOfWeekMonday ?? defaultValue;
       case 2:
-        return AppLocalizations.of(context)?.thursday ?? defaultValue;
+        return context.l10n?.dayOfWeekTuesday ?? defaultValue;
       case 3:
-        return AppLocalizations.of(context)?.wednesday ?? defaultValue;
+        return context.l10n?.dayOfWeekWednesday ?? defaultValue;
       case 4:
-        return AppLocalizations.of(context)?.thursday ?? defaultValue;
+        return context.l10n?.dayOfWeekThursday ?? defaultValue;
       case 5:
-        return AppLocalizations.of(context)?.friday ?? defaultValue;
+        return context.l10n?.dayOfWeekFriday ?? defaultValue;
       case 6:
-        return AppLocalizations.of(context)?.saturday ?? defaultValue;
+        return context.l10n?.dayOfWeekSaturday ?? defaultValue;
       case 7:
-        return AppLocalizations.of(context)?.sunday ?? defaultValue;
+        return context.l10n?.dayOfWeekSunday ?? defaultValue;
       default:
         return defaultValue;
     }

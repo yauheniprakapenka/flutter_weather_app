@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/src/ui/shared/localization/l10n.dart';
-import 'package:flutter_weather_app/src/ui/shared/localization/models/locale_type.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../localization/models/locale_type.dart';
 
 class LocaleProvider extends ChangeNotifier {
   late Locale _locale;
@@ -11,11 +12,12 @@ class LocaleProvider extends ChangeNotifier {
 
   LocaleProvider() {
     _locale = _setDefaultLocale();
-    debugPrint('locale: $_locale');
+    debugPrint('Current locale: $_locale');
   }
 
   void setLocale(Locale locale) {
     if (!_isL10nContainsLocale(locale)) return;
+    debugPrint('Locale changed: $_locale -> $locale');
     _locale = locale;
     notifyListeners();
   }
@@ -23,13 +25,10 @@ class LocaleProvider extends ChangeNotifier {
   Locale _setDefaultLocale() {
     final languageCode = Platform.localeName.split('_').first;
     final currentLocale = Locale(languageCode);
-
-    return _isL10nContainsLocale(currentLocale)
-        ? currentLocale
-        : Locale(LocaleType.en.name);
+    return _isL10nContainsLocale(currentLocale) ? currentLocale : Locale(LocaleType.en.name);
   }
 
   bool _isL10nContainsLocale(Locale locale) {
-    return L10n.all.contains(locale);
+    return AppLocalizations.supportedLocales.contains(locale);
   }
 }

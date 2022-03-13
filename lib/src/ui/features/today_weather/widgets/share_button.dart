@@ -1,9 +1,9 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../shared/localization/extensions/l10n_extension.dart';
 import '../../../shared/providers/weather_report_provider.dart';
 import '../extensions/wind_direction_extension.dart';
 
@@ -19,7 +19,7 @@ class ShareButton extends StatelessWidget {
         final shareTextUseCase = WeatherReportProvider();
         await shareTextUseCase(_createWeatherReport());
       },
-      child: Text(AppLocalizations.of(context)?.share ?? ''),
+      child: Text(context.l10n?.shareButtonText ?? ''),
     );
   }
 

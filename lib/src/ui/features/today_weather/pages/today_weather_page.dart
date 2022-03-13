@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../features/today_weather/decorators/divider_decorator.dart';
+import '../../../features/today_weather/extensions/wind_direction_extension.dart';
 import '../../../features/today_weather/widgets/widgets.dart';
 import '../../../shared/bloc/weather_bloc/weather.dart';
 import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../shared/localization/extensions/l10n_extension.dart';
 import '../../../shared/widgets/language_flag.dart';
 import '../../../shared/widgets/language_picker.dart';
 import '../../../shared/widgets/patterned_line/widget.dart';
-import '../extensions/wind_direction_extension.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)?.today ?? ''),
+        title: Text(context.l10n?.todayPageTodayAppbarLabel ?? ''),
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(PatternWidgetConfig.heightSize),
           child: PatternedLine(),

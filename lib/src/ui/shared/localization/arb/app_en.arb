@@ -1,12 +1,13 @@
 {
-    "today": "Today",
-    "forecast": "forecast",
-    "share": "Share",
-    "monday": "monday",
-    "tuesday": "Tuesday",
-    "wednesday": "Wednesday",
-    "thursday": "Thursday",
-    "friday": "Friday",
-    "saturday": "Saturday",
-    "sunday": "Sunday" 
+    "dayOfWeekFriday": "Friday",
+    "dayOfWeekMonday": "monday",
+    "dayOfWeekSaturday": "Saturday",
+    "dayOfWeekSunday": "Sunday",
+    "dayOfWeekThursday": "Thursday",
+    "dayOfWeekTuesday": "Tuesday",
+    "dayOfWeekWednesday": "Wednesday",
+    "shareButtonText": "Share",
+    "tabbarNavigationForecaseLabel": "Forecast",
+    "tabbarNavigationTodayLabel": "Today",
+    "todayPageTodayAppbarLabel": "Today"
 }
