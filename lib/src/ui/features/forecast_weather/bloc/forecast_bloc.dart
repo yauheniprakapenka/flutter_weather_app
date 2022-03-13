@@ -2,7 +2,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/providers/connectivity_provider.dart';
+import '../../../shared/helpers/has_internet.dart';
 
 part 'forecast_event.dart';
 part 'forecast_state.dart';
@@ -16,7 +16,7 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
 
   Future<void> _onGetFiveDaysWeatherForecastEvent(
       GetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
-    if (!await _hasInternet()) return emit(_getNoInternetState());
+    if (!await hasInternet()) return emit(_getNoInternetState());
 
     emit(_getLoadingState());
 
@@ -40,9 +40,5 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
 
   ForecastState _getLoadingState() {
     return state.copyWith(isLoading: true, error: '');
-  }
-
-  Future<bool> _hasInternet() async {
-    return ConnectivityProvider.call();
   }
 }

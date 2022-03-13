@@ -8,12 +8,10 @@ dependencies:
   geolocator: ^8.2.0
   get: ^4.6.1
   dartz: ^0.10.1
-  
+
   domain:
-    path: ../domain/  
+    path: ../domain/
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^1.0.4
   dart_code_metrics: ^4.12.0
