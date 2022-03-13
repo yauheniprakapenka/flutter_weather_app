@@ -11,7 +11,6 @@ import '../../../../ui/features/today_weather/reports/today_weather_report.dart'
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/weather_indicator_icon.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/widgets/language_flag.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/widgets/language_picker.dart';
-import '../../../../ui/shared/assets/assets.dart';
 import '../../../../ui/shared/const/app_symbols.dart';
 import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../ui/shared/localization/extensions/l10n_extension.dart';

@@ -4,7 +4,6 @@ import 'package:weather_ui/weather_ui.dart';
 
 import '../../features/forecast_weather/pages/forecast_weather_page.dart';
 import '../../features/today_weather/pages/today_weather_page.dart';
-import '../../shared/assets/assets.dart';
 import '../../shared/localization/extensions/l10n_extension.dart';
 
 class TabbarNavigationPage extends StatefulWidget {

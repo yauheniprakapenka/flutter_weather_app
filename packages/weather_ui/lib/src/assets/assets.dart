@@ -1,30 +1,32 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
-import 'package:weather_ui/weather_ui.dart';
+
+import '../../weather_ui.dart';
 
 class Assets {
   static final celsius = SvgPicture.asset(
-    'assets/icons/celsius.svg',
+    'packages/weather_ui/assets/icons/celsius.svg',
     color: Get.find<AppColors>().primary,
     height: 44.0,
   );
 
   static final rain = SvgPicture.asset(
-    'assets/icons/rain.svg',
+    'packages/weather_ui/assets/icons/rain.svg',
     color: Get.find<AppColors>().primary,
     height: 32.0,
   );
 
   static final water = SvgPicture.asset(
-    'assets/icons/water.svg',
+    'packages/weather_ui/assets/icons/water.svg',
     color: Get.find<AppColors>().primary,
     height: 32.0,
   );
 
   SvgPicture forecast({required bool isActive}) {
+    final appColors = Get.find<AppColors>();
     return SvgPicture.asset(
-      'assets/icons/forecast.svg',
-      color: isActive ? Get.find<AppColors>().secondary : Get.find<AppColors>().inActive,
+      'packages/weather_ui/assets/icons/forecast.svg',
+      color: isActive ? appColors.secondary : appColors.inActive,
     );
   }
 }
