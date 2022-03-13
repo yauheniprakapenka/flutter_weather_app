@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_ui/weather_ui.dart';
 
 import '../../../../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../../../../ui/features/forecast_weather/composites/forecast_list.dart';
-import '../../../../ui/shared/widgets/patterned_line/widget.dart';
 
 class ForecastWeatherPage extends StatefulWidget {
   const ForecastWeatherPage({Key? key}) : super(key: key);
