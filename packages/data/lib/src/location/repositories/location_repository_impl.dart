@@ -15,7 +15,8 @@ class LocationRepositoryImpl implements ILocationRepository {
       final coordinates = await _remoteDataSource.getCurrentLocation();
       return Right(coordinates);
     } on Exception catch (e) {
-      return Left(Failure(e.toString()));
+      final message = e.toString().split('Exception: ').last;
+      return Left(Failure(message));
     }
   }
 }

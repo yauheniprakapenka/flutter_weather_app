@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../i_location_remote_data_source.dart';
+import 'i_location_remote_data_source.dart';
 
 class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
   @override
@@ -9,7 +9,7 @@ class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
     try {
       final position = await _determinePosition();
       return Coordinates(latitude: position.latitude, longitude: position.longitude);
-    } on Exception catch (_) {
+    } on Exception {
       rethrow;
     }
   }
@@ -32,8 +32,7 @@ class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      throw Exception(
-          'Location permissions are permanently denied, we cannot request permissions.');
+      throw Exception('Allow access to your location to display the weather for your current location.');
     }
 
     return Geolocator.getCurrentPosition();
