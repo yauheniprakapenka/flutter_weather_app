@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,7 +23,7 @@ class LocaleProvider extends ChangeNotifier {
   }
 
   Locale _setDefaultLocale() {
-    final languageCode = Platform.localeName.split('_').first;
+    final languageCode = ui.window.locale.languageCode;
     final currentLocale = Locale(languageCode);
     return _isL10nContainsLocale(currentLocale) ? currentLocale : Locale(LocaleType.en.name);
   }
