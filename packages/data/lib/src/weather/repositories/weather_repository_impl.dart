@@ -1,46 +1,52 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:domain/domain.dart';
 
-import '../adapters/forecast_adapter.dart';
+import '../datasource/i_weather_local_data_source.dart';
 import '../datasource/i_weather_remote_data_source.dart';
+import '../mapper/forecast_mapper.dart';
 import '../mapper/weather_mapper.dart';
 
 class WeatherRepositoryImpl implements IWeatherRepository {
+  final IWeatherLocalDataSource _localDataSource;
   final IWeatherRemoteDataSource _remoteDataSource;
 
-  const WeatherRepositoryImpl({required IWeatherRemoteDataSource remoteDataSource})
-      : _remoteDataSource = remoteDataSource;
+  const WeatherRepositoryImpl({
+    required IWeatherLocalDataSource localDataSource,
+    required IWeatherRemoteDataSource remoteDataSource,
+  })  : _localDataSource = localDataSource,
+        _remoteDataSource = remoteDataSource;
 
   @override
   Future<Either<Failure, Weather>> getTodayWeather(Coordinates coordinates) async {
-    try {
-      final weatherDto = await _remoteDataSource.getTodayWeather(coordinates);
-      final weather = mapWeatherDtoToEntity(weatherDto);
-      return Right(weather);
-    } on Exception catch (e) {
-      if (e is DioError) {
-        final Map<String, dynamic> response = e.response?.data;
-        final String? data = response['message'];
-        return Left(Failure(data ?? 'Error get today weather'));
+    var localWeatherDto = await _localDataSource.getTodayWeather();
+    if (localWeatherDto == null) {
+      try {
+        final remoteWeatherDto = await _remoteDataSource.getTodayWeather(coordinates);
+        await _localDataSource.saveTodayWeather(remoteWeatherDto);
+        localWeatherDto = await _localDataSource.getTodayWeather();
+      } on Exception catch (e) {
+        return Left(Failure('$e'));
       }
-      return const Left(Failure('Error get today weather'));
     }
+    return localWeatherDto == null
+        ? const Left(Failure('Today weather is null'))
+        : Right(mapWeatherDtoToEntity(localWeatherDto));
   }
 
   @override
   Future<Either<Failure, Forecast>> getFiveDaysWeatherForecast(Coordinates coordinates) async {
-    try {
-      final forecastDto = await _remoteDataSource.getFiveDaysWeatherForecast(coordinates);
-      final forecast = ForecastAdapter.mapDtoToEntity(forecastDto);
-      return Right(forecast);
-    } on Exception catch (e) {
-      if (e is DioError) {
-        final Map<String, dynamic> response = e.response?.data;
-        final String? data = response['message'];
-        return Left(Failure(data ?? 'Error get five days weather forecast'));
+    var localForecastDto = await _localDataSource.getFiveDaysWeatherForecast();
+    if (localForecastDto == null) {
+      try {
+        final remoteForecastDto = await _remoteDataSource.getFiveDaysWeatherForecast(coordinates);
+        await _localDataSource.saveFiveDaysWeatherForecast(remoteForecastDto);
+        localForecastDto = await _localDataSource.getFiveDaysWeatherForecast();
+      } on Exception catch (e) {
+        return Left(Failure('$e'));
       }
-      return const Left(Failure('Error get five days weather forecast'));
     }
+    return localForecastDto == null
+        ? const Left(Failure('Forecast weathet is null'))
+        : Right(mapForecastDtoToEntity(localForecastDto));
   }
 }

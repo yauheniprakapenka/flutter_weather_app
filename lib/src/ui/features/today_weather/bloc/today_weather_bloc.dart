@@ -23,8 +23,7 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
     await coordinates.fold(
       (failure) async => emit(state.copyWith(error: failure.message)),
       (coordinates) async {
-        final weather =
-            await GetTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
+        final weather = await GetTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
         weather.fold(
           (failure) => emit(state.copyWith(error: failure.message)),
           (weather) => emit(state.copyWith(weather: weather)),

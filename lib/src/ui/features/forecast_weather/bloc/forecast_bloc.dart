@@ -14,8 +14,7 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
     on<GetFiveDaysWeatherForecastEvent>(_onGetFiveDaysWeatherForecastEvent);
   }
 
-  Future<void> _onGetFiveDaysWeatherForecastEvent(
-      GetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
+  Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
     if (!await hasInternet()) return emit(_getNoInternetState());
 
     emit(_getLoadingState());
@@ -24,7 +23,7 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
     await coordinates.fold(
       (failure) async => emit(state.copyWith(error: failure.message)),
       (coordinates) async {
-        final forecast = await GetFiveDaysWeatherForecastUseCase(Get.find()).call(coordinates);
+        final forecast = await GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find()).call(coordinates);
         forecast.fold(
           (failure) => emit(state.copyWith(error: failure.message)),
           (forecast) => emit(state.copyWith(forecast: forecast)),
