@@ -5,22 +5,12 @@ import 'package:weather_ui/weather_ui.dart';
 import '../../../../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../../../../ui/features/forecast_weather/composites/forecast_list.dart';
 
-class ForecastWeatherPage extends StatefulWidget {
+class ForecastWeatherPage extends StatelessWidget {
   const ForecastWeatherPage({Key? key}) : super(key: key);
 
   @override
-  State<ForecastWeatherPage> createState() => _ForecastWeatherPageState();
-}
-
-class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<ForecastBloc>().add(GetFiveDaysWeatherForecastEvent());
-  }
-
-  @override
   Widget build(context) {
+    context.read<ForecastBloc>().add(GetFiveDaysWeatherForecastEvent());
     return BlocBuilder<ForecastBloc, ForecastState>(
       builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
@@ -41,10 +31,15 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
               child: PatternedLine(),
             ),
           ),
-          body: ListView(
-            children: [
-              ForecastList(forecast: state.forecast),
-            ],
+          body: RefreshIndicator(
+            onRefresh: () async {
+              context.read<ForecastBloc>().add(RefreshGetFiveDaysWeatherForecastEvent());
+            },
+            child: ListView(
+              children: [
+                ForecastList(forecast: state.forecast),
+              ],
+            ),
           ),
         );
       },

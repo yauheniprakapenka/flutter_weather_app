@@ -12,6 +12,24 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
 
   TodayWeatherBloc() : super(const TodayWeatherState(weather: Weather())) {
     on<GetTodayWeatherEvent>(_onGetTodayWeather);
+    on<RefreshTodayWeatherEvent>(_onRefreshTodayWeatherEvent);
+  }
+
+  Future<void> _onRefreshTodayWeatherEvent(RefreshTodayWeatherEvent _, Emitter<TodayWeatherState> emit) async {
+    emit(_getLoadingState());
+    final coordinates = await _getCurrentLocationUseCase();
+    await coordinates.fold(
+      (failure) async {
+        emit(state.copyWith(error: failure.message, isLoading: false));
+      },
+      (coordinates) async {
+        final weather = await RefreshTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
+        weather.fold(
+          (failure) => emit(state.copyWith(error: failure.message, isLoading: false)),
+          (weather) => emit(state.copyWith(weather: weather, isLoading: false)),
+        );
+      },
+    );
   }
 
   Future<void> _onGetTodayWeather(GetTodayWeatherEvent _, Emitter<TodayWeatherState> emit) async {
@@ -21,16 +39,15 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
 
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
-      (failure) async => emit(state.copyWith(error: failure.message)),
+      (failure) async => emit(state.copyWith(error: failure.message, isLoading: false)),
       (coordinates) async {
         final weather = await GetTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
         weather.fold(
-          (failure) => emit(state.copyWith(error: failure.message)),
-          (weather) => emit(state.copyWith(weather: weather)),
+          (failure) => emit(state.copyWith(error: failure.message, isLoading: false)),
+          (weather) => emit(state.copyWith(weather: weather, isLoading: false)),
         );
       },
     );
-    emit(state.copyWith(isLoading: false));
   }
 
   TodayWeatherState _getNoInternetState() {

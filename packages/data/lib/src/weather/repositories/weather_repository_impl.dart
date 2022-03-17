@@ -34,6 +34,20 @@ class WeatherRepositoryImpl implements IWeatherRepository {
   }
 
   @override
+  Future<Either<Failure, Weather>> refreshTodayWeather(Coordinates coordinates) async {
+    try {
+      final remoteWeatherDto = await _remoteDataSource.getTodayWeather(coordinates);
+      await _localDataSource.saveTodayWeather(remoteWeatherDto);
+    } on Exception catch (e) {
+      return Left(Failure('$e'));
+    }
+    final localWeatherDto = await _localDataSource.getTodayWeather();
+    return localWeatherDto == null
+        ? const Left(Failure('Today weather is null'))
+        : Right(mapWeatherDtoToEntity(localWeatherDto));
+  }
+
+  @override
   Future<Either<Failure, Forecast>> getFiveDaysWeatherForecast(Coordinates coordinates) async {
     var localForecastDto = await _localDataSource.getFiveDaysWeatherForecast();
     if (localForecastDto == null) {
@@ -48,5 +62,19 @@ class WeatherRepositoryImpl implements IWeatherRepository {
     return localForecastDto == null
         ? const Left(Failure('Forecast weathet is null'))
         : Right(mapForecastDtoToEntity(localForecastDto));
+  }
+
+  @override
+  Future<Either<Failure, Forecast>> refreshFiveDaysWeatherForecast(Coordinates coordinates) async {
+    try {
+      final remoteForecastrDto = await _remoteDataSource.getFiveDaysWeatherForecast(coordinates);
+      await _localDataSource.saveFiveDaysWeatherForecast(remoteForecastrDto);
+    } on Exception catch (e) {
+      return Left(Failure('$e'));
+    }
+    final localForecastrDto = await _localDataSource.getFiveDaysWeatherForecast();
+    return localForecastrDto == null
+        ? const Left(Failure('Today weather is null'))
+        : Right(mapForecastDtoToEntity(localForecastrDto));
   }
 }

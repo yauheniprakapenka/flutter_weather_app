@@ -12,6 +12,22 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
 
   ForecastBloc() : super(const ForecastState(forecast: Forecast())) {
     on<GetFiveDaysWeatherForecastEvent>(_onGetFiveDaysWeatherForecastEvent);
+    on<RefreshGetFiveDaysWeatherForecastEvent>(_onRefreshGetFiveDaysWeatherForecastEvent);
+  }
+
+  Future<void> _onRefreshGetFiveDaysWeatherForecastEvent(RefreshGetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
+    emit(_getLoadingState());
+    final coordinates = await _getCurrentLocationUseCase();
+    await coordinates.fold((failure) async {
+      emit(state.copyWith(error: failure.message));
+    }, (coordinates) async {
+      final forecast = await RefreshFiveDaysWeatherForecastUseCase(weatherRepository: Get.find()).call(coordinates);
+      forecast.fold(
+        (failure) => emit(state.copyWith(error: failure.message)),
+        (forecast) => emit(state.copyWith(forecast: forecast)),
+      );
+    });
+    emit(state.copyWith(isLoading: false));
   }
 
   Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {

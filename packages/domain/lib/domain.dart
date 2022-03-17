@@ -8,5 +8,4 @@ export 'src/weather/entities/forecast.dart';
 export 'src/weather/entities/forecast_weather.dart';
 export 'src/weather/entities/weather.dart';
 export 'src/weather/repositories/i_weather_repository.dart';
-export 'src/weather/usecases/get_five_days_weather_forecast_usecase.dart';
-export 'src/weather/usecases/get_today_weather_usecase.dart';
+export 'src/weather/usecases/usecases.dart';
