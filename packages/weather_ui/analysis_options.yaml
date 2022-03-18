@@ -1,4 +1,4 @@
-# Updated: 13.03.2022
+# Updated: 18.03.2022
 
 include: package:flutter_lints/flutter.yaml
 
@@ -60,7 +60,7 @@ dart_code_metrics:
     - prefer-match-file-name
     # - prefer-trailing-comma
     - tag-name
-    - avoid-border-all
+    # - avoid-border-all
     - always-remove-listener
     - avoid-returning-widgets
     - avoid-unnecessary-setstate

@@ -38,7 +38,12 @@ class WeatherCard extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Image.network('http://openweathermap.org/img/wn/$icon@2x.png'),
+            child: Image.network(
+              'http://openweathermap.org/img/wn/$icon@2x.png',
+              errorBuilder: (_, __, ___) {
+                return const Icon(Icons.help_outline);
+              },
+            ),
           ),
           Expanded(
             child: Column(

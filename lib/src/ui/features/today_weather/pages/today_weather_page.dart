@@ -38,18 +38,14 @@ class TodayWeatherPage extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<TodayWeatherBloc, TodayWeatherState>(
+      body: BlocConsumer<TodayWeatherBloc, TodayWeatherState>(
+        listener: (context, state) {
+           if (state.errorMessage.isNotEmpty) {
+             context.showToastMessage(text: state.errorMessage);
+          }
+        },
         builder: (context, state) {
           if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
-          if (state.error.isNotEmpty) {
-            return Center(
-              child: Text(
-                state.error,
-                textAlign: TextAlign.center,
-                style: WeatherTextStyle.bodyText2,
-              ),
-            );
-          }
           return RefreshIndicator(
             onRefresh: () async {
               context.read<TodayWeatherBloc>().add(RefreshTodayWeatherEvent());
@@ -60,7 +56,12 @@ class TodayWeatherPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.network('http://openweathermap.org/img/wn/${state.weather.icon}@2x.png'),
+                    Image.network(
+                      'http://openweathermap.org/img/wn/${state.weather.icon}@2x.png',
+                      errorBuilder: (_, __, ___) {
+                        return const Icon(Icons.help_outline);
+                      },
+                    ),
                     Text(
                       '${state.weather.city}, ${state.weather.codeCountry}',
                       style: WeatherTextStyle.headline6,

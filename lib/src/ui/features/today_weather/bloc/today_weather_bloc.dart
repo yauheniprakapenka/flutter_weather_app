@@ -20,12 +20,12 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
       (failure) async {
-        emit(state.copyWith(error: failure.message, isLoading: false));
+        emit(state.copyWith(errorMessage: failure.message, isLoading: false));
       },
       (coordinates) async {
         final weather = await RefreshTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
         weather.fold(
-          (failure) => emit(state.copyWith(error: failure.message, isLoading: false)),
+          (failure) => emit(state.copyWith(errorMessage: failure.message, isLoading: false)),
           (weather) => emit(state.copyWith(weather: weather, isLoading: false)),
         );
       },
@@ -39,11 +39,11 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
 
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
-      (failure) async => emit(state.copyWith(error: failure.message, isLoading: false)),
+      (failure) async => emit(state.copyWith(errorMessage: failure.message, isLoading: false)),
       (coordinates) async {
         final weather = await GetTodayWeatherUseCase(weatherRepository: Get.find()).call(coordinates);
         weather.fold(
-          (failure) => emit(state.copyWith(error: failure.message, isLoading: false)),
+          (failure) => emit(state.copyWith(errorMessage: failure.message, isLoading: false)),
           (weather) => emit(state.copyWith(weather: weather, isLoading: false)),
         );
       },
@@ -51,10 +51,10 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
   }
 
   TodayWeatherState _getNoInternetState() {
-    return state.copyWith(error: 'No internet', isLoading: false);
+    return state.copyWith(errorMessage: 'No internet', isLoading: false);
   }
 
   TodayWeatherState _getLoadingState() {
-    return state.copyWith(isLoading: true, error: '');
+    return state.copyWith(isLoading: true, errorMessage: '');
   }
 }

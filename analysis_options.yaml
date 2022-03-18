@@ -1,4 +1,4 @@
-# Updated: 13.03.2022
+# Updated: 18.03.2022
 
 include: package:flutter_lints/flutter.yaml
 
@@ -24,6 +24,10 @@ dart_code_metrics:
     source-lines-of-code: 50
     weight-of-class: 0.33
   rules:
+    - always-remove-listener
+    - avoid-returning-widgets
+    - avoid-unnecessary-setstate
+    - avoid-wrapping-in-padding
     # - avoid-ignoring-return-values
     # - avoid-late-keyword
     - avoid-collection-methods-with-unrelated-types
@@ -38,10 +42,11 @@ dart_code_metrics:
     - avoid-unnecessary-type-casts
     - avoid-unused-parameters
     - avoid-unrelated-type-assertions
+    # - avoid-border-all
     - ban-name
     - binary-expression-operand-order
     - double-literal-format
-    - format-comment
+    # - format-comment
     - member-ordering-extended
     - member-ordering
     # - newline-before-return
@@ -54,18 +59,14 @@ dart_code_metrics:
     - prefer-conditional-expressions
     # - prefer-correct-identifier-length
     - prefer-correct-type-name
+    # - prefer-extracting-callbacks
     - prefer-first
     - prefer-last
     - prefer-async-await
     - prefer-match-file-name
     # - prefer-trailing-comma
+    - prefer-immediate-return
     - tag-name
-    - avoid-border-all
-    - always-remove-listener
-    - avoid-returning-widgets
-    - avoid-unnecessary-setstate
-    - avoid-wrapping-in-padding
-    # - prefer-extracting-callbacks
     - prefer-single-widget-per-file:
         ignore-private-widgets: true
 
@@ -228,7 +229,7 @@ linter:
     - slash_for_doc_comments
     - sort_child_properties_last
     # - sort_constructors_first
-    - sort_unnamed_constructors_first
+    # - sort_unnamed_constructors_first
     - tighten_type_of_initializing_formals
     # - type_annotate_public_apis
     - unawaited_futures
