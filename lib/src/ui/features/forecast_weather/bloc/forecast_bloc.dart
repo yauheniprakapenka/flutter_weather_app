@@ -16,14 +16,15 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   }
 
   Future<void> _onRefreshGetFiveDaysWeatherForecastEvent(RefreshGetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
+    if (!await hasInternet()) return emit(_getNoInternetState());
     emit(_getLoadingState());
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold((failure) async {
-      emit(state.copyWith(error: failure.message));
+      emit(state.copyWith(errorMessage: failure.message));
     }, (coordinates) async {
       final forecast = await RefreshFiveDaysWeatherForecastUseCase(weatherRepository: Get.find()).call(coordinates);
       forecast.fold(
-        (failure) => emit(state.copyWith(error: failure.message)),
+        (failure) => emit(state.copyWith(errorMessage: failure.message)),
         (forecast) => emit(state.copyWith(forecast: forecast)),
       );
     });
@@ -32,16 +33,14 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
 
   Future<void> _onGetFiveDaysWeatherForecastEvent(GetFiveDaysWeatherForecastEvent _, Emitter<ForecastState> emit) async {
     if (!await hasInternet()) return emit(_getNoInternetState());
-
     emit(_getLoadingState());
-
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
-      (failure) async => emit(state.copyWith(error: failure.message)),
+      (failure) async => emit(state.copyWith(errorMessage: failure.message)),
       (coordinates) async {
         final forecast = await GetFiveDaysWeatherForecastUseCase(weatherRepository: Get.find()).call(coordinates);
         forecast.fold(
-          (failure) => emit(state.copyWith(error: failure.message)),
+          (failure) => emit(state.copyWith(errorMessage: failure.message)),
           (forecast) => emit(state.copyWith(forecast: forecast)),
         );
       },
@@ -50,10 +49,10 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   }
 
   ForecastState _getNoInternetState() {
-    return state.copyWith(error: 'No internet', isLoading: false);
+    return state.copyWith(errorMessage: 'No internet', isLoading: false);
   }
 
   ForecastState _getLoadingState() {
-    return state.copyWith(isLoading: true, error: '');
+    return state.copyWith(isLoading: true, errorMessage: '');
   }
 }

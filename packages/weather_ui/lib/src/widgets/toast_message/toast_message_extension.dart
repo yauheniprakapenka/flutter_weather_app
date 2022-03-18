@@ -33,7 +33,7 @@ class _ToastMessage {
   Future<void> _show() async {
     final overlayEntry = OverlayEntry(
       builder: (context) {
-        return Toast(text: text, icon: icon);
+        return Toast(text: text, icon: icon ?? ToastMessageIcon.info);
       },
     );
     Navigator.of(context).overlay?.insert(overlayEntry);

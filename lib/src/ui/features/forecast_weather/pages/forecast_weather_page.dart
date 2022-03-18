@@ -11,18 +11,14 @@ class ForecastWeatherPage extends StatelessWidget {
   @override
   Widget build(context) {
     context.read<ForecastBloc>().add(GetFiveDaysWeatherForecastEvent());
-    return BlocBuilder<ForecastBloc, ForecastState>(
+    return BlocConsumer<ForecastBloc, ForecastState>(
+      listener: (context, state) {
+        if (state.errorMessage.isNotEmpty) {
+          context.showToastMessage(text: state.errorMessage);
+        }
+      },
       builder: (_, state) {
         if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
-        if (state.error.isNotEmpty) {
-          return Center(
-            child: Text(
-              state.error,
-              textAlign: TextAlign.center,
-              style: WeatherTextStyle.bodyText2,
-            ),
-          );
-        }
         return Scaffold(
           appBar: AppBar(
             title: Text(state.forecast.city ?? ''),

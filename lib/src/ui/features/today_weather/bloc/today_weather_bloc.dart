@@ -16,6 +16,7 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
   }
 
   Future<void> _onRefreshTodayWeatherEvent(RefreshTodayWeatherEvent _, Emitter<TodayWeatherState> emit) async {
+    if (await hasInternet()) return emit(_getNoInternetState());
     emit(_getLoadingState());
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
@@ -34,9 +35,7 @@ class TodayWeatherBloc extends Bloc<TodayWeatherEvent, TodayWeatherState> {
 
   Future<void> _onGetTodayWeather(GetTodayWeatherEvent _, Emitter<TodayWeatherState> emit) async {
     if (!await hasInternet()) return emit(_getNoInternetState());
-
     emit(_getLoadingState());
-
     final coordinates = await _getCurrentLocationUseCase();
     await coordinates.fold(
       (failure) async => emit(state.copyWith(errorMessage: failure.message, isLoading: false)),
