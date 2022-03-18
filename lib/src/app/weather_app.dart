@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:weather_ui/weather_ui.dart';
 
 import '../ui/features/forecast_weather/bloc/forecast_bloc.dart';
-import '../ui/features/tabbar_navigation/tabbar_navigation_page.dart';
+import '../ui/features/main/controller/tabbar_controller.dart';
+import '../ui/features/main/main_page.dart';
 import '../ui/features/today_weather/bloc/today_weather_bloc.dart';
 import '../ui/shared/localization/providers/locale_provider.dart';
 
@@ -20,6 +21,7 @@ class WeatherApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(create: (_) => TabbarController()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -48,7 +50,7 @@ class _MaterialWeatherApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const TabbarNavigationPage(),
+      home: MainPage(),
     );
   }
 }
