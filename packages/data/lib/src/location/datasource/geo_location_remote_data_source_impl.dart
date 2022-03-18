@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 
 import 'i_location_remote_data_source.dart';
 
-class GeoLocationRemoteDataSource implements ILocationRemoteDataSource {
+class GeoLocationRemoteDataSourceImpl implements ILocationRemoteDataSource {
   @override
   Future<Coordinates> getCurrentLocation() async {
     try {
