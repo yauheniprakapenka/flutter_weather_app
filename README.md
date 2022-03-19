@@ -45,6 +45,12 @@ rain: -, mm
 
 ### Демо
 ---
+
+Запустить приложение в браузере:
+- https://yauheniprakapenka.github.io/flutter_weather_app
+
+### Видео
+---
 <img src=".github/demo-share.gif" height=300>   <img src=".github/demo-pages.gif" height=300>   <img src=".github/demo-no-internet.gif" height=300>   <img src=".github/demo-change-locale.gif" height=300>
 
 ### Скриншоты
