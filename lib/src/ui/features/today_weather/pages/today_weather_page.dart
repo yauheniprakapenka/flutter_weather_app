@@ -14,12 +14,22 @@ import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/wid
 import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../ui/shared/localization/extensions/l10n_extension.dart';
 
-class TodayWeatherPage extends StatelessWidget {
+class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(context) {
+  State<TodayWeatherPage> createState() => _TodayWeatherPageState();
+}
+
+class _TodayWeatherPageState extends State<TodayWeatherPage> {
+  @override
+  void initState() {
+    super.initState();
     BlocProvider.of<TodayWeatherBloc>(context, listen: false).add(GetTodayWeatherEvent());
+  }
+
+  @override
+  Widget build(context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n?.todayPageTodayAppbarLabel ?? ''),

@@ -5,12 +5,22 @@ import 'package:weather_ui/weather_ui.dart';
 import '../../../../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../../../../ui/features/forecast_weather/composites/forecast_list.dart';
 
-class ForecastWeatherPage extends StatelessWidget {
+class ForecastWeatherPage extends StatefulWidget {
   const ForecastWeatherPage({Key? key}) : super(key: key);
 
   @override
+  State<ForecastWeatherPage> createState() => _ForecastWeatherPageState();
+}
+
+class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ForecastBloc>(context, listen: false).add(GetFiveDaysWeatherForecastEvent());
+  }
+
+  @override
   Widget build(context) {
-    context.read<ForecastBloc>().add(GetFiveDaysWeatherForecastEvent());
     return BlocConsumer<ForecastBloc, ForecastState>(
       listener: (context, state) {
         if (state.errorMessage.isNotEmpty) {
