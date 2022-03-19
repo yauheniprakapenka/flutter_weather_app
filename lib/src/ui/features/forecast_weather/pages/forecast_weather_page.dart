@@ -31,10 +31,15 @@ class ForecastWeatherPage extends StatelessWidget {
             onRefresh: () async {
               context.read<ForecastBloc>().add(RefreshGetFiveDaysWeatherForecastEvent());
             },
-            child: ListView(
-              children: [
-                ForecastList(forecast: state.forecast),
-              ],
+            child: Center(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: kMaxWidth),
+                child: ListView(
+                  children: [
+                    ForecastList(forecast: state.forecast),
+                  ],
+                ),
+              ),
             ),
           ),
         );

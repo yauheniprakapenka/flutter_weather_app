@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_ui/weather_ui.dart';
 
-import '../../../shared/const/app_symbols.dart';
-
 class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
   final bool hasBottomBorder;

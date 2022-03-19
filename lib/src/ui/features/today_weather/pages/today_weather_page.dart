@@ -11,7 +11,6 @@ import '../../../../ui/features/today_weather/reports/today_weather_report.dart'
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/weather_indicator_icon.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/widgets/language_flag.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/widgets/language_picker.dart';
-import '../../../../ui/shared/const/app_symbols.dart';
 import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../ui/shared/localization/extensions/l10n_extension.dart';
 
@@ -40,8 +39,8 @@ class TodayWeatherPage extends StatelessWidget {
       ),
       body: BlocConsumer<TodayWeatherBloc, TodayWeatherState>(
         listener: (context, state) {
-           if (state.errorMessage.isNotEmpty) {
-             context.showToastMessage(text: state.errorMessage);
+          if (state.errorMessage.isNotEmpty) {
+            context.showToastMessage(text: state.errorMessage);
           }
         },
         builder: (context, state) {
@@ -51,74 +50,77 @@ class TodayWeatherPage extends StatelessWidget {
               context.read<TodayWeatherBloc>().add(RefreshTodayWeatherEvent());
             },
             child: SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.network(
-                      'http://openweathermap.org/img/wn/${state.weather.icon}@2x.png',
-                      errorBuilder: (_, __, ___) {
-                        return const Icon(Icons.help_outline);
-                      },
-                    ),
-                    Text(
-                      '${state.weather.city}, ${state.weather.codeCountry}',
-                      style: WeatherTextStyle.headline6,
-                    ),
-                    Text(
-                      '${_getTemperature(state.weather.temperature)} | ${state.weather.weather}',
-                      style: WeatherTextStyle.headline5.copyWith(
-                        color: Get.find<AppColors>().secondary,
+              child: Center(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  constraints: const BoxConstraints(maxWidth: kMaxWidth),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.network(
+                        'http://openweathermap.org/img/wn/${state.weather.icon}@2x.png',
+                        errorBuilder: (_, __, ___) {
+                          return const Icon(Icons.help_outline);
+                        },
                       ),
-                    ),
-                    const DividerDecorator(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        WeatherIndicatorIcon(
-                          title: '${state.weather.humidity ?? '-'}%',
-                          icon: Assets.rain,
+                      Text(
+                        '${state.weather.city}, ${state.weather.codeCountry}',
+                        style: WeatherTextStyle.headline6,
+                      ),
+                      Text(
+                        '${_getTemperature(state.weather.temperature)} | ${state.weather.weather}',
+                        style: WeatherTextStyle.headline5.copyWith(
+                          color: Get.find<AppColors>().secondary,
                         ),
-                        WeatherIndicatorIcon(
-                          title: '${state.weather.rainVolume ?? '-'} mm',
-                          icon: Assets.water,
-                        ),
-                        WeatherIndicatorIcon(
-                          title: '${state.weather.pressure ?? '-'} hPa',
-                          icon: Assets.celsius,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        WeatherIndicatorIcon(
-                          title: '${state.weather.windSpeed ?? '-'} km/h',
-                          icon: Icon(
-                            Icons.air,
-                            color: Get.find<AppColors>().primary,
-                            size: 40,
+                      ),
+                      const DividerDecorator(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          WeatherIndicatorIcon(
+                            title: '${state.weather.humidity ?? '-'}%',
+                            icon: Assets.rain,
                           ),
-                        ),
-                        WeatherIndicatorIcon(
-                          title: _getWeatherIndicatorTitle(state.weather.windDegrees),
-                          icon: Icon(
-                            Icons.explore_outlined,
-                            color: Get.find<AppColors>().primary,
-                            size: 40,
+                          WeatherIndicatorIcon(
+                            title: '${state.weather.rainVolume ?? '-'} mm',
+                            icon: Assets.water,
                           ),
-                        ),
-                      ],
-                    ),
-                    const DividerDecorator(),
-                    TextButton(
-                      onPressed: () async {
-                        await shareReport(createTodayWeatherReport(state.weather));
-                      },
-                      child: Text(context.l10n?.shareButtonText ?? ''),
-                    ),
-                  ],
+                          WeatherIndicatorIcon(
+                            title: '${state.weather.pressure ?? '-'} hPa',
+                            icon: Assets.celsius,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          WeatherIndicatorIcon(
+                            title: '${state.weather.windSpeed ?? '-'} km/h',
+                            icon: Icon(
+                              Icons.air,
+                              color: Get.find<AppColors>().primary,
+                              size: 40,
+                            ),
+                          ),
+                          WeatherIndicatorIcon(
+                            title: _getWeatherIndicatorTitle(state.weather.windDegrees),
+                            icon: Icon(
+                              Icons.explore_outlined,
+                              color: Get.find<AppColors>().primary,
+                              size: 40,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const DividerDecorator(),
+                      TextButton(
+                        onPressed: () async {
+                          await shareReport(createTodayWeatherReport(state.weather));
+                        },
+                        child: Text(context.l10n?.shareButtonText ?? ''),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

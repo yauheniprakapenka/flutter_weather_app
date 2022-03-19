@@ -50,7 +50,7 @@ class _MaterialWeatherApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: MainPage(),
+      home: const MainPage(),
     );
   }
 }

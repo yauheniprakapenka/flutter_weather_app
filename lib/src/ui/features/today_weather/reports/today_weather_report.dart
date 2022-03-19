@@ -1,7 +1,6 @@
 import 'package:domain/domain.dart';
 
 import '../../../features/today_weather/extensions/wind_direction_extension.dart';
-import '../../../shared/const/app_symbols.dart';
 import '../../../shared/extensions/kelvin_to_celsius_extension.dart';
 
 String createTodayWeatherReport(Weather weather) {
@@ -9,7 +8,7 @@ String createTodayWeatherReport(Weather weather) {
 Flutter Weather App
 
 city: ${weather.city}, ${weather.codeCountry ?? '-'}
-temperature: ${weather.temperature?.convertKelvinToCelsium() ?? '-'} ${AppSymbols.celsium}
+temperature: ${weather.temperature?.convertKelvinToCelsium() ?? '-'} °C
 weather: ${weather.weather ?? '-'}
 wind speed: ${weather.windSpeed ?? '-'}, meter/sec
 humidity: ${weather.humidity ?? '-'}, %
