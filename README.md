@@ -20,6 +20,9 @@
 - Определение языка устройства
 - Смена языка
 
+Адаптивность
+- Отображение бокового меню
+
 Архитектура
 - Архитектура приложения Clean architecture
 - Архитектура состояния Flutter BLoC, Provider
@@ -76,12 +79,16 @@ lib/src/ui/shared/localization/arb/app_ru.arb
 
 - В проблемах может отобразиться, что файлы локализации не найдены. Для исправления нужно перезапустить IDE.
 
-- Для использования значений локализации импортировать файл 
+- Для отсутствующего AppLocalizations импортировать 
 ```
-import 'package:flutter_weather_app/src/ui/shared/localization/extensions/l10n_extension.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 ```
 
-- Выбрать нужный текст через context
+- Выбрать текст
+```
+import '../../shared/localization/extensions/l10n_extension.dart';
+```
+
 ```
 context.l10n?.today ?? ''
 ```

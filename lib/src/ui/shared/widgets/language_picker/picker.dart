@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_ui/weather_ui.dart';
 
-import '../../../../../shared/localization/providers/locale_provider.dart';
+import '../../localization/providers/locale_provider.dart';
 
-class LanguagePicker extends StatelessWidget {
-  const LanguagePicker({Key? key}) : super(key: key);
+class Picker extends StatelessWidget {
+  const Picker({Key? key}) : super(key: key);
 
   @override
   Widget build(context) {

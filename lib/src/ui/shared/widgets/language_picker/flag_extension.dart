@@ -1,4 +1,4 @@
-import '../models/locale_type.dart';
+import '../../localization/models/locale_type.dart';
 
 extension FlagExtension on String {
   String getFlag() {
