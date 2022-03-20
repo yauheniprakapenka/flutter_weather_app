@@ -58,10 +58,13 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
             child: Center(
               child: Container(
                 constraints: const BoxConstraints(maxWidth: kMaxWidth),
-                child: ListView(
-                  children: [
-                    ForecastList(forecast: state.forecast),
-                  ],
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                  child: ListView(
+                    children: [
+                      ForecastList(forecast: state.forecast),
+                    ],
+                  ),
                 ),
               ),
             ),
