@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 
+import '../../../app/utils/app_version/app_version.dart';
 import 'language_picker/language_picker.dart';
 
 class SideMenu extends StatelessWidget {
@@ -12,8 +14,11 @@ class SideMenu extends StatelessWidget {
       width: 140,
       color: Colors.grey[100],
       child: Column(
-        children: const [
-          LanguagePicker(),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const LanguagePicker(),
+          const Spacer(),
+          Text(Get.find<AppVersion>().versionAndBuild),
         ],
       ),
     );
