@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Responsive extends StatelessWidget {
+class Adaptive extends StatelessWidget {
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;
@@ -8,7 +8,7 @@ class Responsive extends StatelessWidget {
   static const _mobileMaxWidth = 650.0;
   static const _tabletMaxWidth = 900.0;
 
-  const Responsive({
+  const Adaptive({
     Key? key,
     required this.mobile,
     required this.tablet,

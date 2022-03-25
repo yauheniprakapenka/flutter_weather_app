@@ -40,7 +40,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
           preferredSize: Size.fromHeight(PatternWidgetConfig.heightSize),
           child: PatternedLine(),
         ),
-        leading: Responsive.isMobile(context)
+        leading: Adaptive.isMobile(context)
             ? IconButton(
                 icon: Icon(Icons.menu, color: Get.find<AppColors>().secondary),
                 onPressed: () {
@@ -63,7 +63,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
             },
             child: Row(
               children: [
-                if (!Responsive.isMobile(context)) const SideMenu(),
+                if (!Adaptive.isMobile(context)) const SideMenu(),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Center(

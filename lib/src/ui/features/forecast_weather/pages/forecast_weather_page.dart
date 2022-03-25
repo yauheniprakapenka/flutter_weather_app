@@ -42,7 +42,7 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
               preferredSize: Size.fromHeight(PatternWidgetConfig.heightSize),
               child: PatternedLine(),
             ),
-            leading: Responsive.isMobile(context)
+            leading: Adaptive.isMobile(context)
                 ? IconButton(
                     icon: Icon(Icons.menu, color: Get.find<AppColors>().secondary),
                     onPressed: () {
