@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:domain/domain.dart';
 
 import '../datasource/i_location_local_data_source.dart';

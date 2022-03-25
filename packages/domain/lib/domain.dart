@@ -1,5 +1,7 @@
 library domain;
 
+export 'package:dartz/dartz.dart';
+
 export 'src/entities/failure.dart';
 export 'src/location/entities/coordinates.dart';
 export 'src/location/repositories/i_location_repository.dart';
