@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 
-import '../datasource/i_location_local_data_source.dart';
-import '../datasource/i_location_remote_data_source.dart';
+import '../datasource/local/i_location_local_data_source.dart';
+import '../datasource/remote/i_location_remote_data_source.dart';
 
 class LocationRepositoryImpl implements ILocationRepository {
   final ILocationLocalDataSource _localDataSource;

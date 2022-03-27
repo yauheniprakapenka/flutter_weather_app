@@ -1,9 +1,9 @@
 import 'package:domain/domain.dart';
 
-import '../../api/dio/dio_http_client.dart';
-import '../../weather/datasource/i_weather_remote_data_source.dart';
-import '../../weather/dto/forecast_dto.dart';
-import '../../weather/dto/weather_dto.dart';
+import '../../../../api/dio/dio_http_client.dart';
+import '../../../dto/forecast_dto.dart';
+import '../../../dto/weather_dto.dart';
+import '../i_weather_remote_data_source.dart';
 
 class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   final _client = dioHttpClient('https://api.openweathermap.org/data/2.5/');

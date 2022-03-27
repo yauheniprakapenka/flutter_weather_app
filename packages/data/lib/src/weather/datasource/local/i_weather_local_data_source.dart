@@ -1,5 +1,5 @@
-import '../dto/forecast_dto.dart';
-import '../dto/weather_dto.dart';
+import '../../dto/forecast_dto.dart';
+import '../../dto/weather_dto.dart';
 
 abstract class IWeatherLocalDataSource {
   Future<WeatherDto?> getTodayWeather();

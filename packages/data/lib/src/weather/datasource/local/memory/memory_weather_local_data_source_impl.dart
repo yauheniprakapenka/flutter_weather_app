@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import '../dto/forecast_dto.dart';
-import '../dto/weather_dto.dart';
-import 'i_weather_local_data_source.dart';
+import '../../../dto/forecast_dto.dart';
+import '../../../dto/weather_dto.dart';
+import '../i_weather_local_data_source.dart';
 
 class MemoryWeatherLocalDataSourceImpl implements IWeatherLocalDataSource {
   WeatherDto? _weather;

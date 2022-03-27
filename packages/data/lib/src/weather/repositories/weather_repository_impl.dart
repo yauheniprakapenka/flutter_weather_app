@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 
-import '../datasource/i_weather_local_data_source.dart';
-import '../datasource/i_weather_remote_data_source.dart';
+import '../datasource/local/i_weather_local_data_source.dart';
+import '../datasource/remote/i_weather_remote_data_source.dart';
 import '../mapper/forecast_mapper.dart';
 import '../mapper/weather_mapper.dart';
 
