@@ -69,7 +69,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     child: Center(
                       child: Container(
                         height: MediaQuery.of(context).size.height,
-                        constraints: const BoxConstraints(maxWidth: kMaxWidth, maxHeight: 500),
+                        constraints: !Adaptive.isMobile(context) ? const BoxConstraints(maxWidth: kMaxWidth, maxHeight: 500) : null,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [

@@ -1,6 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../../../../api/dio/dio_http_client.dart';
+import '../../../../http_client/dio/dio_http_client.dart';
 import '../../../dto/forecast_dto.dart';
 import '../../../dto/weather_dto.dart';
 import '../i_weather_remote_data_source.dart';
@@ -20,7 +20,7 @@ class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
       final path = 'weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
       final response = await _client.get(path);
       return WeatherDto.fromJson(response.data);
-    } on Exception catch (_) {
+    } on Exception {
       rethrow;
     }
   }
@@ -35,7 +35,7 @@ class OpenweathermapRemoteDataSourceImpl implements IWeatherRemoteDataSource {
       final path = 'forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=$_apiKey';
       final response = await _client.get(path);
       return ForecastDto.fromJson(response.data);
-    } on Exception catch (_) {
+    } on Exception {
       rethrow;
     }
   }
