@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:domain/domain.dart';
 
-import '../dto/forecast_dto.dart';
-import '../dto/weather_dto.dart';
-import 'i_weather_remote_data_source.dart';
+import '../../../dto/forecast_dto.dart';
+import '../../../dto/weather_dto.dart';
+import '../../remote/i_weather_remote_data_source.dart';
 
 class WeatherMockRemoteDataSourceImpl implements IWeatherRemoteDataSource {
   @override

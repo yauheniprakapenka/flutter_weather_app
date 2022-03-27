@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'i_location_remote_data_source.dart';
+import '../i_location_remote_data_source.dart';
 
 class GeoLocationRemoteDataSourceImpl implements ILocationRemoteDataSource {
   @override
