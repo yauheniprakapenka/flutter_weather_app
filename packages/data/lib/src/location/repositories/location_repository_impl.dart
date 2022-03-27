@@ -20,13 +20,11 @@ class LocationRepositoryImpl implements ILocationRepository {
       try {
         final remoteCoordinates = await _remoteDataSource.getCurrentLocation();
         await _localDataSource.saveLocation(remoteCoordinates);
-        localCoordinates = await _localDataSource.getCoordinates();
+        localCoordinates = remoteCoordinates;
       } on Exception catch (e) {
-        return Left(Failure('$e'));
+        return Left(Failure(message: '$e'));
       }
     }
-    return localCoordinates == null
-        ? const Left(Failure('Coordinates is null'))
-        : Right(localCoordinates);
+    return Right(localCoordinates);
   }
 }
