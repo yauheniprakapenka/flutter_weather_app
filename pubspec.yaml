@@ -22,11 +22,11 @@ dependencies:
 
   # architecture
   data:
-    path: packages/data/
+    path: modules/architecture/data
   domain:
-    path: packages/domain/
+    path: packages/domain
   ui:
-    path: modules/architecture/ui/
+    path: modules/architecture/ui
 
 dev_dependencies:
   flutter_test:

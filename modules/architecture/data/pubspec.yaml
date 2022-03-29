@@ -10,7 +10,7 @@ dependencies:
   get: ^4.6.1
 
   domain:
-    path: ../domain/
+    path: ../../../packages/domain/
 
 dev_dependencies:
   flutter_lints: ^1.0.4
