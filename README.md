@@ -1,101 +1,34 @@
-# flutter_weather_app
+# Flutter Weather App
 
-<p align="center">
-  <img src="https://i.pinimg.com/564x/83/50/b7/8350b7848ea3761e0a41c28a735dfc0c.jpg" width=280>
-</p>
+Приложение для отображения погоды, использующее [OpenWeatherMap API](https://openweathermap.org/api).
 
-Приложение для отображения погоды.
+<img src="https://user-images.githubusercontent.com/47568606/160629174-d2bfbb26-8f07-4a4f-b161-e660fe76452e.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/160629918-7f4c9f69-62f5-410a-8d26-2b5d759b8d3e.png" height=300>   
 
-Погода
-- Получение погоды из Open Weather Map API (http://openweathermap.org/api)
-- Погода сегодня
-- Прогноз погоды на 5 дней с интервалом в 3 часа
-- Определение геолокации устройства для отображения погоды
-- Поделиться текущей погодой через мессенджеры
-- Погода кэшируется при первом запуске и больше нет лишних обращений на сервер. Возможно обновление погоды вручную. 
-- Отображение версии приложения
+## Supported Features
 
-Локализация
-- Используется библиотека `intl`
-- Поддержка `ru` и `en` локализации
-- Определение языка устройства
-- Смена языка
+- [x] Текущая погода
+- [x] Прогноз погоды на пять дней
+- [x] Поделиться текущий погодой
+- [x] Локализация RU, EN
+- [x] Ручное обновление данных
+- [x] Отображение версии приложения
 
-Адаптивность
-- Отображение бокового меню
+## App Architecture
+- [x] Архитектура приложения Clean architecture
+- [x] Архитектура состояния Flutter BLoC, Provider
+- [x] Кэширование ответов
 
-Архитектура
-- Архитектура приложения Clean architecture
-- Архитектура состояния Flutter BLoC, Provider
+## Platform support
+- [x] Android
+- [x] iOS
+- [x] Web
 
-### Пример поделиться текущей погодой
----
+## GitHub workflows
+- [x] Сборка Web версии
+- [x] Запуск тестов
 
-```
-Flutter Weather App
+## Live demo
+- [x]  https://yauheniprakapenka.github.io/flutter_weather_app
 
-city: Gomel, BY
-temperature: 7 °C
-weather: Clear
-wind speed: 9.0, meter/sec
-humidity: 57, %
-wind degrees: S/SW
-pressure: 1000, , hPa
-rain: -, mm
-```
-
-### Демо
----
-
-Запустить приложение в браузере:
-- https://yauheniprakapenka.github.io/flutter_weather_app
-
-### Видео
----
-<img src=".github/demo-share.gif" height=300>   <img src=".github/demo-pages.gif" height=300>   <img src=".github/demo-no-internet.gif" height=300>   <img src=".github/demo-change-locale.gif" height=300>
-
-### Скриншоты
----
-
-<img src="https://user-images.githubusercontent.com/47568606/155092576-89b6e467-1112-4252-b207-e0a7d654f860.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155092849-422d08fb-3ce9-408d-8fdf-7b6bbda2a280.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155093754-90cedfc4-6685-49bc-83c4-5e5c5da03a79.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155094616-a27949fd-0a08-47d6-8d3e-61606d7efd98.png" height=300>   
-
-<img src="https://user-images.githubusercontent.com/47568606/155134585-89afbccc-3c8c-473c-92cb-81175568eb39.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/155134522-7873af6f-3608-4e67-8827-d3bfbc861873.png" height=300> 
-
-### Как добавить новую локализацию
----
-
-<p align="center">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMV8QuUAECmcmHZeG3TACzrqs-CVQBUDggxg&usqp=CAU" width=100>
-</p>
-
-- Конфигурация локализации
-```
-l10n.yaml
-```
-
-- Новые строки добавляются в json
-```
-lib/src/ui/shared/localization/arb/app_en.arb
-lib/src/ui/shared/localization/arb/app_ru.arb
-```
-
-- Выполнить flutter pub get. Сгенерируются новые файлы по пути
-```
-.dart_tool/flutter_gen/gen_l10n/app_localizations_ru.dart
-```
-
-- В проблемах может отобразиться, что файлы локализации не найдены. Для исправления нужно перезапустить IDE.
-
-- Для отсутствующего AppLocalizations импортировать 
-```
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-```
-
-- Выбрать текст
-```
-import '../../shared/localization/extensions/l10n_extension.dart';
-```
-
-```
-context.l10n?.today ?? ''
-```
+## Видео
+<img src=".github/assets/demo-share.gif" height=300> 

@@ -49,7 +49,7 @@ class _WeatherDto {
 }
 
 class _MainDto {
-  double? temp;
+  num? temp;
   int? pressure;
   int? humidity;
 
@@ -73,7 +73,7 @@ class _WindDto {
   _WindDto({this.speed, this.deg});
 
   _WindDto.fromJson(Map<String, dynamic> json) {
-    final num _speed = json['speed']; 
+    final num _speed = json['speed'];
     speed = _speed.toDouble();
     deg = json['deg'];
   }

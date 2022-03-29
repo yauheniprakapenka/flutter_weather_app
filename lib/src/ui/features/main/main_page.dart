@@ -19,6 +19,8 @@ class MainPage extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         currentIndex: tabbarCntrl.selectedIndex,
         unselectedItemColor: Get.find<AppColors>().inActive,
+        selectedItemColor: Get.find<AppColors>().primary,
+        backgroundColor: Get.find<AppColors>().backgroudnGradientEnd,
         items: [
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationTodayLabel ?? '-',
@@ -26,6 +28,7 @@ class MainPage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationForecaseLabel ?? '-',
+
             /// Не перекрашивается svg иконка, поэтому добавлен [isActive]
             icon: Assets().forecast(isActive: tabbarCntrl.selectedIndex == 1),
           ),
