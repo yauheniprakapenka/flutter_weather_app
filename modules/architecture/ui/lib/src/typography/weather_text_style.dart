@@ -5,7 +5,6 @@ import '../../ui.dart';
 
 class WeatherTextStyle {
   static final _baseTextStyle = TextStyle(
-    package: 'weather_ui',
     fontFamily: 'GoogleSans',
     fontWeight: WeatherFontWeight.regular,
     color: Get.find<AppColors>().onBackground,
