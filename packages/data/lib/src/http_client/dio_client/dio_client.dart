@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 import 'dio_logging_interceptor.dart';
 
-Dio dioHttpClient(String baseUrl) {
+Dio dioClient(String baseUrl) {
   return Dio(
     BaseOptions(
       baseUrl: baseUrl,
