@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
 import '../../localization/providers/locale_provider.dart';
 

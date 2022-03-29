@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
 import '../../../../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../../../../ui/features/forecast_weather/composites/forecast_list.dart';

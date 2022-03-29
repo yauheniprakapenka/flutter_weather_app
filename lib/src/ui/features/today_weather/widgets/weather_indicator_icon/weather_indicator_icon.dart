@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
 import 'builders/stroke_line_builder.dart';
 import 'models/stroke_line_direction.dart';

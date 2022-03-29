@@ -1,6 +1,7 @@
-library weather_ui;
+library ui;
 
-export 'src/assets/assets.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+
 export 'src/const/app_symbols.dart';
 export 'src/layout/adaptive.dart';
 export 'src/layout/sizes.dart';

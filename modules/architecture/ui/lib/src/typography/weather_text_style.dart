@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 
-import '../../weather_ui.dart';
+import '../../ui.dart';
 
 class WeatherTextStyle {
   static final _baseTextStyle = TextStyle(

@@ -12,12 +12,10 @@ class LocaleProvider extends ChangeNotifier {
 
   LocaleProvider() {
     _locale = _setDefaultLocale();
-    debugPrint('Current locale: $_locale');
   }
 
   void setLocale(Locale locale) {
     if (!_isL10nContainsLocale(locale)) return;
-    debugPrint('Locale changed: $_locale -> $locale');
     _locale = locale;
     notifyListeners();
   }

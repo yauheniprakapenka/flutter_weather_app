@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
 import '../ui/features/forecast_weather/bloc/forecast_bloc.dart';
 import '../ui/features/main/controller/tabbar_controller.dart';

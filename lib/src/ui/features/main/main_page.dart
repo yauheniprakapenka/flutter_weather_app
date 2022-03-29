@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
+import '../../shared/assets/assets.dart';
 import '../../shared/localization/extensions/l10n_extension.dart';
 import 'controller/tabbar_controller.dart';
 
