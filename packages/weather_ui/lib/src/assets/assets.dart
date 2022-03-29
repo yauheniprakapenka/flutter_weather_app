@@ -26,7 +26,7 @@ class Assets {
     final appColors = Get.find<AppColors>();
     return SvgPicture.asset(
       'packages/weather_ui/assets/icons/forecast.svg',
-      color: isActive ? appColors.secondary : appColors.inActive,
+      color: isActive ? appColors.primary : appColors.inActive,
     );
   }
 }

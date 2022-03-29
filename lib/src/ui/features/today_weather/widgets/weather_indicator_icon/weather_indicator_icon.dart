@@ -60,7 +60,7 @@ class WeatherIndicatorIcon extends StatelessWidget {
         Text(
           title,
           style: WeatherTextStyle.bodyText2.copyWith(
-            color: Get.find<AppColors>().onBackground,
+            color: Get.find<AppColors>().primary,
           ),
         ),
       ],

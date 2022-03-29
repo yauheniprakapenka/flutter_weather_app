@@ -1,6 +1,6 @@
 class Weather {
   /// Temperature, Kelvin. Example: 278.24.
-  final double? temperature;
+  final num? temperature;
 
   /// Group of weather parameters. Example: Rain, Snow, Clouds.
   final String? weather;
