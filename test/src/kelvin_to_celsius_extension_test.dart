@@ -2,8 +2,58 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_weather_app/src/ui/shared/extensions/kelvin_to_celsius_extension.dart';
 
 void main() {
-  test('0 C', () {
-    final actual = 273.15.convertKelvinToCelsium();
-    expect(actual, 10);
+  test('Zero celsius', () {
+    // Arrange
+    const kelvin = 273.15;
+
+    // Act
+    final celsius = kelvin.convertKelvinToCelsium();
+
+    // Assert
+    expect(celsius, 0);
+  });
+
+  test('Rounding a positive celsius number down', () {
+    // Arrange
+    const kelvin = 276.4;
+
+    // Act
+    final celsius = kelvin.convertKelvinToCelsium();
+
+    // Assert
+    expect(celsius, 3);
+  });
+
+  test('Rounding a positive celsius number up', () {
+    // Arrange
+    const kelvin = 276.65;
+
+    // Act
+    final celsius = kelvin.convertKelvinToCelsium();
+
+    // Assert
+    expect(celsius, 4);
+  });
+
+  test('Rounding a negative celsius number down', () {
+    // Arrange
+    const kelvin = 269.9;
+
+    // Act
+    final celsius = kelvin.convertKelvinToCelsium();
+
+    // Assert
+    expect(celsius, -3);
+  });
+
+  test('Rounding a negative celsius number up', () {
+    // Arrange
+    const kelvin = 269.65;
+
+    // Act
+    final celsius = kelvin.convertKelvinToCelsium();
+
+    // Assert
+    expect(celsius, -4);
   });
 }
