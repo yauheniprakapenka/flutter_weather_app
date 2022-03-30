@@ -3,8 +3,8 @@ import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:ui/ui.dart';
 
+import '../../../app/shared/localization/locale_provider.dart';
 import '../../shared/assets/assets.dart';
-import '../../shared/localization/extensions/l10n_extension.dart';
 import 'controller/tabbar_controller.dart';
 
 class MainPage extends StatelessWidget {
@@ -29,7 +29,6 @@ class MainPage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationForecaseLabel ?? '-',
-
             /// Не перекрашивается svg иконка, поэтому добавлен [isActive]
             icon: Assets().forecast(isActive: tabbarCntrl.selectedIndex == 1),
           ),

@@ -8,5 +8,6 @@
     "dayOfWeekWednesday": "Среда",
     "tabbarNavigationForecaseLabel": "Прогноз",
     "tabbarNavigationTodayLabel": "Сегодня",
+    "temperatureSymbolCelsius": "°C",
     "todayPageTodayAppbarLabel": "Сегодня"
 }

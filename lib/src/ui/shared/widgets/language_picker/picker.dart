@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:ui/ui.dart';
 
-import '../../localization/providers/locale_provider.dart';
+import '../../../../app/shared/localization/locale_provider.dart';
 
 class Picker extends StatelessWidget {
   const Picker({Key? key}) : super(key: key);

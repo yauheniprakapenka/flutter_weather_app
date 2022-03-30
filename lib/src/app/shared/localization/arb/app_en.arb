@@ -8,5 +8,6 @@
     "dayOfWeekWednesday": "Wednesday",
     "tabbarNavigationForecaseLabel": "Forecast",
     "tabbarNavigationTodayLabel": "Today",
+    "temperatureSymbolCelsius": "°C",
     "todayPageTodayAppbarLabel": "Today"
 }

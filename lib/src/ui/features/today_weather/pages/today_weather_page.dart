@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
+import '../../../../app/shared/localization/locale_provider.dart';
 import '../../../../app/utils/app_version/app_version.dart';
 import '../../../../ui/features/today_weather/bloc/today_weather_bloc.dart';
 import '../../../../ui/features/today_weather/extensions/wind_direction_extension.dart';
 import '../../../../ui/features/today_weather/reports/share_report.dart';
 import '../../../../ui/features/today_weather/reports/today_weather_report.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/weather_indicator_icon.dart';
+import '../../../../ui/shared/assets/assets.dart';
 import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../ui/shared/widgets/language_picker/language_picker.dart';
-import '../../../shared/assets/assets.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -89,7 +90,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                     right: 12,
                     child: IconButton(
                       onPressed: () async {
-                        await shareReport(createTodayWeatherReport(state.weather));
+                        await shareReport(createTodayWeatherReport(context, state.weather));
                       },
                       icon: Icon(Icons.send, color: Get.find<AppColors>().accent),
                     ),
@@ -132,7 +133,7 @@ class _WeatherInfo extends StatelessWidget {
           },
         ),
         Text(
-          _getTemperature(state.weather.temperature),
+          _getTemperature(context, state.weather.temperature),
           style: WeatherTextStyle.headline5.copyWith(
             color: Get.find<AppColors>().primary,
           ),
@@ -147,9 +148,9 @@ class _WeatherInfo extends StatelessWidget {
     );
   }
 
-  String _getTemperature(num? temperature) {
+  String _getTemperature(BuildContext context, num? temperature) {
     if (temperature == null) return '-';
-    return '${temperature.convertKelvinToCelsium()}${AppSymbols.celsium}';
+    return '${temperature.convertKelvinToCelsium()}${context.l10n?.temperatureSymbolCelsius}';
   }
 }
 

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
+import '../../../../app/shared/localization/locale_provider.dart';
+
 class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
   final bool hasBottomBorder;
@@ -63,7 +65,7 @@ class WeatherCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        _Celsium(celsium: celsium),
+                        _Celsius(celsium: celsium),
                       ],
                     ),
                   ),
@@ -78,15 +80,15 @@ class WeatherCard extends StatelessWidget {
   }
 }
 
-class _Celsium extends StatelessWidget {
+class _Celsius extends StatelessWidget {
   final int? celsium;
 
-  const _Celsium({Key? key, this.celsium}) : super(key: key);
+  const _Celsius({Key? key, this.celsium}) : super(key: key);
 
   @override
   Widget build(context) {
     return Text(
-      '${celsium ?? '-'}${AppSymbols.celsium}',
+      '${celsium ?? '-'}${context.l10n?.temperatureSymbolCelsius}',
       style: WeatherTextStyle.headline4.copyWith(
         color: Get.find<AppColors>().secondary,
       ),

@@ -16,10 +16,9 @@ class WeatherTheme {
 
   static AppBarTheme _buildAppBarTheme() {
     return AppBarTheme(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.red,
+      backgroundColor: Get.find<AppColors>().backgroudnGradientEnd,
       elevation: 0.0,
-      titleTextStyle: WeatherTextStyle.subtitle1,
+      titleTextStyle: WeatherTextStyle.subtitle1.copyWith(color: Get.find<AppColors>().primary),
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
       ),
