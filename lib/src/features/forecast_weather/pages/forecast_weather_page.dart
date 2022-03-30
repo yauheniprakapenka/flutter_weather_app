@@ -28,22 +28,29 @@ class _ForecastWeatherPageState extends State<ForecastWeatherPage> {
         }
       },
       builder: (_, state) {
-        if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
+        if (state.isLoading) {
+          return Scaffold(
+            appBar: AppBar(),
+            body: const BackgroundGradient(
+              child: Center(child: CircularProgressIndicator.adaptive()),
+            ),
+          );
+        }
         return Scaffold(
-          appBar: AppBar(
-            title: Text(state.forecast.city ?? ''),
-          ),
-          body: RefreshIndicator(
-            onRefresh: () async {
-              context.read<ForecastBloc>().add(RefreshGetFiveDaysWeatherForecastEvent());
-            },
-            child: Center(
-              child: Container(
-                constraints: const BoxConstraints(maxWidth: kMaxWidth),
-                child: ListView(
-                  children: [
-                    ForecastList(forecast: state.forecast),
-                  ],
+          appBar: AppBar(title: Text(state.forecast.city ?? '')),
+          body: BackgroundGradient(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                context.read<ForecastBloc>().add(RefreshGetFiveDaysWeatherForecastEvent());
+              },
+              child: Center(
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: kMaxWidth),
+                  child: ListView(
+                    children: [
+                      ForecastList(forecast: state.forecast),
+                    ],
+                  ),
                 ),
               ),
             ),

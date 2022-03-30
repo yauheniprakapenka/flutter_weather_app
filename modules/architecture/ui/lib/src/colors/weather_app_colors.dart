@@ -22,11 +22,14 @@ class WeatherAppColors implements AppColors {
   Color get onBackground => const Color(0xFF000000);
 
   @override
-  Color get backgroudnGradientStart => const Color(0xFF4480C6);
-
-  @override
-  Color get backgroudnGradientEnd => const Color(0xFF364699);
-
-  @override
   Color get accent => Colors.white;
+
+  @override
+  Color get backgroundGradientStart => const Color(0xFF4480C6);
+
+  @override
+  Color get backgroundGradientEnd => const Color(0xFF364699);
+
+  @override
+  List<Color> get backgroundGradient => [backgroundGradientStart, backgroundGradientEnd];
 }

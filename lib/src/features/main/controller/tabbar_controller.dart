@@ -9,7 +9,7 @@ class TabbarController extends ChangeNotifier {
     ForecastWeatherPage(),
   ];
 
-  var _selectedIndex = 0;
+  var _selectedIndex = 1;
 
   int get selectedIndex => _selectedIndex;
 

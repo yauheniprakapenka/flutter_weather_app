@@ -15,7 +15,9 @@ abstract class AppColors {
 
   Color get onBackground;
 
-  Color get backgroudnGradientStart;
+  Color get backgroundGradientStart;
 
-  Color get backgroudnGradientEnd;
+  Color get backgroundGradientEnd;
+
+  List<Color> get backgroundGradient;
 }

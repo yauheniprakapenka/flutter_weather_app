@@ -8,7 +8,7 @@ class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
   final bool hasBottomBorder;
   final String? time;
-  final int? celsium;
+  final int? celsius;
   final String? description;
   final String? icon;
 
@@ -17,7 +17,7 @@ class WeatherCard extends StatelessWidget {
     this.hasActiveBorder = false,
     this.hasBottomBorder = true,
     this.time,
-    this.celsium,
+    this.celsius,
     this.description,
     this.icon,
   }) : super(key: key);
@@ -30,7 +30,7 @@ class WeatherCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: hasActiveBorder
             ? Border.fromBorderSide(
-                BorderSide(width: 3, color: appColors.secondary),
+                BorderSide(width: 3, color: appColors.primary),
               )
             : null,
       ),
@@ -65,7 +65,7 @@ class WeatherCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        _Celsius(celsium: celsium),
+                        _Celsius(celsium: celsius),
                       ],
                     ),
                   ),
@@ -90,7 +90,7 @@ class _Celsius extends StatelessWidget {
     return Text(
       '${celsium ?? '-'}${context.l10n?.temperatureSymbolCelsius}',
       style: WeatherTextStyle.headline4.copyWith(
-        color: Get.find<AppColors>().secondary,
+        color: Get.find<AppColors>().primary,
       ),
     );
   }
@@ -105,7 +105,7 @@ class _Time extends StatelessWidget {
   Widget build(context) {
     return Text(
       _getFormatterTime(),
-      style: WeatherTextStyle.bodyText1,
+      style: WeatherTextStyle.bodyText1.copyWith(color: Get.find<AppColors>().primary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
@@ -128,7 +128,7 @@ class _Description extends StatelessWidget {
   Widget build(context) {
     return Text(
       description ?? '-',
-      style: WeatherTextStyle.bodyText2,
+      style: WeatherTextStyle.bodyText2.copyWith(color: Get.find<AppColors>().primary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );

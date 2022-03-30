@@ -21,7 +21,7 @@ class MainPage extends StatelessWidget {
         currentIndex: tabbarCntrl.selectedIndex,
         unselectedItemColor: Get.find<AppColors>().inActive,
         selectedItemColor: Get.find<AppColors>().primary,
-        backgroundColor: Get.find<AppColors>().backgroudnGradientEnd,
+        backgroundColor: Get.find<AppColors>().backgroundGradientEnd,
         items: [
           BottomNavigationBarItem(
             label: context.l10n?.tabbarNavigationTodayLabel ?? '-',

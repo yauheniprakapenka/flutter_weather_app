@@ -19,7 +19,7 @@ class WeatherDay extends StatelessWidget {
         padding: const EdgeInsets.only(top: 16, bottom: 16, left: 16),
         child: Text(
           dayTitle.toUpperCase(),
-          style: WeatherTextStyle.subtitle2,
+          style: WeatherTextStyle.subtitle2.copyWith(color: Get.find<AppColors>().primary),
         ),
       ),
     );

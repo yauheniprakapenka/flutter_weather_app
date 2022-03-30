@@ -31,15 +31,14 @@ class ForecastList extends StatelessWidget {
                     return WeatherCard(
                       icon: forecastWeather.icon,
                       hasActiveBorder: _hasWeatherCardActiveBorder(
-                        firstForecast:
-                            _forecastWeatherListWithTitle.first.forecastWeather.first.dtText ?? '',
+                        firstForecast: _forecastWeatherListWithTitle.first.forecastWeather.first.dtText ?? '',
                         currentDtText: forecastWeather.dtText ?? '',
                       ),
                       hasBottomBorder: _hasBottomBorder(
                         forecast: _forecastWeatherListWithTitle,
                         currentDtText: forecastWeather.dtText ?? '',
                       ),
-                      celsium: forecastWeather.temp?.convertKelvinToCelsius(),
+                      celsius: forecastWeather.temp?.convertKelvinToCelsius(),
                       time: forecastWeather.dtText,
                       description: forecastWeather.main,
                     );

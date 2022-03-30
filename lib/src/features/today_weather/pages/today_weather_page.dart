@@ -32,78 +32,63 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
   Widget build(context) {
     final appColors = Get.find<AppColors>();
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backgroundColor: appColors.backgroudnGradientStart,
-      ),
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                appColors.backgroudnGradientStart,
-                appColors.backgroudnGradientEnd,
-              ],
-            ),
-          ),
-          child: BlocConsumer<TodayWeatherBloc, TodayWeatherState>(
-            listener: (context, state) {
-              if (state.errorMessage.isNotEmpty) {
-                context.showToastMessage(text: state.errorMessage);
-              }
-            },
-            builder: (context, state) {
-              if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
-              return Stack(
-                fit: StackFit.expand,
-                children: [
-                  Positioned.fill(
-                    child: RefreshIndicator(
-                      onRefresh: () async {
-                        context.read<TodayWeatherBloc>().add(RefreshTodayWeatherEvent());
-                      },
-                      child: SingleChildScrollView(
-                        // physics: const AlwaysScrollableScrollPhysics(),
-                        child: SizedBox(
-                          height: _getHeight(),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 100),
-                              _WeatherInfo(state: state),
-                              const Spacer(),
-                              _Indicators(state: state),
-                              const SizedBox(height: 24),
-                              Text(
-                                Get.find<AppVersion>().versionAndBuild,
-                                style: WeatherTextStyle.caption.copyWith(
-                                  color: appColors.primary,
-                                ),
+      appBar: AppBar(toolbarHeight: 0, backgroundColor: appColors.backgroundGradientStart),
+      body: BackgroundGradient(
+        child: BlocConsumer<TodayWeatherBloc, TodayWeatherState>(
+          listener: (context, state) {
+            if (state.errorMessage.isNotEmpty) {
+              context.showToastMessage(text: state.errorMessage);
+            }
+          },
+          builder: (context, state) {
+            if (state.isLoading) return const Center(child: CircularProgressIndicator.adaptive());
+            return Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned.fill(
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      context.read<TodayWeatherBloc>().add(RefreshTodayWeatherEvent());
+                    },
+                    child: SingleChildScrollView(
+                      // physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: _getHeight(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 100),
+                            _WeatherInfo(state: state),
+                            const Spacer(),
+                            _Indicators(state: state),
+                            const SizedBox(height: 24),
+                            Text(
+                              Get.find<AppVersion>().versionAndBuild,
+                              style: WeatherTextStyle.caption.copyWith(
+                                color: appColors.primary,
                               ),
-                              const SizedBox(height: 8),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(height: 8),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  const Positioned(top: 0, left: 24, child: LanguagePicker()),
-                  Positioned(
-                    top: 0,
-                    right: 12,
-                    child: IconButton(
-                      onPressed: () async {
-                        await shareReport(createTodayWeatherReport(context, state.weather));
-                      },
-                      icon: Icon(Icons.send, color: appColors.accent),
-                    ),
+                ),
+                const Positioned(top: 0, left: 24, child: LanguagePicker()),
+                Positioned(
+                  top: 0,
+                  right: 12,
+                  child: IconButton(
+                    onPressed: () async {
+                      await shareReport(createTodayWeatherReport(context, state.weather));
+                    },
+                    icon: Icon(Icons.send, color: appColors.accent),
                   ),
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
