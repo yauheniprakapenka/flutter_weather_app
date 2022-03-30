@@ -30,7 +30,12 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
 
   @override
   Widget build(context) {
+    final appColors = Get.find<AppColors>();
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: appColors.backgroudnGradientStart,
+      ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -38,8 +43,8 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Get.find<AppColors>().backgroudnGradientStart,
-                Get.find<AppColors>().backgroudnGradientEnd,
+                appColors.backgroudnGradientStart,
+                appColors.backgroudnGradientEnd,
               ],
             ),
           ),
@@ -74,7 +79,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                               Text(
                                 Get.find<AppVersion>().versionAndBuild,
                                 style: WeatherTextStyle.caption.copyWith(
-                                  color: Get.find<AppColors>().primary,
+                                  color: appColors.primary,
                                 ),
                               ),
                               const SizedBox(height: 8),
@@ -92,7 +97,7 @@ class _TodayWeatherPageState extends State<TodayWeatherPage> {
                       onPressed: () async {
                         await shareReport(createTodayWeatherReport(context, state.weather));
                       },
-                      icon: Icon(Icons.send, color: Get.find<AppColors>().accent),
+                      icon: Icon(Icons.send, color: appColors.accent),
                     ),
                   ),
                 ],
@@ -117,13 +122,14 @@ class _WeatherInfo extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final appColors = Get.find<AppColors>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           '${state.weather.city}, ${state.weather.codeCountry}',
           style: WeatherTextStyle.headline6.copyWith(
-            color: Get.find<AppColors>().primary,
+            color: appColors.primary,
           ),
         ),
         Image.network(
@@ -135,13 +141,13 @@ class _WeatherInfo extends StatelessWidget {
         Text(
           _getTemperature(context, state.weather.temperature),
           style: WeatherTextStyle.headline5.copyWith(
-            color: Get.find<AppColors>().primary,
+            color: appColors.primary,
           ),
         ),
         Text(
           '${state.weather.weather}',
           style: WeatherTextStyle.headline5.copyWith(
-            color: Get.find<AppColors>().primary,
+            color: appColors.primary,
           ),
         ),
       ],
@@ -161,6 +167,7 @@ class _Indicators extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final appColors = Get.find<AppColors>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -180,7 +187,7 @@ class _Indicators extends StatelessWidget {
           title: '${state.weather.windSpeed ?? '-'} km/h',
           icon: Icon(
             Icons.air,
-            color: Get.find<AppColors>().primary,
+            color: appColors.primary,
             size: 40,
           ),
         ),
@@ -188,7 +195,7 @@ class _Indicators extends StatelessWidget {
           title: _getWeatherIndicatorTitle(state.weather.windDegrees),
           icon: Icon(
             Icons.explore_outlined,
-            color: Get.find<AppColors>().primary,
+            color: appColors.primary,
             size: 40,
           ),
         ),
