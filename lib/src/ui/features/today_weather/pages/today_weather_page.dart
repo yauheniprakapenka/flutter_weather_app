@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
+import '../../../../app/shared/assets/weather_assets.dart';
+import '../../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../../../../app/shared/localization/locale_provider.dart';
-import '../../../../app/utils/app_version/app_version.dart';
+import '../../../../app/shared/utils/app_version/app_version.dart';
 import '../../../../ui/features/today_weather/bloc/today_weather_bloc.dart';
 import '../../../../ui/features/today_weather/extensions/wind_direction_extension.dart';
 import '../../../../ui/features/today_weather/reports/share_report.dart';
 import '../../../../ui/features/today_weather/reports/today_weather_report.dart';
 import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/weather_indicator_icon.dart';
-import '../../../../ui/shared/assets/assets.dart';
-import '../../../../ui/shared/extensions/kelvin_to_celsius_extension.dart';
-import '../../../../ui/shared/widgets/language_picker/language_picker.dart';
+import '../widgets/language_picker/language_picker.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);
@@ -150,7 +150,7 @@ class _WeatherInfo extends StatelessWidget {
 
   String _getTemperature(BuildContext context, num? temperature) {
     if (temperature == null) return '-';
-    return '${temperature.convertKelvinToCelsium()}${context.l10n?.temperatureSymbolCelsius}';
+    return '${temperature.convertKelvinToCelsius()}${context.l10n?.temperatureSymbolCelsius}';
   }
 }
 
@@ -166,15 +166,15 @@ class _Indicators extends StatelessWidget {
       children: [
         WeatherIndicatorIcon(
           title: '${state.weather.humidity ?? '-'} %',
-          icon: Assets.rain,
+          icon: WeatherAssets.rain,
         ),
         WeatherIndicatorIcon(
           title: '${state.weather.rainVolume ?? '-'} mm',
-          icon: Assets.water,
+          icon: WeatherAssets.water,
         ),
         WeatherIndicatorIcon(
           title: '${state.weather.pressure ?? '-'} hPa',
-          icon: Assets.celsius,
+          icon: WeatherAssets.celsius,
         ),
         WeatherIndicatorIcon(
           title: '${state.weather.windSpeed ?? '-'} km/h',

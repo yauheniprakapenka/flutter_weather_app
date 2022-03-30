@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
-class Assets {
+class WeatherAssets {
   static final celsius = SvgPicture.asset(
     'assets/icons/weather/celsius.svg',
     color: Get.find<AppColors>().primary,

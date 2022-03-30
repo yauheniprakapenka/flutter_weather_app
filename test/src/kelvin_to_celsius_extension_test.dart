@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_weather_app/src/ui/shared/extensions/kelvin_to_celsius_extension.dart';
+import 'package:flutter_weather_app/src/app/shared/extensions/kelvin_to_celsius_extension.dart';
 
 void main() {
   test('Zero celsius', () {
@@ -7,7 +7,7 @@ void main() {
     const kelvin = 273.15;
 
     // Act
-    final celsius = kelvin.convertKelvinToCelsium();
+    final celsius = kelvin.convertKelvinToCelsius();
 
     // Assert
     expect(celsius, 0);
@@ -18,7 +18,7 @@ void main() {
     const kelvin = 276.4;
 
     // Act
-    final celsius = kelvin.convertKelvinToCelsium();
+    final celsius = kelvin.convertKelvinToCelsius();
 
     // Assert
     expect(celsius, 3);
@@ -29,7 +29,7 @@ void main() {
     const kelvin = 276.65;
 
     // Act
-    final celsius = kelvin.convertKelvinToCelsium();
+    final celsius = kelvin.convertKelvinToCelsius();
 
     // Assert
     expect(celsius, 4);
@@ -40,7 +40,7 @@ void main() {
     const kelvin = 269.9;
 
     // Act
-    final celsius = kelvin.convertKelvinToCelsium();
+    final celsius = kelvin.convertKelvinToCelsius();
 
     // Assert
     expect(celsius, -3);
@@ -51,7 +51,7 @@ void main() {
     const kelvin = 269.65;
 
     // Act
-    final celsius = kelvin.convertKelvinToCelsium();
+    final celsius = kelvin.convertKelvinToCelsius();
 
     // Assert
     expect(celsius, -4);
