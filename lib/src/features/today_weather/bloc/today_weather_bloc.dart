@@ -2,7 +2,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import '../../../../app/shared/utils/internet_handler/has_internet.dart';
+import '../../../app/shared/utils/internet_handler/has_internet.dart';
 
 part 'today_weather_event.dart';
 part 'today_weather_state.dart';

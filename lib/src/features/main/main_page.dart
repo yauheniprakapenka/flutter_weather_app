@@ -3,8 +3,8 @@ import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:ui/ui.dart';
 
-import '../../../app/shared/assets/weather_assets.dart';
-import '../../../app/shared/localization/locale_provider.dart';
+import '../../app/shared/assets/weather_assets.dart';
+import '../../app/shared/localization/locale_provider.dart';
 import 'controller/tabbar_controller.dart';
 
 class MainPage extends StatelessWidget {

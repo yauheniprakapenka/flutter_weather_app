@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:ui/ui.dart';
 
-import '../../../../../app/shared/localization/locale_provider.dart';
+import '../../../../app/shared/localization/locale_provider.dart';
 import 'flag_extension.dart';
 
 class LanguagePicker extends StatelessWidget {

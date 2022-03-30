@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
-import '../../../../app/shared/assets/weather_assets.dart';
-import '../../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
-import '../../../../app/shared/localization/locale_provider.dart';
-import '../../../../app/shared/utils/app_version/app_version.dart';
-import '../../../../ui/features/today_weather/bloc/today_weather_bloc.dart';
-import '../../../../ui/features/today_weather/extensions/wind_direction_extension.dart';
-import '../../../../ui/features/today_weather/reports/share_report.dart';
-import '../../../../ui/features/today_weather/reports/today_weather_report.dart';
-import '../../../../ui/features/today_weather/widgets/weather_indicator_icon/weather_indicator_icon.dart';
+import '../../../app/shared/assets/weather_assets.dart';
+import '../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../app/shared/localization/locale_provider.dart';
+import '../../../app/shared/utils/app_version/app_version.dart';
+import '../bloc/today_weather_bloc.dart';
+import '../extensions/wind_direction_extension.dart';
+import '../reports/share_report.dart';
+import '../reports/today_weather_report.dart';
 import '../widgets/language_picker/language_picker.dart';
+import '../widgets/weather_indicator_icon/weather_indicator_icon.dart';
 
 class TodayWeatherPage extends StatefulWidget {
   const TodayWeatherPage({Key? key}) : super(key: key);

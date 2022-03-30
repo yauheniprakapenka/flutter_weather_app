@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/shared/localization/locale_provider.dart';
+import '../../../app/shared/localization/locale_provider.dart';
 
 extension WeekDayExtension on int {
   String getWeekDayTitle(BuildContext context) {

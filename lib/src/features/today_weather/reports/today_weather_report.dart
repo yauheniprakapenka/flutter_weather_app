@@ -1,8 +1,8 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
-import '../../../../app/shared/localization/locale_provider.dart';
+import '../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../app/shared/localization/locale_provider.dart';
 import '../../../features/today_weather/extensions/wind_direction_extension.dart';
 
 String createTodayWeatherReport(BuildContext context, Weather weather) {

@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
+import '../../../app/shared/extensions/kelvin_to_celsius_extension.dart';
 import '../extensions/week_day_extension.dart';
 import '../filters/forecast_day_filter.dart';
 import '../models/forecast_weather_list_with_title.dart';

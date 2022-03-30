@@ -1,4 +1,4 @@
-import '../../../../../app/shared/localization/locale_provider.dart';
+import '../../../../app/shared/localization/locale_provider.dart';
 
 extension FlagExtension on String {
   String getFlag() {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/ui.dart';
 
-import '../../../../app/shared/localization/locale_provider.dart';
+import '../../../app/shared/localization/locale_provider.dart';
 
 class WeatherCard extends StatelessWidget {
   final bool hasActiveBorder;
