@@ -1,0 +1,13 @@
+{
+    "dayOfWeekFriday": "Пятница",
+    "dayOfWeekMonday": "Понедельник",
+    "dayOfWeekSaturday": "Суббота",
+    "dayOfWeekSunday": "Воскресенье",
+    "dayOfWeekThursday": "Четверг",
+    "dayOfWeekTuesday": "Вторник",
+    "dayOfWeekWednesday": "Среда",
+    "tabbarNavigationForecaseLabel": "Прогноз",
+    "tabbarNavigationTodayLabel": "Сегодня",
+    "temperatureSymbolCelsius": "°C",
+    "todayPageTodayAppbarLabel": "Сегодня"
+}

@@ -4,13 +4,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/instance_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_ui/weather_ui.dart';
+import 'package:ui/ui.dart';
 
-import '../ui/features/forecast_weather/bloc/forecast_bloc.dart';
-import '../ui/features/main/controller/tabbar_controller.dart';
-import '../ui/features/main/main_page.dart';
-import '../ui/features/today_weather/bloc/today_weather_bloc.dart';
-import '../ui/shared/localization/providers/locale_provider.dart';
+import '../app/shared/localization/locale_provider.dart';
+import '../features/forecast_weather/bloc/forecast_bloc.dart';
+import '../features/main/controller/tabbar_controller.dart';
+import '../features/main/main_page.dart';
+import '../features/today_weather/bloc/today_weather_bloc.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);

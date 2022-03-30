@@ -2,7 +2,7 @@
 
 Приложение для отображения погоды, использующее [OpenWeatherMap API](https://openweathermap.org/api).
 
-<img src="https://user-images.githubusercontent.com/47568606/160629174-d2bfbb26-8f07-4a4f-b161-e660fe76452e.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/160629918-7f4c9f69-62f5-410a-8d26-2b5d759b8d3e.png" height=300>   
+<img src="https://user-images.githubusercontent.com/47568606/160784515-ce71cdc9-fa06-4839-b029-a5daf8e1971a.png" height=300>   <img src="https://user-images.githubusercontent.com/47568606/160784576-1a6fbab4-5277-4161-afd3-82f9f439204e.png" height=300>   
 
 ## Supported Features
 
