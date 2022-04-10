@@ -2,7 +2,7 @@ class Coordinates {
   final double latitude;
   final double longitude;
 
-  Coordinates({
+  const Coordinates({
     required this.latitude,
     required this.longitude,
   });

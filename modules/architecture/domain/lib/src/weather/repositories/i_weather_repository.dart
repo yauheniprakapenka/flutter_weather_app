@@ -6,6 +6,7 @@ import '../entities/forecast.dart';
 import '../entities/weather.dart';
 
 abstract class IWeatherRepository {
+  const IWeatherRepository();
   /// Получить данные из кэша. Если в кэше нет, то запрашиваются данные из сети
   /// и сохраняются в кэш.
   Future<Either<Failure, Weather>> getTodayWeather(Coordinates coordinates);
