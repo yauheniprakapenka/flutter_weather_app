@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "[Weather] Test app layer",
+            "program": "test/src/app_test.dart",
+            "request": "launch",
+            "type": "dart",
+        },
+        {
+            "name": "[Weather] Test domain layer",
+            "program": "modules/architecture/domain/test/src/domain_test.dart",
+            "request": "launch",
+            "type": "dart",
+        },
+        {
+            "name": "[Weather] Test data layer",
+            "program": "modules/architecture/data/test/src/data_test.dart",
+            "request": "launch",
+            "type": "dart",
+        }
+    ]
+}

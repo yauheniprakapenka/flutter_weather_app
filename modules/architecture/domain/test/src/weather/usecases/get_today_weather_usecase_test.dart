@@ -1,70 +1,27 @@
 import 'package:domain/domain.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+
+import '../../test_helpers/mocks/repositories.mocks.dart';
 
 void main() {
-  test('Successfully fetch today weather', () async {
-    const coordinates = Coordinates(latitude: 0, longitude: 0);
-    const sut = GetTodayWeatherUseCase(weatherRepository: _MockWeatherRepositorySuccessfully());
+  const coordinates = Coordinates(latitude: 0, longitude: 0);
+  final repository = MockIWeatherRepository();
+  final usecase = GetTodayWeatherUseCase(weatherRepository: repository);
 
-    final actual = await sut.call(coordinates);
+  test('On success get the weather type', () async {
+    when(repository.getTodayWeather(coordinates)).thenAnswer((_) async => const Right(Weather()));
+
+    final actual = await usecase.call(coordinates);
 
     expect(actual.fold((l) => l, (r) => r), isA<Weather>());
   }); 
 
-  test('Failed fetch today weather', () async {
-    const coordinates = Coordinates(latitude: 0, longitude: 0);
-    const sut = GetTodayWeatherUseCase(weatherRepository: _MockWeatherRepositoryFailed());
+  test('On fail get the failure type', () async {
+    when(repository.getTodayWeather(coordinates)).thenAnswer((_) async => const Left(Failure(message: '')));
 
-    final actual = await sut.call(coordinates);
+    final actual = await usecase.call(coordinates);
 
     expect(actual.fold((l) => l, (r) => r), isA<Failure>());
   }); 
-}
-
-class _MockWeatherRepositorySuccessfully implements IWeatherRepository {
-  const _MockWeatherRepositorySuccessfully();
-
-  @override
-  Future<Either<Failure, Forecast>> getFiveDaysWeatherForecast(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Weather>> getTodayWeather(Coordinates coordinates) async {
-    return const Right(Weather());
-  }
-
-  @override
-  Future<Either<Failure, Forecast>> refreshFiveDaysWeatherForecast(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Weather>> refreshTodayWeather(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
-}
-
-class _MockWeatherRepositoryFailed implements IWeatherRepository {
-  const _MockWeatherRepositoryFailed();
-
-  @override
-  Future<Either<Failure, Forecast>> getFiveDaysWeatherForecast(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Weather>> getTodayWeather(Coordinates coordinates) async {
-    return const Left(Failure(message: ''));
-  }
-
-  @override
-  Future<Either<Failure, Forecast>> refreshFiveDaysWeatherForecast(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Weather>> refreshTodayWeather(Coordinates coordinates) {
-    throw UnimplementedError();
-  }
 }
